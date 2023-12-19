@@ -1,254 +1,215 @@
+% 注意！二次元の時と一次元の時でp_estの扱いが異なる。(面倒なので現在はブランチを切っている)
+
+
 clear all
 close all
 clc
 
-% sumocfgのpath
-scenarioPath = '../okutama.sumocfg';
-
+scenarioPath = '../curve_r40_2.sumocfg';
 [traciVersion,sumoVersion] = traci.start(['sumo -c ' '"' scenarioPath '"']);
 
+plot_init;
+clf;
+f_plot = 1;
+  
+%% システムパラメータ
 
-% 以下はmainとvc_mfhを原型とするコード
-  
-  plot_init;
-  clf;
-  f_plot = 1;
-  
-  %% システムパラメータ
-  
-  % キャリア周波数 [Hz]
-  fc = 28e+9;
-  
-  % 光速 [m/s]
-  vc = 3e8; %299792458;
-  
-  % 波長 [m]
-  rmd = vc/fc;
-    
-  % DU 素子数
-  n_tx = 16;
-  n_tz = 16;
-  n_du = n_tx*n_tz;
-  
-  dtx  = rmd/2;
-  dtz  = rmd/2;  
-  otx  = 0;
-  otz  = 0;
-  
-  % RU
-  n_rx = 10;
-  n_rz = 1;
-  n_ru  = n_rx*n_rz;
-  
-  drx  = rmd/2;
-  drz  = rmd/2;  
-  orx  = 0;
-  orz  = 0;
-  
-  % 捕捉開始SNR [dB]
-  snr_cap = 15;
-  
-  % 送信電力 - フィーダ損失
-  Ptx = dbm2real(40-3)/(n_du);  
-  % 送信アンテナ利得
-  Gtx = 8; % zeros(n_pls,1);
-  % 受信アンテナ利得
-  Grx = 1; % zeros(n_pls,1);
-  % 雑音電力密度 [dBm/Hz]
-  Pnd = -174;
-  % 帯域幅 [Hz]
-  BW  = 400e6;
-  % 雑音指数 [dB]: UE
-  Nf  = 9;
-  % 雑音電力
-  Pn = Pnd + real2db(BW) + Nf;
-  Np = dbm2real(Pn);
-  
-  % 垂直距離
-%   do = 20.5;
-  % 角度幅 (90°正面）
-%   ang = (-60:1:60).'+90;
-  % 送受信間距離
-%   d = do./cosd(ang-90); % 1:30;
-  % 酸素吸収による減衰
-%   Gab = db2real(-15.*d/1000);
-          
-  %% 道路パラメータ
-  
-  % 車線幅
-  lw = 3;
-  % 歩道幅
-  pw = 5;
-  % 道路幅 [m]
-  dw = pw+lw+lw+lw+lw+pw;
-  
-  % 車両位置
-  vp = pw + lw/2;
-  
-  % 左側壁からの距離 [m]
-  dl = 2;
+% キャリア周波数 [Hz]
+fc = 28e+9;
 
-  
-  % 観測時間 [s] 
-  t_sim = 100.00;
-  % 時間ステップ [s]
-  dt = 0.01;  % 0.001
-  t = 0:dt:t_sim-dt;
-  
-%   dt = 0.01; % サンプル間隔
-%   t = [0:dt:100];
-    
-  % 観測範囲 [m]
-  st_x = 60; 
-  
-  % DUの位置
-  x_du = st_x/2;
-  y_du = 0;
-  z_du = 10;
-  
-  % VAPの初期位置
-  x_ru = 0;
-  y_ru = pw+lw+lw+lw+lw/2;
-  z_ru = 2;
-  
-  % known
-  dy_k = abs(y_du-y_ru);
-  dz_k = abs(z_du-z_ru);
-  
-  % 走査角度
-  phi = (-70:1:70).'+90;  
-  the = atand(dz_k/dy_k*abs(sind(180-phi)))+90;
-  
-  % 移動速度 [km/h]
-%   v_01 = 60;
-%   v_02 = 45;
-  
-  v_du = 0;
-  v_ru = 0; 
-  
-  % [m/s]
-  % v_du = v_du*1000/3600;  
-  % v_ru = v_ru*1000/3600; 
-    
-  
-  % 送受信局構造体
-  DU = struct('ary', repmat(struct('x', x_du, 'y', y_du, 'z', z_du), 1,1), 'v', v_du, 'dir', 0);
-  RU = struct('ary', repmat(struct('x', x_ru, 'y', y_ru, 'z', z_ru), 1,1), 'v', v_ru, 'dir', 0);  
+% 光速 [m/s]
+vc = 3e8;
 
-  
-  DU_el = zeros(n_du,3);
-  na = 1;
-  for nx = 1:n_tx
-  
-    for ny = 1:1
-      for nz = 1:n_tz
-        px = dtx*(nx-1) + otx*(nx-1);
-        py = 0;
-        pz = dtz*(nz-1) + otz*(nz-1);
-        DU_el(na,:) = [px, py, pz];
-        na = na + 1;
-      end
+% 波長 [m]
+rmd = vc/fc;
+
+% DU 素子数
+n_tx = 16;
+n_tz = 16;
+n_du = n_tx*n_tz;
+
+dtx  = rmd/2;
+dtz  = rmd/2;  
+otx  = 0;
+otz  = 0;
+
+% RU
+n_rx = 10;
+n_rz = 1;
+n_ru  = n_rx*n_rz;
+
+drx  = rmd/2;
+drz  = rmd/2;  
+orx  = 0;
+orz  = 0;
+
+% 捕捉開始SNR [dB]
+snr_cap = 15;
+
+% 送信電力 - フィーダ損失
+Ptx = dbm2real(40-3)/(n_du);  
+% 送信アンテナ利得
+Gtx = 8; % zeros(n_pls,1);
+% 受信アンテナ利得
+Grx = 1; % zeros(n_pls,1);
+% 雑音電力密度 [dBm/Hz]
+Pnd = -174;
+% 帯域幅 [Hz]
+BW  = 400e6;
+% 雑音指数 [dB]: UE
+Nf  = 9;
+% 雑音電力
+Pn = Pnd + real2db(BW) + Nf;
+Np = dbm2real(Pn);
+        
+%% 道路パラメータ
+
+% 車線幅
+lw = 3;
+% 歩道幅
+pw = 5;
+
+% 左側壁からの距離 [m]
+dl = 2;
+
+% 観測時間 [s] 
+t_sim = 100.00;
+% 時間ステップ [s]
+dt = 0.01;  % 0.001
+t = 0:dt:t_sim-dt;
+
+% 観測範囲 [m]
+st_x = 60; 
+
+% DUの位置
+x_du = st_x/2;
+y_du = -5;
+z_du = 10;
+
+% VAPの初期位置
+x_ru = 0;
+y_ru = 15.5;
+z_ru = 2;
+
+% known
+dy_k = abs(y_du-y_ru);
+dz_k = abs(z_du-z_ru);
+
+% 走査角度
+phi = (-70:1:70).'+90;  
+the = atand(dz_k/dy_k*abs(sind(180-phi)))+90;
+
+v_du = 0;
+v_ru = 0; 
+
+% 送受信局構造体
+DU = struct('ary', repmat(struct('x', x_du, 'y', y_du, 'z', z_du), 1,1), 'v', v_du, 'dir', 0);
+RU = struct('ary', repmat(struct('x', x_ru, 'y', y_ru, 'z', z_ru), 1,1), 'v', v_ru, 'dir', 0);  
+
+DU_el = zeros(n_du,3);
+na = 1;
+for nx = 1:n_tx
+
+  for ny = 1:1
+    for nz = 1:n_tz
+      px = dtx*(nx-1) + otx*(nx-1);
+      py = 0;
+      pz = dtz*(nz-1) + otz*(nz-1);
+      DU_el(na,:) = [px, py, pz];
+      na = na + 1;
     end
   end
-  
-  
-  RU_el = zeros(n_ru,3);
-  na = 1;
-  for nz = 1:n_rz
-    for ny = 1:1
-      for nx = 1:n_rx
-        px = drx*(nx-1) + orx*(nx-1);
-        py = 0;
-        pz = drz*(nz-1) + orz*(nz-1);
-        RU_el(na,:) = [px, py, pz];
-        na = na + 1;
-      end
+end
+
+RU_el = zeros(n_ru,3);
+na = 1;
+for nz = 1:n_rz
+  for ny = 1:1
+    for nx = 1:n_rx
+      px = drx*(nx-1) + orx*(nx-1);
+      py = 0;
+      pz = drz*(nz-1) + orz*(nz-1);
+      RU_el(na,:) = [px, py, pz];
+      na = na + 1;
     end
   end
-  
-  
-%   % DU
-%   for ni = 2:ntx
-%     DU.ary(ni).x = DU.ary(ni-1).x;
-%     DU.ary(ni).y = DU.ary(ni-1).y + rtx;
-%     DU.ary(ni).z = DU.ary(ni-1).z;
-%   end
-%   % VAP(RU)
-%   for ni = 2:nrx
-%     RU.ary(ni).x = RU.ary(ni-1).x + rrx;
-%     RU.ary(ni).y = RU.ary(ni-1).y;
-%     RU.ary(ni).z = RU.ary(ni-1).z;
-%   end
+end
 
-  % VAPの移動方向  
-  motion = 0;
-  switch motion
-    case 0 % 直進
-      RU.dir = zeros(numel(t),1);  % 時系列の配列
-    case 1 % ランダムに方向変化
-      RU.dir = randi([-180 180],numel(t),1);
-    case 2 % 一定区間ごとに方向変化
-      RU.dir = [ repmat(9,floor(numel(t)/4),1); ...
-                 repmat(6,floor(numel(t)/4),1); ...
-                 repmat(3,floor(numel(t)/4),1); ...
-                 zeros(numel(t)-3*floor(numel(t)/4),1) ];
-    case 3 % 一定方向変化
-      RU.dir = 2.2906*ones(numel(t),1);  
-  end
-  
-  state = 'wait';
-  a_ini = 140;
-  p_ini = atand(dz_k/dy_k*abs(sind(180-a_ini)))+90;
-  
-  a_fin = 40;
-  a_est = a_ini;
-  p_est = p_ini;
-  % v_ini = 30*1000/3600;
-  v_ini = 0;
-  v_est = v_ini;
-  
-  % Fixed
-  a_fix = 90;
-  p_fix = atand(dz_k/dy_k*abs(sind(180-a_fix)))+90;
-  Wt_c   = gen_beam(n_tx, n_tz, fc, a_fix, p_fix);
-  
-  % Search
-  a_div = 7;
-  p_div = 10;
-  p_fin = 30;
-  a_sch = a_ini:-a_div:a_fin;
-  p_sch = (0:p_div:p_fin)+90; 
+% VAPの移動方向  
+motion = 0;
+switch motion
+  case 0 % 直進
+    RU.dir = zeros(numel(t),1);  % 時系列の配列
+  case 1 % ランダムに方向変化
+    RU.dir = randi([-180 180],numel(t),1);
+  case 2 % 一定区間ごとに方向変化
+    RU.dir = [ repmat(9,floor(numel(t)/4),1); ...
+                repmat(6,floor(numel(t)/4),1); ...
+                repmat(3,floor(numel(t)/4),1); ...
+                zeros(numel(t)-3*floor(numel(t)/4),1) ];
+  case 3 % 一定方向変化
+    RU.dir = 2.2906*ones(numel(t),1);  
+end
 
-  
-  Wt_ini = gen_beam(n_tx, n_tz, fc, a_ini, p_ini);
-  
-  DU_pos = DU_el +  repmat([x_du, y_du, z_du],[n_du,1]);
-  
-  ns = 1;
+state = 'wait';
+a_ini = 140;
+p_ini = atand(dz_k/dy_k*abs(sind(180-a_ini)))+90;
 
+a_fin = 40;
+a_est = a_ini;
+p_est = p_ini;
+v_ini = 0;
+v_est = v_ini;
+vy_est = v_ini;
+y_est = -1.6
+
+% Fixed
+a_fix = 90;
+p_fix = atand(dz_k/dy_k*abs(sind(180-a_fix)))+90;
+Wt_c = gen_beam(n_tx, n_tz, fc, a_fix, p_fix);
+
+% Search
+a_div = 7;
+p_div = 10;
+p_fin = 30;
+a_sch = a_ini:-a_div:a_fin;
+p_sch = (0:p_div:p_fin)+90; 
+
+Wt_ini = gen_beam(n_tx, n_tz, fc, a_ini, p_ini);
+
+DU_pos = DU_el +  repmat([x_du, y_du, z_du],[n_du,1]);
+
+ns = 1;
+
+output_file = 'r40_50km_acc15.csv';
+search_way = 22;
+direct_or_not = 0;
 
 % 車速用
 speed_list = [];
 pos_list = [];
-speed = 12.5; % 初速
+distance_list = [];
+result_list = [];
+speed = 0; % 初速
 RU.ary.x = 5; % 車の長さ分のoffset
 % main loop.
 for nt = 1:numel(t)
     traci.simulation.step(); % sumoの1ステップを進める
     RU.v = speed;
-    speed = traci.vehicle.getSpeed('t_1');
+    speed = traci.vehicle.getSpeed('t_0');
     speed_list(end+1) = speed * 3600 / 1000;
-    % VAPの位置移動
-    % RU.ary.x = RU.ary.x + RU.v.*cosd(RU.dir(nt))*dt;
-    % RU.ary.y = RU.ary.y + RU.v.*sind(RU.dir(nt))*dt;
 
-    vehicleID = 't_1'; % 取得したい車両のIDに置き換える
+    vehicleID = 't_0'; % 取得したい車両のIDに置き換える
     position = traci.vehicle.getPosition(vehicleID);
     disp(['車両位置 (x, y): ', num2str(position)]);
 
-    RU.ary.x = -position(1)+1335.38;
-    RU.ary.y = position(2)-612.1;
-    disp([RU.ary.x, RU.ary.y])
+    if direct_or_not == 0
+      RU.ary.x = position(1);
+      RU.ary.y = y_ru + position(2);
+    else
+      RU.ary.x = RU.ary.x + RU.v.*cosd(RU.dir(nt))*dt;
+      RU.ary.y = RU.ary.y + RU.v.*sind(RU.dir(nt))*dt;
+    end
 
     pos_list(end+1) = RU.ary.x;
     if RU.ary.x >= 59
@@ -271,17 +232,12 @@ for nt = 1:numel(t)
       zlabel('z [m]');
       hold off;
     end
-
-
-    % 速度変更    
-    % if RU.ary.x > 30
-    %   RU.v = v_02*1000/3600;
-    % end
     
     dx  = RU.ary(1).x - DU.ary(1).x;
     dy  = RU.ary(1).y - DU.ary(1).y;
     dz  = RU.ary(1).z - DU.ary(1).z;    
-    d   = sqrt(dx.^2 + dy.^2 + dz.^2);    
+    d   = sqrt(dx.^2 + dy.^2 + dz.^2)
+    distance_list(end+1) = d;
     a_i = atand(dx/dy)+90;
     p_i = atand(abs(dz)/abs(dy)*abs(sind(180-a_i)))+90;
     
@@ -295,10 +251,6 @@ for nt = 1:numel(t)
     G   = sqrt(Ptx*Gtx*Grx*Gab);
     if nt == 1, G_  = G*rmd./(4*pi.*d); end;
     HG  = H*G;
-    
-%     N_rx = wgn(n_du, 1, Np, 'linear', 'complex');
-    
-    
 
     switch state
       
@@ -342,76 +294,138 @@ for nt = 1:numel(t)
         SNR_s = real2db(abs(Wr_s*HG*Wt_s).^2/Np);
         
         % Proposed
-        p_est = atand(dz_k/dy_k*abs(sind(180-a_est)))+90;        
+        %% 二次元の時は下を消す
+        if (search_way == 2) || (search_way == 4)
+          p_est = atand(dz_k/dy_k*abs(sind(180-a_est)))+90; 
+        end       
         
         Wt  = gen_beam(n_tx, n_tz, fc, a_est, p_est);
         Wr  = nrmlzm((HG*Wt)','sum');
                 
         SNR = real2db(abs(Wr*HG*Wt).^2/Np);
-     
-        if SNR - SNR_0 < 0
-          W_a  = gen_beam(n_tx, n_tz, fc, a_est-7, p_est);
-          W_b  = gen_beam(n_tx, n_tz, fc, a_est+7, p_est);
+
+        if search_way == 4
+          angle = 3;
+        else
+          angle = 7;
+        end
+        angle_p = 7;
+        % search_way = 22;
+
+        % 2方向ビームサーチ
+        if search_way == 2
+          %------------------------------------------%
+          if SNR - SNR_0 < 0
+            W_a  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
+            W_b  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
           
-          SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
-          SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
+            SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
+            SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
           
-          u = db2real(abs(SNR - SNR_0));
-%           u = abs(SNR - SNR_0);
-%           if SNR_a > SNR_b          
-% %           a_est = a_est;
-%             v_est = v_est + 3*u;
-%           else
-%             v_est = v_est - 3*u;
-%           end          
-          v_est = v_est + sign(SNR_a-SNR_b)*3*u;
+            u = db2real(abs(SNR - SNR_0));
+          
+            v_est = v_est + sign(SNR_a-SNR_b)*3*u;
+          end
+          %------------------------------------------%
+        % 4方向ビームサーチ
+        elseif search_way == 4
+          %------------------------------------------%
+          if SNR - SNR_0 < 0
+            W_a  = gen_beam(n_tx, n_tz, fc, a_est-2*angle, p_est);
+            W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
+            W_c  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
+            W_d  = gen_beam(n_tx, n_tz, fc, a_est+2*angle, p_est);
+
+            SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
+            SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
+            SNR_c = real2db(abs(Wr*HG*W_c).^2/Np);
+            SNR_d = real2db(abs(Wr*HG*W_d).^2/Np);
+
+            u = db2real(abs(SNR - SNR_0));
+
+            SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d]);
+            if SNR_max == SNR_a
+                v_est = v_est + 2*3*u;
+            elseif SNR_max == SNR_b
+                v_est = v_est + 3*u;
+            elseif SNR_max == SNR_c
+                v_est = v_est - 3*u;
+            else
+                v_est = v_est - 2*3*u;
+            end
+          end
+        % 二次元ビームサーチ
+        elseif search_way == 22
+          if SNR - SNR_0 < 0
+            W_a  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
+            W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
+            W_c  = gen_beam(n_tx, n_tz, fc, a_est, p_est+angle);
+            W_d  = gen_beam(n_tx, n_tz, fc, a_est, p_est-angle);
+
+            SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
+            SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
+            SNR_c = real2db(abs(Wr*HG*W_c).^2/Np);
+            SNR_d = real2db(abs(Wr*HG*W_d).^2/Np);
+
+            u = db2real(abs(SNR - SNR_0));
+
+            SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d]);
+            if SNR_max == SNR_a
+                v_est = v_est - 3*u;
+            elseif SNR_max == SNR_b
+                v_est = v_est + 3*u;
+            elseif SNR_max == SNR_c
+                vy_est = vy_est - 3*u;
+            else
+                vy_est = vy_est + 3*u;
+            end
+          end
         end
         
         a_est = a_est - atand(v_est*dt/dy_k);
+
+        if search_way == 22
+          y_est = y_est + vy_est * dt
+          p_est = atand(dz_k/(dy_k + y_est)*abs(sind(180-a_est)))+90;
+        end
         SNR_0 = SNR;
+
+        % disp(SNR);
  
         if a_est < a_fin
           state = 'wait';
           Wt_ini = Wt;
         end  
         
-        % save SNR
-        
         SNR_sch(ns,1) = SNR_s;
         SNR_opt(ns,1) = SNR_o;
         SNR_pro(ns,1) = SNR;        
         ns = ns + 1;
     end
-
-    disp(SNR)
-    
     
     if f_plot == 1      
       figure(1)
       subplot(2,1,1);
       switch state
-        case 'wait', plot(RU.ary.x, SNR, '.', 'Color', [0.2 0.2 0.2]);
+        % case 'wait', plot(RU.ary.x, SNR, '.', 'Color', [0.2 0.2 0.2]);
         case 'track',
-          plot(RU.ary.x, SNR_o, '.', 'Color', 'blue', 'LineWidth', 1.0);
+          plot(RU.ary.x, SNR_o, '.', 'Color', 'black', 'LineWidth', 1.0);
           hold on;
           % plot(RU.ary.x, SNR_c, '.', 'Color', mycolor('orange'), 'LineWidth', 1.0);
-          % plot(RU.ary.x, SNR_s, '.', 'Color', 'green', 'LineWidth', 1.0);
-          plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.5);
-          % legend('Proposed', 'Search', 'Optimal');
+          % plot(RU.ary.x, SNR_s, '.', 'Color', '#ff7f0e', 'LineWidth', 1.0);
+          plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
+          result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
+          csvwrite(output_file, result_list);
       end
       fig = gcf; % 現在のフィギュアを取得
       fig.Position(3) = 500; % 幅を800ポイントに設定
       fig.Position(4) = 1000; % 高さを600ポイントに設定
-      % dammy_1 = linspace(0,1);
-      % p1 = plot(dammy_1, dammy_1);
-      % p3 = plot(dammy_1, dammy_1);
       hold on;
 
       xlim([0,st_x]);
       ylim([0 60]);
       xlabel('position[m]');
       ylabel('SNR[dB]');
-      % legend('First','Third',)
       grid on;
       hold on;
       
@@ -425,37 +439,17 @@ for nt = 1:numel(t)
       ylim([0 90]);
       xlabel('position[m]');
       ylabel('speed[km/h]');
-      % legend('First','Third',)
       grid on;
-      % subplot(2,1,2);
-      % plot(phi, S, '-r'); %, 'LineWidth', 0.5);
-      % hold on;
-      % plot(a_i, 30, 'bo', 'LineWidth', 1.5);
-      % hold off;
-      % grid on;
-      % xlim([20 160]);
-      % ylim([0 40]);
-      % xlabel('[degree]');
-      % ylabel('SNR[dB]');
-      % pause(0.1);
-      % 
-      % fprintf('time = %.2f, phi = %.2f, a_est = %.2f, the = %.2f, p_est = %.2f, v_est = %.1f, SNR = %.2f  \n', t(nt), 180-a_i, a_est, p_i, p_est, v_est, SNR);
-      pause(0.00001);
     end
   
 end
-% subplot(2,1,2);
-% plot(pos_list,speed_list);
-% xlim([0,60]);
-% ylim([0 90]);
-% xlabel('position[m]');
-% ylabel('speed[km/h]');
-% % legend('First','Third',)
-% grid on;
+
+saveas(gcf, 'result.png');
+
 hold off;
 
-
 traci.close();
+
 
 
 %% Beamforming: 遠方界モデルの式から
