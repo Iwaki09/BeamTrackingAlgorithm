@@ -37,7 +37,7 @@ for scenario in scenarios:
             # 車道の最高速度の設定。
             root_net[1][0].attrib['speed'] = str(max_speed)
 
-            # 車両の出発位置。とりあえず０
+            # 車両の出発時間。
             depart_position = '0.00'
             root_rou[1].attrib['depart'] = depart_position
 
@@ -48,8 +48,8 @@ for scenario in scenarios:
             # 車両の加速度
             root_rou[0].attrib['accel'] = str(accel)
 
-            # 車両の減速度
-            root_rou[0].attrib['decel'] = '4.5'
+            # 車両の減速度(加速度と同じにする)
+            root_rou[0].attrib['decel'] = str(accel)
 
             # 車両の全長
             root_rou[0].attrib['length'] = '5.0'
@@ -58,7 +58,7 @@ for scenario in scenarios:
             root_rou[0].attrib['maxSpeed'] = '300.00'
 
             # sumocfgに書かれるファイル名
-            filename_suffix = '_ms{}_ac{}_dp{}_ds{}'.format(max_speed, accel, depart_position, depart_speed)
+            filename_suffix = '_ms{}_ac{}_ds{}'.format(max_speed, accel, depart_speed)
 
             root_cfg[0][0].attrib['value'] = scenario+filename_suffix+'.net.xml'
             root_cfg[0][1].attrib['value'] = scenario+filename_suffix+'.rou.xml'

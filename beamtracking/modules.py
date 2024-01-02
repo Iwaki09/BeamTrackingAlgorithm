@@ -13,8 +13,10 @@ class Unit:
 
 
 class DU(Unit):
-    def __init__(self, n_elx, n_elz):
+    def __init__(self, n_elx, n_elz, ptx):
         super().__init__(n_elx, n_elz)
+        # 送信電力
+        self.ptx = 
 
 class RU(Unit):
     def __init__(self, n_elx, n_elz):
