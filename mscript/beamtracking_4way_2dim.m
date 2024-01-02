@@ -1,4 +1,4 @@
-function extended_main()
+function extended_main(output_name)
   % 注意！二次元の時と一次元の時でp_estの扱いが異なる。(面倒なので現在はブランチを切っている)
 
 
@@ -9,7 +9,7 @@ function extended_main()
 
   plot_init;
   clf;
-  f_plot = 1;
+  f_plot = 0;
     
   %% システムパラメータ
 
@@ -180,7 +180,7 @@ function extended_main()
 
   ns = 1;
 
-  output_name = 'curve_r60_75to90_2dim_44';
+  % output_name = 'curve_r60_75to90_2dim_44';
   output_file = strcat('../res_1223/', output_name, '.csv');
   output_file2 = strcat('../res_1223/', output_name, '2.csv');
   if strcmp(output_name(end-3:end), '2way')
@@ -217,6 +217,9 @@ function extended_main()
       vehicleID = 't_0'; % 取得したい車両のIDに置き換える
       position = traci.vehicle.getPosition(vehicleID);
       % disp(['車両位置 (x, y): ', num2str(position)]);
+
+      accel = traci.vehicle.getPosition(vehicleID);
+      direction = traci.vehicke.getAngle(vehicleID);
 
       if direct_or_not == 0
         RU.ary.x = position(1);
@@ -471,14 +474,14 @@ function extended_main()
         switch state
           case 'wait', plot(RU.ary.x, SNR, '.', 'Color', [0.2 0.2 0.2]);
             result_list2 = [result_list2; [RU.ary.x, SNR]];
-            csvwrite(output_file2, result_list2);
+            % csvwrite(output_file2, result_list2);
           case 'track',
             plot(RU.ary.x, SNR_o, '.', 'Color', 'blue', 'LineWidth', 1.0);
             hold on;
             % plot(RU.ary.x, SNR_c, '.', 'Color', mycolor('orange'), 'LineWidth', 1.0);
             plot(RU.ary.x, SNR_s, '.', 'Color', 'green', 'LineWidth', 1.0);
             plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
-            result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
+            result_list = [result_list; [d, speed, accel, direction, SNR]];
             csvwrite(output_file, result_list);
         end
         fig = gcf; % 現在のフィギュアを取得
@@ -508,7 +511,7 @@ function extended_main()
     
   end
 
-  saveas(gcf, 'result.png');
+  % saveas(gcf, 'result.png');
 
   hold off;
 
