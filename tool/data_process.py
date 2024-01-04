@@ -36,13 +36,26 @@ for scenario in scenarios:
 
             df_all = pd.concat([df_all, df_2dim[['x', 'speed', 'accel', 'angle', 'best']]])
 
-print(df_all)
 
-colors = df_all['best'].map({0: 'red', 1: 'blue'})
-plt.scatter(df_all['speed'], df_all['accel'], c=colors, label=df_all['best'].astype(str))
+# colors = df_all['best'].map({0: 'red', 1: 'blue'})
+# plt.scatter(df_all['speed'], df_all['accel'], c=colors, label=df_all['best'].astype(str))
+
+# # グラフにタイトルとラベルを追加
+# plt.title('Scatter Plot of Speed vs Acceleration')
+# plt.xlabel('Speed')
+# plt.ylabel('Acceleration')
+# plt.savefig('result.png')
+            
+plt.hist([df_all[df_all['best'] == 0]['speed'], df_all[df_all['best'] == 1]['speed']],
+         bins=5, alpha=0.7, color=['red', 'blue'], label=['best=0', 'best=1'])
 
 # グラフにタイトルとラベルを追加
-plt.title('Scatter Plot of Speed vs Acceleration')
+plt.title('Histogram of Speed by Best')
 plt.xlabel('Speed')
-plt.ylabel('Acceleration')
+plt.ylabel('Frequency')
+
+# 凡例を表示
+plt.legend()
+
+# グラフを表示
 plt.savefig('result.png')
