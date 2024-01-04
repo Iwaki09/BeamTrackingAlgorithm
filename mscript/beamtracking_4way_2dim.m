@@ -1,4 +1,4 @@
-function extended_main(output_name)
+function beamtracking_4way_2dim(output_name)
   % 注意！二次元の時と一次元の時でp_estの扱いが異なる。(面倒なので現在はブランチを切っている)
 
 
@@ -160,7 +160,7 @@ function extended_main(output_name)
   v_ini = 0;
   v_est = v_ini;
   vy_est = v_ini;
-  y_est = -1.6
+  y_est = -1.6;
 
   % Fixed
   a_fix = 90;
@@ -181,8 +181,8 @@ function extended_main(output_name)
   ns = 1;
 
   % output_name = 'curve_r60_75to90_2dim_44';
-  output_file = strcat('../res_1223/', output_name, '.csv');
-  output_file2 = strcat('../res_1223/', output_name, '2.csv');
+  output_file = strcat('../result/', output_name, '.csv');
+  output_file2 = strcat('../result/', output_name, '2.csv');
   if strcmp(output_name(end-3:end), '2way')
       search_way = 2;
   elseif strcmp(output_name(end-3:end), '2dim')
@@ -219,7 +219,7 @@ function extended_main(output_name)
       % disp(['車両位置 (x, y): ', num2str(position)]);
 
       accel = traci.vehicle.getPosition(vehicleID);
-      direction = traci.vehicke.getAngle(vehicleID);
+      direction = traci.vehicle.getAngle(vehicleID);
 
       if direct_or_not == 0
         RU.ary.x = position(1);
@@ -230,8 +230,9 @@ function extended_main(output_name)
       end
 
       pos_list(end+1) = RU.ary.x;
-      if RU.ary.x >= 59
-          break;
+      if RU.ary.x >= 58
+        writematrix(result_list, output_file);
+        break;
       end
 
       RU_pos   = RU_el + repmat([RU.ary.x, RU.ary.y, z_ru],[n_ru,1]);
@@ -450,7 +451,7 @@ function extended_main(output_name)
           a_est = a_est - atand(v_est*dt/dy_k);
 
           if (search_way == 22) || (search_way == 44)
-            y_est = y_est + vy_est * dt
+            y_est = y_est + vy_est * dt;
             p_est = atand(dz_k/(dy_k + y_est)*abs(sind(180-a_est)))+90;
           end
           SNR_0 = SNR;
@@ -467,7 +468,15 @@ function extended_main(output_name)
           SNR_pro(ns,1) = SNR;        
           ns = ns + 1;
       end
-      
+
+      if f_plot == 0
+        switch state
+          case 'track'
+            result_list = [result_list; [d, speed, accel, direction, SNR]];
+            % writematrix(result_list, output_file);
+        end
+      end
+
       if f_plot == 1      
         figure(1)
         subplot(2,1,1);
@@ -481,8 +490,8 @@ function extended_main(output_name)
             % plot(RU.ary.x, SNR_c, '.', 'Color', mycolor('orange'), 'LineWidth', 1.0);
             plot(RU.ary.x, SNR_s, '.', 'Color', 'green', 'LineWidth', 1.0);
             plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
-            result_list = [result_list; [d, speed, accel, direction, SNR]];
-            csvwrite(output_file, result_list);
+            result_list = [result_list; [d, speed, accel, direction, SNR]]
+            % csvwrite('kaka.csv', result_list);
         end
         fig = gcf; % 現在のフィギュアを取得
         fig.Position(3) = 500; % 幅を800ポイントに設定
@@ -513,7 +522,7 @@ function extended_main(output_name)
 
   % saveas(gcf, 'result.png');
 
-  hold off;
+  % hold off;
 
   traci.close();
 

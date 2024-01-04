@@ -31,8 +31,8 @@ for scenario in scenarios:
 
     # sumoファイルの複製
 
-    for max_speed in range(0, 30, 2):
-        for accel in [0, 1, 2]:
+    for max_speed in range(0, 20, 1):
+        for accel in range(0, 10, 1):
 
             # 車道の最高速度の設定。
             root_net[1][0].attrib['speed'] = str(max_speed)
