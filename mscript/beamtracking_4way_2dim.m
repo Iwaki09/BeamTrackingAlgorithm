@@ -1,7 +1,6 @@
 function beamtracking_4way_2dim(output_name)
   % 注意！二次元の時と一次元の時でp_estの扱いが異なる。(面倒なので現在はブランチを切っている)
-
-
+  
   clc
 
   scenarioPath = '../datasource/curve_r60.sumocfg';
@@ -228,10 +227,10 @@ function beamtracking_4way_2dim(output_name)
       end
 
       pos_list(end+1) = RU.ary.x;
-      if RU.ary.x >= 58
-        writematrix(result_list, output_file);
-        break;
-      end
+      % if RU.ary.x >= 58
+      %   writematrix(result_list, output_file);
+      %   break;
+      % end
 
       RU_pos   = RU_el + repmat([RU.ary.x, RU.ary.y, z_ru],[n_ru,1]);
       
@@ -471,7 +470,7 @@ function beamtracking_4way_2dim(output_name)
         switch state
           case 'track'
             result_list = [result_list; [d, speed, accel, direction, SNR]];
-            % writematrix(result_list, output_file);
+            writematrix(result_list, output_file);
         end
       end
 
