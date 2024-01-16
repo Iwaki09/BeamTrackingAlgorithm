@@ -1,6 +1,4 @@
 function beamtracking_4way_2dim(output_name)
-  % 注意！二次元の時と一次元の時でp_estの扱いが異なる。(面倒なので現在はブランチを切っている)
-  
   clc
 
   scenarioPath = '../datasource/curve_r60.sumocfg';
