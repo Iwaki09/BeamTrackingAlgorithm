@@ -17,11 +17,13 @@ clc
 % This line is required for Matlab on Linux
 % setenv('LD_LIBRARY_PATH','/usr/lib/x86_64-linux-gnu/libxerces-c-3.1.so');
 
-scenarioPath = './datasource/curve_r60.sumocfg';
+% sumoguiPath = ''
+scenarioPath = '../datasource/curve_r60.sumocfg';
 
-addpath('/opt/homebrew/Cellar/sumo/1.19.0/share/sumo/tools/contributed/traci4matlab/');
+% system(['/opt/homebrew/bin/sumo-gui -c ' '"'  scenarioPath '"' ' --remote-port 8812']);
+% pause(10)
+traci.init();
 [traciVersion,sumoVersion] = traci.start(['sumo -c ' '"' scenarioPath '"']);
-
 
 traci.close();
 fprintf('SUMO version: %s\nTraCI version: %d\n',sumoVersion,traciVersion);

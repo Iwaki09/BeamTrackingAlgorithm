@@ -4,11 +4,9 @@ function beamtracking_4way_2dim(output_name)
 
   clc
 
-  scenarioPath = '../curve_r40_2.sumocfg';
+  scenarioPath = '../datasource/curve_r60.sumocfg';
   [traciVersion,sumoVersion] = traci.start(['sumo -c ' '"' scenarioPath '"']);
 
-  plot_init;
-  clf;
   f_plot = 0;
     
   %% システムパラメータ

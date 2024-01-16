@@ -46,13 +46,13 @@ for scenario in scenarios:
 # plt.ylabel('Acceleration')
 # plt.savefig('result.png')
             
-plt.hist([df_all[df_all['best'] == 0]['speed'], df_all[df_all['best'] == 1]['speed']],
-         bins=5, alpha=0.7, color=['red', 'blue'], label=['best=0', 'best=1'])
+plt.hist([df_all[df_all['best'] == 0]['x'], df_all[df_all['best'] == 1]['x']],
+         bins=5, alpha=0.7, color=['red', 'blue'], label=['best=2dim', 'best=4way'])
 
 # グラフにタイトルとラベルを追加
-plt.title('Histogram of Speed by Best')
-plt.xlabel('Speed')
-plt.ylabel('Frequency')
+plt.title('Histogram of Distance by Best')
+plt.xlabel('Distance from BS')
+plt.ylabel('')
 
 # 凡例を表示
 plt.legend()
