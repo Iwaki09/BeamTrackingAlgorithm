@@ -467,7 +467,7 @@ function beamtracking_4way_2dim(output_name)
       if f_plot == 0
         switch state
           case 'track'
-            result_list = [result_list; [d, speed, accel, direction, SNR]];
+            result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
             writematrix(result_list, output_file);
         end
       end

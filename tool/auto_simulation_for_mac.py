@@ -9,9 +9,9 @@ scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
 depart_speed = '0.00'
 
 for scenario in scenarios:
-    # if scenario == 'direct':
-    #     continue
-    for max_speed in reversed(range(1, 20, 1)):
+    if scenario == 'direct':
+        continue
+    for max_speed in reversed(range(3, 20, 1)):
         for accel in reversed(range(1, 10, 1)):
             # sumocfgに書かれるファイル名
             filename_suffix = '_ms{}_ac{}_ds{}'.format(max_speed, accel, depart_speed)
