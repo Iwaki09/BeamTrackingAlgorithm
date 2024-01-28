@@ -21,7 +21,7 @@ function beamtracking_ml(output_name)
   file_save = 1;
 
   % 速度更新のパラメータ
-  alpha = 1;
+  alpha = 0.5;
 
     
   %% システムパラメータ
@@ -199,6 +199,16 @@ function beamtracking_ml(output_name)
   output_file = strcat('../ml_result/', output_name, '.csv');
   output_file2 = strcat('../ml_result/', output_name, '2.csv');
   search_way = 4;
+
+  % if strcmp(output_name(end-3:end), '2way')
+  %   search_way = 2;
+  % elseif strcmp(output_name(end-3:end), '2dim')
+  %     search_way = 22;
+  % elseif strcmp(output_name(end-3:end), '4way')
+  %     search_way = 4;
+  % elseif strcmp(output_name(end-6:end), '2dim_44')
+  %     search_way = 44;
+  % end
 
   if strcmp(output_name(1:6), 'direct')
       direct_or_not = 1;
