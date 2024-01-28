@@ -12,13 +12,16 @@ function beamtracking_ml(output_name)
   f_plot = 1;
 
   % 1なら実際の速度を、2なら予測速度をプロットする。
-  speed_plot = 1;
+  speed_plot = 2;
 
   % ファイルに書き出しを行うかどうか。0なら書かない。1なら書く。
   file_write = 1;
 
   % グラフを保存するかどうか
   file_save = 1;
+
+  % 速度更新のパラメータ
+  alpha = 1;
 
     
   %% システムパラメータ
@@ -360,8 +363,6 @@ function beamtracking_ml(output_name)
             angle_p = 7;
           end
 
-          % 速度更新のパラメータ
-          alpha = 3;
 
           % 2方向ビームサーチ
           if search_way == 2
