@@ -360,6 +360,9 @@ function beamtracking_ml(output_name)
             angle_p = 7;
           end
 
+          % 速度更新のパラメータ
+          alpha = 3;
+
           % 2方向ビームサーチ
           if search_way == 2
             %------------------------------------------%
@@ -372,7 +375,7 @@ function beamtracking_ml(output_name)
             
               u = db2real(abs(SNR - SNR_0));
             
-              v_est = v_est + sign(SNR_a-SNR_b)*3*u;
+              v_est = v_est + sign(SNR_a-SNR_b)*alpha*u;
             end
             %------------------------------------------%
           % 4方向ビームサーチ
@@ -393,13 +396,13 @@ function beamtracking_ml(output_name)
 
               SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d]);
               if SNR_max == SNR_a
-                  v_est = v_est + 2*3*u;
+                  v_est = v_est + 2*alpha*u;
               elseif SNR_max == SNR_b
-                  v_est = v_est + 3*u;
+                  v_est = v_est + alpha*u;
               elseif SNR_max == SNR_c
-                  v_est = v_est - 3*u;
+                  v_est = v_est - alpha*u;
               else
-                  v_est = v_est - 2*3*u;
+                  v_est = v_est - 2*alpha*u;
               end
             end
           % 二次元ビームサーチ
@@ -419,13 +422,13 @@ function beamtracking_ml(output_name)
 
               SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d]);
               if SNR_max == SNR_a
-                  v_est = v_est - 3*u;
+                  v_est = v_est - alpha*u;
               elseif SNR_max == SNR_b
-                  v_est = v_est + 3*u;
+                  v_est = v_est + alpha*u;
               elseif SNR_max == SNR_c
-                  vy_est = vy_est - 3*u;
+                  vy_est = vy_est - alpha*u;
               else
-                  vy_est = vy_est + 3*u;
+                  vy_est = vy_est + alpha*u;
               end
             end
           % 2次元4方向ビームサーチ
@@ -453,21 +456,21 @@ function beamtracking_ml(output_name)
 
               SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d, SNR_a2, SNR_b2, SNR_c2, SNR_d2]);
               if SNR_max == SNR_a
-                  v_est = v_est - 3*u;
+                  v_est = v_est - alpha*u;
               elseif SNR_max == SNR_b
-                  v_est = v_est + 3*u;
+                  v_est = v_est + alpha*u;
               elseif SNR_max == SNR_c
-                  vy_est = vy_est - 3*u;
+                  vy_est = vy_est - alpha*u;
               elseif SNR_max == SNR_d
-                  vy_est = vy_est + 3*u;
+                  vy_est = vy_est + alpha*u;
               elseif SNR_max == SNR_a2
-                  v_est = v_est - 2*3*u;
+                  v_est = v_est - 2*alpha*u;
               elseif SNR_max == SNR_b2
-                  v_est = v_est + 2*3*u;
+                  v_est = v_est + 2*alpha*u;
               elseif SNR_max == SNR_c2
-                  vy_est = vy_est - 2*3*u;
+                  vy_est = vy_est - 2*alpha*u;
               else
-                  vy_est = vy_est + 2*3*u;
+                  vy_est = vy_est + 2*alpha*u;
               end
             end
           end
