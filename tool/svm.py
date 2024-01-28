@@ -26,6 +26,10 @@ file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_da
 df = pd.concat([pd.read_csv(os.path.join(dataset_dir, file)) for file in file_list], ignore_index=True)
 print(df.shape)
 
+# 間引く
+interval = 4
+df = df.iloc[::interval]
+
 '''
 位置(x), 位置(y), 基地局からの距離, 速度, 加速度x, 加速度y, 向き, SNRが良いほう(2dimなら0, 4wayなら1), accel絶対値
 '''
@@ -57,9 +61,10 @@ X_train_nonstd = ss.scale_*X_train + ss.mean_
 # print(X_train_nonstd)
 
 # トレーニングデータのプロット
+labels = ['2dim', '4way']
 for i in np.unique(y_train):
     indices = np.where(y_train == i)  
-    ax.scatter(X_train_nonstd[indices, 0], X_train_nonstd[indices, 1], X_train_nonstd[indices, 2], label=f'Class {i}')
+    ax.scatter(X_train_nonstd[indices, 0], X_train_nonstd[indices, 1], X_train_nonstd[indices, 2], label=labels[i])
 
 # 分離超平面のプロット
 # 3次元データの場合、超平面は2次元平面として可視化できる
@@ -91,6 +96,6 @@ ax.set_title('SVM 3D Plot')
 ax.legend()
 
 # グラフの表示
-# plt.show()
+plt.show()
 
 # print(df[['dist', 'speed', 'accel_abs']][100:11200].min())
