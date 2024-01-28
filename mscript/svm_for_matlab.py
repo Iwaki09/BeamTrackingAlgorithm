@@ -16,6 +16,7 @@ def svm_for_matlab(dist, speed, accel):
     stats = pd.read_csv(os.path.join(ml_models_dir, 'svm_stats.csv'), names=['dist', 'speed', 'accel']).to_numpy()
     # データを標準化
     [dist, speed, accel] = ([dist, speed, accel] - stats[1]) / stats[0]
+    # デバッグ用
     tmp = [dist, speed, accel]
     print(stats[0])
 

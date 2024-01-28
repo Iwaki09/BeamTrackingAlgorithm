@@ -7,6 +7,9 @@ function beamtracking_ml_(output_name)
   [traciVersion,sumoVersion] = traci.start(['sumo -c ' '"' scenarioPath '"']);
 
   f_plot = 1;
+
+  % 1なら実際の速度を、2なら予測速度をプロットする。
+  speed_plot = 2;
     
   %% システムパラメータ
 
@@ -180,17 +183,9 @@ function beamtracking_ml_(output_name)
   ns = 1;
 
   % output_name = 'curve_r60_75to90_2dim_44';
-  output_file = strcat('../result/', output_name, '.csv');
-  output_file2 = strcat('../result/', output_name, '2.csv');
-  if strcmp(output_name(end-3:end), '2way')
-      search_way = 2;
-  elseif strcmp(output_name(end-3:end), '2dim')
-      search_way = 22;
-  elseif strcmp(output_name(end-3:end), '4way')
-      search_way = 4;
-  elseif strcmp(output_name(end-6:end), '2dim_44')
-      search_way = 44;
-  end
+  output_file = strcat('../ml_result/', output_name, '.csv');
+  output_file2 = strcat('../ml_result/', output_name, '2.csv');
+  search_way = 4;
 
   if strcmp(output_name(1:6), 'direct')
       direct_or_not = 1;
@@ -211,7 +206,12 @@ function beamtracking_ml_(output_name)
       traci.simulation.step(); % sumoの1ステップを進める
       RU.v = speed;
       speed = traci.vehicle.getSpeed('t_0');
-      speed_list(end+1) = v_est * 3600 / 1000;
+      if speed_plot == 1
+        speed_list(end+1) = speed * 3600 / 1000;
+      elseif speed_plot == 2
+        % Notice that v_est dose not include y_direction speed.
+        speed_list(end+1) = v_est * 3600 / 1000;
+      end
 
       vehicleID = 't_0'; % 取得したい車両のIDに置き換える
       position = traci.vehicle.getPosition(vehicleID);
@@ -229,10 +229,6 @@ function beamtracking_ml_(output_name)
       end
 
       pos_list(end+1) = RU.ary.x;
-      % if RU.ary.x >= 58
-      %   writematrix(result_list, output_file);
-      %   break;
-      % end
 
       RU_pos   = RU_el + repmat([RU.ary.x, RU.ary.y, z_ru],[n_ru,1]);
       
@@ -322,7 +318,6 @@ function beamtracking_ml_(output_name)
           irorio = [d, speed, accel_abs]
           pyres = pyrunfile("svm_for_matlab.py", "res", dist=d, speed=speed, accel=accel_abs);
           search_way = int16(pyres(1))
-          pyres
 
           v_prev = v_est;
           vy_prev = vy_est;
