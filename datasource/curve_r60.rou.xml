@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-    <vType id="my_car" length="5.0" maxSpeed="100.00" accel="15.0" decel="4.5"/>
+    <vType id="my_car" length="5.0" maxSpeed="100.00" accel="5.0" decel="4.5"/>
     <trip id="t_0" depart="0.00" departSpeed="0.00" from="E0" to="E0" type="my_car"/>
 </routes>
