@@ -1,15 +1,25 @@
-beamtracking_ml_('curve_r60_ml_2dim')
+% beamtracking_ml_('curve_r60_ml_2dim')
 
-function beamtracking_ml_(output_name)
+function beamtracking_ml(output_name)
   clc
 
   scenarioPath = '../datasource/curve_r60.sumocfg';
   [traciVersion,sumoVersion] = traci.start(['sumo -c ' '"' scenarioPath '"']);
 
+  % 特に重要なパラメータ
+  
+  % グラフプロットの有無。0ならなし。1ならあり。
   f_plot = 1;
 
   % 1なら実際の速度を、2なら予測速度をプロットする。
-  speed_plot = 2;
+  speed_plot = 1;
+
+  % ファイルに書き出しを行うかどうか。0なら書かない。1なら書く。
+  file_write = 1;
+
+  % グラフを保存するかどうか
+  file_save = 1;
+
     
   %% システムパラメータ
 
@@ -483,7 +493,9 @@ function beamtracking_ml_(output_name)
         switch state
           case 'track'
             result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
-            writematrix(result_list, output_file);
+            if file_write == 1
+              writematrix(result_list, output_file);
+            end
         end
       end
 
@@ -493,7 +505,9 @@ function beamtracking_ml_(output_name)
         switch state
           case 'wait', plot(RU.ary.x, SNR, '.', 'Color', [0.2 0.2 0.2]);
             result_list2 = [result_list2; [RU.ary.x, SNR]];
-            % csvwrite(output_file2, result_list2);
+            if file_write == 1
+              writematrix(result_list2, output_file2);
+            end
           case 'track',
             plot(RU.ary.x, SNR_o, '.', 'Color', 'blue', 'LineWidth', 1.0);
             hold on;
@@ -501,7 +515,9 @@ function beamtracking_ml_(output_name)
             plot(RU.ary.x, SNR_s, '.', 'Color', 'green', 'LineWidth', 1.0);
             plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
             result_list = [result_list; [d, speed, accel, direction, SNR]];
-            % csvwrite('kaka.csv', result_list);
+            if file_write == 1
+              writematrix(result_list, output_file);
+            end
         end
         fig = gcf; % 現在のフィギュアを取得
         fig.Position(3) = 500; % 幅を800ポイントに設定
@@ -530,7 +546,10 @@ function beamtracking_ml_(output_name)
     
   end
 
-  % saveas(gcf, 'result.png');
+  if file_save == 1
+    graph_filename = strcat('../ml_result/', output_name, '.png');
+    saveas(gcf, graph_filename);
+  end
 
   % hold off;
 
