@@ -215,7 +215,11 @@ function beamtracking_ml(output_name)
   for nt = 1:numel(t)
       traci.simulation.step(); % sumoの1ステップを進める
       RU.v = speed;
-      speed = traci.vehicle.getSpeed('t_0');
+      try
+        speed = traci.vehicle.getSpeed('t_0');
+      catch
+        break
+      end
       if speed_plot == 1
         speed_list(end+1) = speed * 3600 / 1000;
       elseif speed_plot == 2
