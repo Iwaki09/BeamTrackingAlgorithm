@@ -1,4 +1,6 @@
-function beamtracking_ml(output_name)
+beamtracking_ml_('curve_r60_ml_2dim')
+
+function beamtracking_ml_(output_name)
   clc
 
   scenarioPath = '../datasource/curve_r60.sumocfg';
@@ -209,7 +211,7 @@ function beamtracking_ml(output_name)
       traci.simulation.step(); % sumoの1ステップを進める
       RU.v = speed;
       speed = traci.vehicle.getSpeed('t_0');
-      speed_list(end+1) = speed * 3600 / 1000;
+      speed_list(end+1) = v_est * 3600 / 1000;
 
       vehicleID = 't_0'; % 取得したい車両のIDに置き換える
       position = traci.vehicle.getPosition(vehicleID);
@@ -310,12 +312,20 @@ function beamtracking_ml(output_name)
           SNR_s = real2db(abs(Wr_s*HG*Wt_s).^2/Np);
 
 
-          accel_x = (v_est - v_prev) / 0.01;
-          accel_y = (vy_est - vy_prev) / 0.01;
+          accel_x = (v_est - v_prev) / 0.01
+          accel_y = (vy_est - vy_prev) / 0.01
+          v_est
+          v_prev
 
           speed_abs = sqrt(v_est^2 + vy_est^2);
-          accel_abs = sqrt(accel_x^2 + accel_y^2)
-          search_way = pyrunfile("svm_for_matlab.py", "res", dist=d, speed=speed_abs, accel=accel_abs)
+          accel_abs = sqrt(accel_x^2 + accel_y^2);
+          irorio = [d, speed, accel_abs]
+          pyres = pyrunfile("svm_for_matlab.py", "res", dist=d, speed=speed, accel=accel_abs);
+          search_way = int16(pyres(1))
+          pyres
+
+          v_prev = v_est;
+          vy_prev = vy_est;
           
           % Proposed
           %% 二次元の時は下を消す
@@ -460,8 +470,6 @@ function beamtracking_ml(output_name)
             p_est = atand(dz_k/(dy_k + y_est)*abs(sind(180-a_est)))+90;
           end
           SNR_0 = SNR;
-          v_prev = v_est;
-          vy_prev = vy_est;
 
           % disp(SNR);
     
@@ -497,7 +505,7 @@ function beamtracking_ml(output_name)
             % plot(RU.ary.x, SNR_c, '.', 'Color', mycolor('orange'), 'LineWidth', 1.0);
             plot(RU.ary.x, SNR_s, '.', 'Color', 'green', 'LineWidth', 1.0);
             plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
-            result_list = [result_list; [d, speed, accel, direction, SNR]]
+            result_list = [result_list; [d, speed, accel, direction, SNR]];
             % csvwrite('kaka.csv', result_list);
         end
         fig = gcf; % 現在のフィギュアを取得
