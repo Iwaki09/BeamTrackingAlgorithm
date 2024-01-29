@@ -14,8 +14,8 @@ function beamtracking_ml(output_name)
   % 1なら実際の速度を、2なら予測速度をプロットする。
   speed_plot = 2;
 
-  % ファイルに書き出しを行うかどうか。0なら書かない。1なら書く。
-  file_write = 1;
+  % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで書く。
+  file_write = 11;
 
   % グラフを保存するかどうか
   file_save = 1;
@@ -25,6 +25,7 @@ function beamtracking_ml(output_name)
 
   % svm_modelの名前
   model_basename = 'svm_model_noacc';
+
 
   
 
@@ -524,9 +525,17 @@ function beamtracking_ml(output_name)
 
       if f_plot == 0
         switch state
+          case 'wait'
+            if file_write == 11
+              result_list2 = [result_list2; [RU.ary.x, SNR]];
+              writematrix(result_list2, output_file2);
+            end
           case 'track'
-            result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
-            if file_write == 1
+            if file_write == 11
+              result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
+              writematrix(result_list, output_file);
+            elseif file_write == 12
+              result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
               writematrix(result_list, output_file);
             end
         end
@@ -537,8 +546,8 @@ function beamtracking_ml(output_name)
         subplot(2,1,1);
         switch state
           case 'wait', plot(RU.ary.x, SNR, '.', 'Color', [0.2 0.2 0.2]);
-            result_list2 = [result_list2; [RU.ary.x, SNR]];
-            if file_write == 1
+            if file_write == 11
+              result_list2 = [result_list2; [RU.ary.x, SNR]];
               writematrix(result_list2, output_file2);
             end
           case 'track',
@@ -547,8 +556,11 @@ function beamtracking_ml(output_name)
             % plot(RU.ary.x, SNR_c, '.', 'Color', mycolor('orange'), 'LineWidth', 1.0);
             plot(RU.ary.x, SNR_s, '.', 'Color', 'green', 'LineWidth', 1.0);
             plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
-            result_list = [result_list; [d, speed, accel, direction, SNR]];
-            if file_write == 1
+            if file_write == 11
+              result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
+              writematrix(result_list, output_file);
+            elseif file_write == 12
+              result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
               writematrix(result_list, output_file);
             end
         end
