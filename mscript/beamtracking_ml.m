@@ -21,9 +21,19 @@ function beamtracking_ml(output_name)
   file_save = 1;
 
   % 速度更新のパラメータ
-  alpha = 0.5;
+  alpha = 3;
 
-    
+  % svm_modelの名前
+  model_basename = 'svm_model_noacc';
+
+  
+
+  if strcmp(model_basename(end-4:end), 'nodir')
+    model_type = 1;
+  elseif strcmp(model_basename(end-4:end), 'noacc')
+    model_type = 2;
+  end
+
   %% システムパラメータ
 
   % キャリア周波数 [Hz]
@@ -198,7 +208,7 @@ function beamtracking_ml(output_name)
   % output_name = 'curve_r60_75to90_2dim_44';
   output_file = strcat('../ml_result/', output_name, '.csv');
   output_file2 = strcat('../ml_result/', output_name, '2.csv');
-  search_way = 4;
+  search_way = 22;
 
   % if strcmp(output_name(end-3:end), '2way')
   %   search_way = 2;
@@ -342,8 +352,13 @@ function beamtracking_ml(output_name)
 
           speed_abs = sqrt(v_est^2 + vy_est^2);
           accel_abs = sqrt(accel_x^2 + accel_y^2);
-          irorio = [d, speed, accel_abs]
-          pyres = pyrunfile("svm_for_matlab.py", "res", dist=d, speed=speed, accel=accel_abs);
+          if model_type == 1
+            pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d, speed=speed_abs, accel=accel_abs);
+            items = [d, speed, accel_abs]
+          elseif model_type == 2
+            pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, dist=d, speed=speed, angle=direction);
+            items = [d, speed, direction]
+          end
           search_way = int16(pyres(1))
 
           v_prev = v_est;
