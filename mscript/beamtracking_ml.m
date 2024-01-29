@@ -18,7 +18,7 @@ function beamtracking_ml(output_name)
   file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../datasource'
+  output_dir = '../datasource';
 
   % グラフを保存するかどうか
   graph_save = 1;
@@ -593,7 +593,7 @@ function beamtracking_ml(output_name)
   end
 
   if graph_save == 1
-    graph_filename = strcat('../ml_result/', output_name, '.png');
+    graph_filename = strcat(output_dir, '/', output_name, '.png');
     saveas(gcf, graph_filename);
   end
 
