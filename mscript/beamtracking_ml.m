@@ -21,7 +21,7 @@ function beamtracking_ml(output_name)
   output_dir = '../datasource';
 
   % グラフを保存するかどうか
-  graph_save = 1;
+  graph_save = 0;
 
   % 速度更新のパラメータ
   alpha = 3;
@@ -219,7 +219,7 @@ function beamtracking_ml(output_name)
   elseif strcmp(output_name(end-6:end), '2dim_44')
     search_way = 44;
   elseif strcmp(output_name(end-1:end), 'ml')
-    search_way == 22;
+    search_way = 22;
     ml_mode = 1;
   end
 
