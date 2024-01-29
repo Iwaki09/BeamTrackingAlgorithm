@@ -17,6 +17,9 @@ function beamtracking_ml(output_name)
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで書く。
   file_write = 11;
 
+  % 上記のファイルを書き出す先。..にすること
+  output_dir = '../datasource'
+
   % グラフを保存するかどうか
   file_save = 1;
 
@@ -207,8 +210,8 @@ function beamtracking_ml(output_name)
   ns = 1;
 
   % output_name = 'curve_r60_75to90_2dim_44';
-  output_file = strcat('../ml_result/', output_name, '.csv');
-  output_file2 = strcat('../ml_result/', output_name, '2.csv');
+  output_file = strcat(output_dir, '/', output_name, '.csv');
+  output_file2 = strcat(output_dir, '/', output_name, '2.csv');
   search_way = 22;
 
   % if strcmp(output_name(end-3:end), '2way')
