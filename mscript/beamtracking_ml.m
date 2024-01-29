@@ -15,7 +15,7 @@ function beamtracking_ml(output_name)
   speed_plot = 1;
 
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。
-  % 13の時は書き出す先とファイル名に注意
+  % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
   file_write = 13;
 
   % 上記のファイルを書き出す先。..にすること
@@ -532,7 +532,7 @@ function beamtracking_ml(output_name)
               result_list2 = [result_list2; [RU.ary.x, SNR]];
               writematrix(result_list2, output_file2);
             elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, direction]];
+              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
               writematrix(result_list, output_file);
             end
           case 'track'
@@ -543,7 +543,7 @@ function beamtracking_ml(output_name)
               result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
               writematrix(result_list, output_file);
             elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, direction]];
+              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
               writematrix(result_list, output_file);
             end
         end
@@ -558,7 +558,7 @@ function beamtracking_ml(output_name)
               result_list2 = [result_list2; [RU.ary.x, SNR]];
               writematrix(result_list2, output_file2);
             elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, direction]];
+              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
               writematrix(result_list, output_file);
             end
           case 'track',
@@ -574,7 +574,7 @@ function beamtracking_ml(output_name)
               result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
               writematrix(result_list, output_file);
             elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, direction]];
+              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
               writematrix(result_list, output_file);
             end
         end
