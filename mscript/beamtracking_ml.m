@@ -1,5 +1,5 @@
 % beamtracking_ml_('curve_r60_ml_2dim')
-
+% 引数の仕様：prefix: scenario名, suffix: ml, 4wayなど
 function beamtracking_ml(output_name)
   clc
 
@@ -12,7 +12,7 @@ function beamtracking_ml(output_name)
   f_plot = 1;
 
   % 1なら実際の速度を、2なら予測速度をプロットする。
-  speed_plot = 2;
+  speed_plot = 1;
 
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで書く。
   file_write = 11;
@@ -21,17 +21,13 @@ function beamtracking_ml(output_name)
   output_dir = '../datasource'
 
   % グラフを保存するかどうか
-  file_save = 1;
+  graph_save = 1;
 
   % 速度更新のパラメータ
   alpha = 3;
 
   % svm_modelの名前
   model_basename = 'svm_model_noacc';
-
-
-  
-
   if strcmp(model_basename(end-4:end), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(end-4:end), 'noacc')
@@ -212,17 +208,20 @@ function beamtracking_ml(output_name)
   % output_name = 'curve_r60_75to90_2dim_44';
   output_file = strcat(output_dir, '/', output_name, '.csv');
   output_file2 = strcat(output_dir, '/', output_name, '2.csv');
-  search_way = 22;
+  ml_mode = 0;
 
-  % if strcmp(output_name(end-3:end), '2way')
-  %   search_way = 2;
-  % elseif strcmp(output_name(end-3:end), '2dim')
-  %     search_way = 22;
-  % elseif strcmp(output_name(end-3:end), '4way')
-  %     search_way = 4;
-  % elseif strcmp(output_name(end-6:end), '2dim_44')
-  %     search_way = 44;
-  % end
+  if strcmp(output_name(end-3:end), '2way')
+    search_way = 2;
+  elseif strcmp(output_name(end-3:end), '2dim')
+    search_way = 22;
+  elseif strcmp(output_name(end-3:end), '4way')
+    search_way = 4;
+  elseif strcmp(output_name(end-6:end), '2dim_44')
+    search_way = 44;
+  elseif strcmp(output_name(end-1:end), 'ml')
+    search_way == 22;
+    ml_mode = 1;
+  end
 
   if strcmp(output_name(1:6), 'direct')
       direct_or_not = 1;
@@ -348,22 +347,22 @@ function beamtracking_ml(output_name)
           Wr_s  = nrmlzm((HG*Wt_s)','sum');
           SNR_s = real2db(abs(Wr_s*HG*Wt_s).^2/Np);
 
-
-          accel_x = (v_est - v_prev) / 0.01
-          accel_y = (vy_est - vy_prev) / 0.01
-          v_est
-          v_prev
+          accel_x = (v_est - v_prev) / 0.01;
+          accel_y = (vy_est - vy_prev) / 0.01;
 
           speed_abs = sqrt(v_est^2 + vy_est^2);
           accel_abs = sqrt(accel_x^2 + accel_y^2);
-          if model_type == 1
-            pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d, speed=speed_abs, accel=accel_abs);
-            items = [d, speed, accel_abs]
-          elseif model_type == 2
-            pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, dist=d, speed=speed, angle=direction);
-            items = [d, speed, direction]
+
+          if ml_mode == 1
+            if model_type == 1
+              pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d, speed=speed_abs, accel=accel_abs);
+              items = [d, speed, accel_abs]
+            elseif model_type == 2
+              pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, dist=d, speed=speed, angle=direction);
+              items = [d, speed, direction]
+            end
+            search_way = int16(pyres(1))
           end
-          search_way = int16(pyres(1))
 
           v_prev = v_est;
           vy_prev = vy_est;
@@ -391,7 +390,6 @@ function beamtracking_ml(output_name)
           else
             angle_p = 7;
           end
-
 
           % 2方向ビームサーチ
           if search_way == 2
@@ -594,7 +592,7 @@ function beamtracking_ml(output_name)
     
   end
 
-  if file_save == 1
+  if graph_save == 1
     graph_filename = strcat('../ml_result/', output_name, '.png');
     saveas(gcf, graph_filename);
   end
