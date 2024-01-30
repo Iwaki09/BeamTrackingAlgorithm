@@ -36,7 +36,8 @@ df = df.iloc[::interval]
 
 ss = StandardScaler()
 # X = ss.fit_transform(df[['dist', 'speed', 'accel_abs']].to_numpy())
-X = ss.fit_transform(df[['dist', 'speed', 'angle']].to_numpy())
+# X = ss.fit_transform(df[['dist', 'speed', 'angle']].to_numpy())
+X = ss.fit_transform(df[['x', 'y', 'speed']].to_numpy())
 y = df['best'].to_numpy()
 
 # データセットをトレーニングセットとテストセットに分割
@@ -80,23 +81,26 @@ ax.plot_surface(xx, yy, zz, alpha=0.3, color='gray')
 # ax.scatter(svm_model.support_vectors_[:, 0], svm_model.support_vectors_[:, 1], svm_model.support_vectors_[:, 2],
         #    facecolors='none', edgecolors='r', s=100, label='Support Vectors')
 
-with open(os.path.join(ml_models_dir, 'svm_model_noacc.pkl'), 'wb') as f:
+with open(os.path.join(ml_models_dir, 'svm_model_noacc2.pkl'), 'wb') as f:
     pickle.dump(svm_model, f)
-with open(os.path.join(ml_models_dir, 'svm_stats_noacc.csv'), 'w') as f:
+with open(os.path.join(ml_models_dir, 'svm_stats_noacc2.csv'), 'w') as f:
     writer = csv.writer(f)
     writer.writerow(ss.scale_)
     writer.writerow(ss.mean_)
 
 # プロットの設定
-ax.set_xlabel('Distance from BS')
-ax.set_ylabel('Speed')
-ax.set_zlabel('Acceleration')
+# ax.set_xlabel('Distance from BS')
+# ax.set_ylabel('Speed')
+# ax.set_zlabel('Acceleration')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Speed')
 ax.set_title('SVM 3D Plot')
 
 # 凡例の表示
 ax.legend()
 
 # グラフの表示
-# plt.show()
+plt.show()
 
 # print(df[['dist', 'speed', 'accel_abs']][100:11200].min())

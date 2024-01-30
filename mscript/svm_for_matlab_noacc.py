@@ -4,9 +4,15 @@ import numpy as np
 import os
 import sklearn
 
-def svm_for_matlab_noacc(model_basename, dist, speed, angle):
+def svm_for_matlab_noacc(model_basename, scenario, x, speed):
 
     ml_models_dir = '../ml_models'
+
+    # ガイドファイルを読み込んで、xからdistとangleを計算
+    df_guide = pd.read_csv(os.path.join(ml_models_dir, scenario+'_guide.csv'), names=['x', 'y', 'angle'])
+    y = df_guide.loc[df_guide['x'] == x, 'y'].head(1)
+    angle = df_guide.loc[df_guide['x'] == x, 'angle'].head(1)
+    dist = 
 
     # 保存したモデルをロード
     with open(os.path.join(ml_models_dir, model_basename+'.pkl'), 'rb') as model_path:

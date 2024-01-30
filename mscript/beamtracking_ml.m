@@ -16,10 +16,10 @@ function beamtracking_ml(output_name)
 
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。
   % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
-  file_write = 13;
+  file_write = 0;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../ml_models';
+  output_dir = '../ml_result';
 
   % グラフを保存するかどうか
   graph_save = 0;
@@ -33,6 +33,9 @@ function beamtracking_ml(output_name)
     model_type = 1;
   elseif strcmp(model_basename(end-4:end), 'noacc')
     model_type = 2;
+  elseif strcmp(model_basename(end-5:end), 'noacc2')
+    % 保留
+    model_type = 3;
   end
 
   %% システムパラメータ
@@ -186,7 +189,7 @@ function beamtracking_ml(output_name)
   vy_est = v_ini;
   v_prev = 0;
   vy_prev = 0;
-  y_est = -1.6;
+  y_est = 0;
 
   % Fixed
   a_fix = 90;
@@ -230,6 +233,18 @@ function beamtracking_ml(output_name)
       direct_or_not = 0;
   end
 
+  if strcmp(output_name(1:6), 'direct')
+    scenario = 'direct';
+  elseif strcmp(output_name(1:9), 'curve_r30')
+    scenario = 'curve_r30';
+  elseif strcmp(output_name(1:9), 'curve_r40')
+    scenario = 'curve_r40';
+  elseif strcmp(output_name(1:9), 'curve_r60')
+    scenario = 'curve_r60';
+  elseif strcmp(output_name(1:10), 'curve_r150')
+    scenario = 'curve_r150';
+  end
+
   % 車速用
   speed_list = [];
   pos_list = [];
@@ -261,13 +276,17 @@ function beamtracking_ml(output_name)
       accel = traci.vehicle.getPosition(vehicleID);
       direction = traci.vehicle.getAngle(vehicleID);
 
-      if direct_or_not == 0
-        RU.ary.x = position(1);
-        RU.ary.y = y_ru + position(2);
-      else
-        RU.ary.x = RU.ary.x + RU.v.*cosd(RU.dir(nt))*dt;
-        RU.ary.y = RU.ary.y + RU.v.*sind(RU.dir(nt))*dt;
-      end
+      % if direct_or_not == 1
+      %   % カーブ
+      %   RU.ary.x = position(1);
+      %   RU.ary.y = y_ru + position(2);
+      %   position(2)
+      % else %勅選
+      %   RU.ary.x = RU.ary.x + RU.v.*cosd(RU.dir(nt))*dt;
+      %   RU.ary.y = RU.ary.y + RU.v.*sind(RU.dir(nt))*dt;
+      % end
+      RU.ary.x = position(1);
+      RU.ary.y = y_ru + position(2);
 
       pos_list(end+1) = RU.ary.x;
 
@@ -288,9 +307,9 @@ function beamtracking_ml(output_name)
         hold off;
       end
       
-      dx  = RU.ary(1).x - DU.ary(1).x;
-      dy  = RU.ary(1).y - DU.ary(1).y;
-      dz  = RU.ary(1).z - DU.ary(1).z;    
+      dx  = RU.ary(1).x - DU.ary(1).x
+      dy  = RU.ary(1).y - DU.ary(1).y
+      dz  = RU.ary(1).z - DU.ary(1).z  
       d   = sqrt(dx.^2 + dy.^2 + dz.^2);
       distance_list(end+1) = d;
       a_i = atand(dx/dy)+90;
@@ -359,8 +378,9 @@ function beamtracking_ml(output_name)
               pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d, speed=speed_abs, accel=accel_abs);
               items = [d, speed, accel_abs]
             elseif model_type == 2
-              pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, dist=d, speed=speed, angle=direction);
-              items = [d, speed, direction]
+              pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
+            elseif model_type == 3
+              pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
             end
             search_way = int16(pyres(1))
           end
@@ -371,7 +391,7 @@ function beamtracking_ml(output_name)
           % Proposed
           %% 二次元の時は下を消す
           if (search_way == 2) || (search_way == 4)
-            p_est = atand(dz_k/dy_k*abs(sind(180-a_est)))+90; 
+            p_est = atand(dz/dy*abs(sind(180-a_est)))+90; 
           end       
           
           Wt  = gen_beam(n_tx, n_tz, fc, a_est, p_est);
@@ -504,11 +524,11 @@ function beamtracking_ml(output_name)
             end
           end
           
-          a_est = a_est - atand(v_est*dt/dy_k);
+          a_est = a_est - atand(v_est*dt/dy);
 
           if (search_way == 22) || (search_way == 44)
             y_est = y_est + vy_est * dt;
-            p_est = atand(dz_k/(dy_k + y_est)*abs(sind(180-a_est)))+90;
+            p_est = atand(dz/(dy + y_est)*abs(sind(180-a_est)))+90;
           end
           SNR_0 = SNR;
 
