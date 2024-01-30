@@ -11,7 +11,7 @@ def plot_main():
     scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
     tags = ['']
 
-    scenario = scenarios[3]
+    scenario = scenarios[2]
 
     linewidth = 2
 
