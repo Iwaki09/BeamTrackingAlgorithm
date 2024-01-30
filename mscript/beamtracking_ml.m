@@ -27,6 +27,9 @@ function beamtracking_ml(output_name)
   % 速度更新のパラメータ
   alpha = 3;
 
+  % noguideモード(yを自前で用意する。distはガイドを使う(結局ガイド使ってる))
+  no_guide = 0;
+
   % svm_modelの名前
   model_basename = 'svm_noacc';
   if strcmp(model_basename(5:9), 'nodir')
@@ -36,6 +39,10 @@ function beamtracking_ml(output_name)
   % elseif strcmp(model_basename(end-5:end), 'noacc2')
   %   保留
   %   model_type = 3;
+  end
+
+  if no_guide == 1
+    model_type = 4;
   end
 
   % 新しいシナリオを使う時はここを編集
@@ -383,6 +390,8 @@ function beamtracking_ml(output_name)
               pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
             elseif model_type == 3
               pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
+            elseif model_type == 4
+              pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
             end
             search_way = int16(pyres(1))
           end
