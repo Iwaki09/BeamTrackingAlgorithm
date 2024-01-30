@@ -12,7 +12,7 @@ def svm_for_matlab_noacc(model_basename, scenario, x, speed):
     df_guide = pd.read_csv(os.path.join(ml_models_dir, scenario+'_guide.csv'), names=['x', 'y', 'angle'])
     y = df_guide.loc[df_guide['x'] == x, 'y'].head(1)
     angle = df_guide.loc[df_guide['x'] == x, 'angle'].head(1)
-    dist = 
+    dist = np.sqrt(x**2 + (y+5)**2)
 
     # 保存したモデルをロード
     with open(os.path.join(ml_models_dir, model_basename+'.pkl'), 'rb') as model_path:
@@ -36,4 +36,4 @@ def svm_for_matlab_noacc(model_basename, scenario, x, speed):
 
     return [search_way, tmp]
 
-res = svm_for_matlab_noacc(model_basename, dist, speed, angle)
+res = svm_for_matlab_noacc(model_basename, scenario, x, speed)
