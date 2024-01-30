@@ -249,7 +249,6 @@ function beamtracking_ml(output_name)
   % 車速用
   speed_list = [];
   pos_list = [];
-  distance_list = [];
   result_list = [];
   result_list2 = [];
   speed = 0; % 初速
@@ -312,7 +311,7 @@ function beamtracking_ml(output_name)
       dy  = RU.ary(1).y - DU.ary(1).y;
       dz  = RU.ary(1).z - DU.ary(1).z; 
       d   = sqrt(dx.^2 + dy.^2 + dz.^2);
-      distance_list(end+1) = d;
+      d_2dim = sqrt(dx.^2 + dy.^2);
       a_i = atand(dx/dy)+90;
       p_i = atand(abs(dz)/abs(dy)*abs(sind(180-a_i)))+90;
       
@@ -376,7 +375,7 @@ function beamtracking_ml(output_name)
 
           if ml_mode == 1
             if model_type == 1
-              pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d, speed=speed_abs, accel=accel_abs);
+              pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d_2dim, speed=speed_abs, accel=accel_abs);
               items = [d, speed, accel_abs]
             elseif model_type == 2
               pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
@@ -562,7 +561,7 @@ function beamtracking_ml(output_name)
               result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
               writematrix(result_list, output_file);
             elseif file_write == 12
-              result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
+              result_list = [result_list; [RU.ary.x, RU.ary.y, d_2dim, speed, accel, direction, SNR]];
               writematrix(result_list, output_file);
             elseif file_write == 13
               result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
@@ -593,7 +592,7 @@ function beamtracking_ml(output_name)
               result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
               writematrix(result_list, output_file);
             elseif file_write == 12
-              result_list = [result_list; [RU.ary.x, RU.ary.y, d, speed, accel, direction, SNR]];
+              result_list = [result_list; [RU.ary.x, RU.ary.y, d_2dim, speed, accel, direction, SNR]];
               writematrix(result_list, output_file);
             elseif file_write == 13
               result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
