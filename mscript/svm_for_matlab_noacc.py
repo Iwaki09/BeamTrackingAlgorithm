@@ -15,11 +15,11 @@ def svm_for_matlab_noacc(model_basename, scenario, x, speed):
     dist = np.sqrt((30-x)**2 + (y+5)**2)
 
     # 保存したモデルをロード
-    with open(os.path.join(ml_models_dir, model_basename+'.pkl'), 'rb') as model_path:
+    with open(os.path.join(ml_models_dir, model_basename+'_model.pkl'), 'rb') as model_path:
         svm_model = pickle.load(model_path)
 
     # 1行目がscale, 2行目がmean
-    stats = pd.read_csv(os.path.join(ml_models_dir, 'svm_stats_noacc.csv'), names=['dist', 'speed', 'angle']).to_numpy()
+    stats = pd.read_csv(os.path.join(ml_models_dir, model_basename+'_stats.csv'), names=['dist', 'speed', 'angle']).to_numpy()
     # データを標準化
     [dist, speed, angle] = ([dist, speed, angle] - stats[1]) / stats[0]
     # デバッグ用

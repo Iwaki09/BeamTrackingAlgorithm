@@ -9,11 +9,11 @@ def svm_for_matlab_noang(model_basename, dist, speed, accel):
     ml_models_dir = '../ml_models'
 
     # 保存したモデルをロード
-    with open(os.path.join(ml_models_dir, model_basename+'.pkl'), 'rb') as model_path:
+    with open(os.path.join(ml_models_dir, model_basename+'_model.pkl'), 'rb') as model_path:
         svm_model = pickle.load(model_path)
 
     # 1行目がscale, 2行目がmean
-    stats = pd.read_csv(os.path.join(ml_models_dir, 'svm_stats_noang.csv'), names=['dist', 'speed', 'accel']).to_numpy()
+    stats = pd.read_csv(os.path.join(ml_models_dir, model_basename+'_stats.csv'), names=['dist', 'speed', 'accel']).to_numpy()
     # データを標準化
     [dist, speed, accel] = ([dist, speed, accel] - stats[1]) / stats[0]
     # デバッグ用

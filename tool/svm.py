@@ -19,6 +19,7 @@ import pickle
 
 dataset_dir = './dataset'
 ml_models_dir = './ml_models'
+model_name = './svm_noacc'
 
 file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
 
@@ -81,9 +82,9 @@ ax.plot_surface(xx, yy, zz, alpha=0.3, color='gray')
 # ax.scatter(svm_model.support_vectors_[:, 0], svm_model.support_vectors_[:, 1], svm_model.support_vectors_[:, 2],
         #    facecolors='none', edgecolors='r', s=100, label='Support Vectors')
 
-with open(os.path.join(ml_models_dir, 'svm_model_noacc2.pkl'), 'wb') as f:
+with open(os.path.join(ml_models_dir, model_name+'_model.pkl'), 'wb') as f:
     pickle.dump(svm_model, f)
-with open(os.path.join(ml_models_dir, 'svm_stats_noacc2.csv'), 'w') as f:
+with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer = csv.writer(f)
     writer.writerow(ss.scale_)
     writer.writerow(ss.mean_)
