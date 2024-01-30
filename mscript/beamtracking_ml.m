@@ -9,17 +9,17 @@ function beamtracking_ml(output_name)
   % 特に重要なパラメータ
   
   % グラフプロットの有無。0ならなし。1ならあり。
-  f_plot = 0;
+  f_plot = 1;
 
   % 1なら実際の速度を、2なら予測速度をプロットする。
   speed_plot = 1;
 
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。
   % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
-  file_write = 13;
+  file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../ml_result';
+  output_dir = '../datasource';
 
   % グラフを保存するかどうか
   graph_save = 0;
