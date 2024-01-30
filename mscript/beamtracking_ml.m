@@ -190,6 +190,7 @@ function beamtracking_ml(output_name)
   v_prev = 0;
   vy_prev = 0;
   y_est = 0;
+  x_est = 0;
 
   % Fixed
   a_fix = 90;
@@ -307,9 +308,9 @@ function beamtracking_ml(output_name)
         hold off;
       end
       
-      dx  = RU.ary(1).x - DU.ary(1).x
-      dy  = RU.ary(1).y - DU.ary(1).y
-      dz  = RU.ary(1).z - DU.ary(1).z  
+      dx  = RU.ary(1).x - DU.ary(1).x;
+      dy  = RU.ary(1).y - DU.ary(1).y;
+      dz  = RU.ary(1).z - DU.ary(1).z; 
       d   = sqrt(dx.^2 + dy.^2 + dz.^2);
       distance_list(end+1) = d;
       a_i = atand(dx/dy)+90;
@@ -526,6 +527,7 @@ function beamtracking_ml(output_name)
           
           a_est = a_est - atand(v_est*dt/dy);
 
+          x_est = dy / tand(a_est) + 30;
           if (search_way == 22) || (search_way == 44)
             y_est = y_est + vy_est * dt;
             p_est = atand(dz_k/(dy + y_est)*abs(sind(180-a_est)))+90;
