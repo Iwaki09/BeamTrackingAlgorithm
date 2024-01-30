@@ -28,14 +28,27 @@ function beamtracking_ml(output_name)
   alpha = 3;
 
   % svm_modelの名前
-  model_basename = 'svm_model_noacc';
-  if strcmp(model_basename(end-4:end), 'nodir')
+  model_basename = 'svm_noacc';
+  if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
-  elseif strcmp(model_basename(end-4:end), 'noacc')
+  elseif strcmp(model_basename(5:9), 'noacc')
     model_type = 2;
-  elseif strcmp(model_basename(end-5:end), 'noacc2')
-    % 保留
-    model_type = 3;
+  % elseif strcmp(model_basename(end-5:end), 'noacc2')
+  %   保留
+  %   model_type = 3;
+  end
+
+  % 新しいシナリオを使う時はここを編集
+  if strcmp(output_name(1:6), 'direct')
+    scenario = 'direct';
+  elseif strcmp(output_name(1:9), 'curve_r30')
+    scenario = 'curve_r30';
+  elseif strcmp(output_name(1:9), 'curve_r40')
+    scenario = 'curve_r40';
+  elseif strcmp(output_name(1:9), 'curve_r60')
+    scenario = 'curve_r60';
+  elseif strcmp(output_name(1:10), 'curve_r150')
+    scenario = 'curve_r150';
   end
 
   %% システムパラメータ
@@ -234,17 +247,6 @@ function beamtracking_ml(output_name)
       direct_or_not = 0;
   end
 
-  if strcmp(output_name(1:6), 'direct')
-    scenario = 'direct';
-  elseif strcmp(output_name(1:9), 'curve_r30')
-    scenario = 'curve_r30';
-  elseif strcmp(output_name(1:9), 'curve_r40')
-    scenario = 'curve_r40';
-  elseif strcmp(output_name(1:9), 'curve_r60')
-    scenario = 'curve_r60';
-  elseif strcmp(output_name(1:10), 'curve_r150')
-    scenario = 'curve_r150';
-  end
 
   % 車速用
   speed_list = [];
