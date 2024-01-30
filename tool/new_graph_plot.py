@@ -11,23 +11,24 @@ def plot_main():
     scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
     tags = ['']
 
-    scenario = scenarios[2]
+    scenario = scenarios[3]
 
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 11
+    plot_mode = 1
 
     if plot_mode == 1:
-        plot_individual_normal(os.path.join(input_dir1, scenario), linewidth)
+        plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
         plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth)
 
 
-def plot_individual_normal(scenario, linewidth):
-    df_2way = pd.read_csv(scenario+'_2way.csv', names=['x', 'SNR_2way', 'SNR_o', 'SNR_s'])
-    df_2dim = pd.read_csv(scenario+'_2dim.csv', names=['x', 'SNR_2dim', 'SNR_o', 'SNR_s'])
-    df_4way = pd.read_csv(scenario+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
+def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
+    scenario_path = os.path.join(input_dir, scenario)
+    df_2way = pd.read_csv(scenario_path+'_2way.csv', names=['x', 'SNR_2way', 'SNR_o', 'SNR_s'])
+    df_2dim = pd.read_csv(scenario_path+'_2dim.csv', names=['x', 'SNR_2dim', 'SNR_o', 'SNR_s'])
+    df_4way = pd.read_csv(scenario_path+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
 
     dfs = [df_2way, df_2dim, df_4way]
 
@@ -37,11 +38,11 @@ def plot_individual_normal(scenario, linewidth):
             min_df_x = df['x']
 
     if (min_df_x.equals(dfs[0]['x'])):
-        df_non = pd.read_csv(scenario+'_2way2.csv', names=['x', 'SNR_non'])
+        df_non = pd.read_csv(scenario_path+'_2way2.csv', names=['x', 'SNR_non'])
     elif (min_df_x.equals(dfs[1]['x'])):
-        df_non = pd.read_csv(scenario+'_2dim2.csv', names=['x', 'SNR_non'])
+        df_non = pd.read_csv(scenario_path+'_2dim2.csv', names=['x', 'SNR_non'])
     else:
-        df_non = pd.read_csv(scenario+'_4way2.csv', names=['x', 'SNR_non'])
+        df_non = pd.read_csv(scenario_path+'_4way2.csv', names=['x', 'SNR_non'])
 
     df_2way = df_2way.iloc[:len(min_df_x)]
     df_2dim = df_2dim.iloc[:len(min_df_x)]
@@ -71,7 +72,7 @@ def plot_individual_normal(scenario, linewidth):
     plt.ylim(0, 60)
     plt.grid(alpha=0.3)
     plt.legend(loc='upper right')
-    # plt.savefig(output_dir+scenario_now+'_SNR_all.pdf')
+    plt.savefig(os.path.join(output_dir, scenario+'_SNR_all.pdf'))
 
     # df_all.to_csv(output_dir+scenario_now+'_all.csv')
     # df_non.to_csv(output_dir+scenario_now+'_all2.csv')
