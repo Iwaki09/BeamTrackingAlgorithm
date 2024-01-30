@@ -21999,3 +21999,990 @@ speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
 Error in beamtracking_4way_2dim (line 209)
       speed = traci.vehicle.getSpeed('t_0');
 } 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 523ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #9.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #10.00 (0ms ?*RT. ?UPS, TraCI: 24ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #11.00 (0ms ?*RT. ?UPS, TraCI: 24ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #12.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                     Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #12.74 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                     
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 522ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #5.71 (0ms ?*RT. ?UPS, TraCI: 22ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 527ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #5.71 (0ms ?*RT. ?UPS, TraCI: 20ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 398ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #5.82 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 456ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #3.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #5.82 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 434ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #5.97 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 465ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #5.97 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 508ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.16 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 492ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.16 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 424ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.44 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 956ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.44 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 517ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.86 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 430ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.86 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 447ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.56 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 412ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.56 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 428ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 34ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #8.98 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 503ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 20ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #8.98 (0ms ?*RT. ?UPS, TraCI: 21ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 459ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (1ms ~= 10.00*RT, ~1000.00UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)        Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #9.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #10.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #11.00 (0ms ?*RT. ?UPS, TraCI: 24ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #12.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                     Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #12.74 (0ms ?*RT. ?UPS, TraCI: 24ms, vehicles TOT 1 ACT 0 BUF 0)                     
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 491ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #9.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #10.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #11.00 (1ms ~= 10.00*RT, ~1000.00UPS, TraCI: 21ms, vehicles TOT 1 ACT 1 BUF 0)       Step #12.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                     Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #12.74 (0ms ?*RT. ?UPS, TraCI: 23ms, vehicles TOT 1 ACT 0 BUF 0)                     
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 473ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.08 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 452ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.08 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 422ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.18 (0ms ?*RT. ?UPS, TraCI: 32ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 539ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.18 (0ms ?*RT. ?UPS, TraCI: 20ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 448ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.32 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 476ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 3ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.32 (0ms ?*RT. ?UPS, TraCI: 21ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 494ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.50 (0ms ?*RT. ?UPS, TraCI: 21ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 440ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (1ms ~= 10.00*RT, ~1000.00UPS, TraCI: 21ms, vehicles TOT 1 ACT 1 BUF 0)        Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.50 (0ms ?*RT. ?UPS, TraCI: 21ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 481ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.75 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 474ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.75 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 386ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.13 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (1ms ~= 10.00*RT, ~1000.00UPS, TraCI: 541ms, vehicles TOT 1 ACT 1 BUF 0)       Step #1.00 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.13 (0ms ?*RT. ?UPS, TraCI: 60ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (1ms ~= 10.00*RT, ~1000.00UPS, TraCI: 537ms, vehicles TOT 1 ACT 1 BUF 0)       Step #1.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (1ms ~= 10.00*RT, ~1000.00UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)        Step #7.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.77 (0ms ?*RT. ?UPS, TraCI: 46ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 539ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.77 (0ms ?*RT. ?UPS, TraCI: 24ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 414ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #9.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #9.07 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 506ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #9.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #9.07 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 614ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #9.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #10.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #11.00 (0ms ?*RT. ?UPS, TraCI: 21ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #12.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                     Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #12.74 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                     
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 503ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 23ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #8.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #9.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #10.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #11.00 (0ms ?*RT. ?UPS, TraCI: 27ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #12.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                     Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #12.74 (0ms ?*RT. ?UPS, TraCI: 20ms, vehicles TOT 1 ACT 0 BUF 0)                     
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 519ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 20ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.54 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 524ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.54 (0ms ?*RT. ?UPS, TraCI: 20ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 460ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.64 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 473ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.64 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 419ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.76 (0ms ?*RT. ?UPS, TraCI: 20ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 387ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 9ms, vehicles TOT 1 ACT 1 BUF 0)                       Step #3.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.76 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 499ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 16ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.92 (0ms ?*RT. ?UPS, TraCI: 18ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 477ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #6.92 (0ms ?*RT. ?UPS, TraCI: 21ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 433ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 11ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 17ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.14 (0ms ?*RT. ?UPS, TraCI: 19ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 524ms, vehicles TOT 1 ACT 1 BUF 0)                     Step #1.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #2.00 (0ms ?*RT. ?UPS, TraCI: 13ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #3.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #4.00 (0ms ?*RT. ?UPS, TraCI: 12ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #5.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #6.00 (0ms ?*RT. ?UPS, TraCI: 14ms, vehicles TOT 1 ACT 1 BUF 0)                      Step #7.00 (0ms ?*RT. ?UPS, TraCI: 3ms, vehicles TOT 1 ACT 1 BUF 0)                       Error: Answered with error to command 0xa4: Vehicle 't_0' is not known.
+Step #7.14 (0ms ?*RT. ?UPS, TraCI: 15ms, vehicles TOT 1 ACT 0 BUF 0)                      
+{Error using traci.sendExact
+34  164  255 Error Vehicle 't_0' is not known.
+
+
+Error in traci.checkResult (line 11)
+result = traci.sendExact();
+
+Error in traci.sendReadOneStringCmd (line 11)
+result = traci.checkResult(cmdID, varID, objID);
+
+Error in traci.vehicle.getUniversal (line 21)
+result = traci.sendReadOneStringCmd(constants.CMD_GET_VEHICLE_VARIABLE,varID,vehID);
+
+Error in traci.vehicle.getSpeed (line 12)
+speed = traci.vehicle.getUniversal(constants.VAR_SPEED, vehID);
+
+Error in beamtracking_4way_2dim (line 209)
+      speed = traci.vehicle.getSpeed('t_0');
+} 

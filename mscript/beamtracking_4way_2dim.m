@@ -310,7 +310,7 @@ function beamtracking_4way_2dim(output_name)
           % Proposed
           %% 二次元の時は下を消す
           if (search_way == 2) || (search_way == 4)
-            p_est = atand(dz_k/dy*abs(sind(180-a_est)))+90; 
+            p_est = atand(dz_k/dy_k*abs(sind(180-a_est)))+90; 
           end       
           
           Wt  = gen_beam(n_tx, n_tz, fc, a_est, p_est);
@@ -443,11 +443,12 @@ function beamtracking_4way_2dim(output_name)
             end
           end
           
-          a_est = a_est - atand(v_est*dt/dy);
-
           if (search_way == 22) || (search_way == 44)
             y_est = y_est + vy_est * dt;
-            p_est = atand(dz_k/(dy + y_est)*abs(sind(180-a_est)))+90;
+            a_est = a_est - atand(v_est*dt/(dy_k + y_est));
+            p_est = atand(dz_k/(dy_k + y_est)*abs(sind(180-a_est)))+90;
+          else
+            a_est = a_est - atand(v_est*dt/dy_k);
           end
           SNR_0 = SNR;
 
