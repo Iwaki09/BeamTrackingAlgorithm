@@ -19,7 +19,7 @@ import pickle
 
 dataset_dir = './dataset'
 ml_models_dir = './ml_models'
-model_name = './svm_noacc'
+model_name = './svm_noacc_basic'
 
 file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
 
@@ -37,8 +37,8 @@ df = df.iloc[::interval]
 
 ss = StandardScaler()
 # X = ss.fit_transform(df[['dist', 'speed', 'accel_abs']].to_numpy())
-# X = ss.fit_transform(df[['dist', 'speed', 'angle']].to_numpy())
-X = ss.fit_transform(df[['x', 'y', 'speed']].to_numpy())
+X = ss.fit_transform(df[['dist', 'speed', 'angle']].to_numpy())
+# X = ss.fit_transform(df[['x', 'y', 'speed']].to_numpy())
 y = df['best'].to_numpy()
 
 # データセットをトレーニングセットとテストセットに分割
@@ -90,12 +90,12 @@ with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer.writerow(ss.mean_)
 
 # プロットの設定
-# ax.set_xlabel('Distance from BS')
-# ax.set_ylabel('Speed')
-# ax.set_zlabel('Acceleration')
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Speed')
+ax.set_xlabel('Distance from BS')
+ax.set_ylabel('Speed')
+ax.set_zlabel('Acceleration')
+# ax.set_xlabel('X')
+# ax.set_ylabel('Y')
+# ax.set_zlabel('Speed')
 ax.set_title('SVM 3D Plot')
 
 # 凡例の表示
