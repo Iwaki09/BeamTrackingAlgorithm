@@ -45,6 +45,11 @@ function beamtracking_ml(output_name)
     model_type = 4;
   end
 
+  % シナリオの座標を0基準にする
+  offset_x = 0;
+  turn_x = 1;
+  offset_y = 0;
+  turn_y = 1;
   % 新しいシナリオを使う時はここを編集
   if strcmp(output_name(1:6), 'direct')
     scenario = 'direct';
@@ -280,6 +285,8 @@ function beamtracking_ml(output_name)
 
       vehicleID = 't_0'; % 取得したい車両のIDに置き換える
       position = traci.vehicle.getPosition(vehicleID);
+      position(1) = turn_x * (position(1) - offset_x);
+      position(2) = turn_y * (position(2) - offset_y);
       % disp(['車両位置 (x, y): ', num2str(position)]);
 
       accel = traci.vehicle.getPosition(vehicleID);
