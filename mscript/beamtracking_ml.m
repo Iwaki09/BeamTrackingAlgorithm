@@ -19,7 +19,7 @@ function beamtracking_ml(output_name)
   file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../datasource';
+  output_dir = '../ml_result';
 
   % グラフを保存するかどうか
   graph_save = 0;
@@ -31,7 +31,7 @@ function beamtracking_ml(output_name)
   no_guide = 0;
 
   % svm_modelの名前
-  model_basename = 'svm_noacc';
+  model_basename = 'svm_noacc_basic';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')

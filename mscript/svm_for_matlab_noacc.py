@@ -10,8 +10,8 @@ def svm_for_matlab_noacc(model_basename, scenario, x, speed):
 
     # ガイドファイルを読み込んで、xからdistとangleを計算
     df_guide = pd.read_csv(os.path.join(ml_models_dir, scenario+'_guide.csv'), names=['x', 'y', 'angle'])
-    y = df_guide.loc[df_guide['x'] == x, 'y'].head(1)
-    angle = df_guide.loc[df_guide['x'] == x, 'angle'].head(1)
+    y = df_guide[df_guide['x'] == x]['y'].values[0]
+    angle = df_guide[df_guide['x'] == x]['angle'].values[0]
     dist = np.sqrt((30-x)**2 + (y+5)**2)
 
     # 保存したモデルをロード
@@ -37,3 +37,4 @@ def svm_for_matlab_noacc(model_basename, scenario, x, speed):
     return [search_way, tmp]
 
 res = svm_for_matlab_noacc(model_basename, scenario, x, speed)
+# res = svm_for_matlab_noacc('svm_noacc_basic', 'curve_r60', 5.2122554813724, 10)
