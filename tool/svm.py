@@ -47,6 +47,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # SVMモデルの作成と学習
 # svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
 svm_model = SVC(kernel='poly', degree=3, coef0=1, C=5)
+svm_model = SVC(kernel='rbf', gamma=5, C=5, random_state=0)
+svm_model = SVC(kernel='sigmoid')
 svm_model.fit(X_train, y_train)
 
 # テストデータでの予測
