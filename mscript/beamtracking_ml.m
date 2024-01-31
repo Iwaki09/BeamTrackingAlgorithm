@@ -394,7 +394,7 @@ function beamtracking_ml(output_name)
               pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d_2dim, speed=speed_abs, accel=accel_abs);
               items = [d, speed, accel_abs]
             elseif model_type == 2
-              pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
+              pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed)
             elseif model_type == 3
               pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
             elseif model_type == 4

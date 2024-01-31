@@ -19,7 +19,7 @@ import pickle
 
 dataset_dir = './dataset'
 ml_models_dir = './ml_models'
-model_name = './svm_noacc_basic'
+model_name = './svm_noacc_poly'
 
 file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
 
@@ -45,7 +45,8 @@ y = df['best'].to_numpy()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # SVMモデルの作成と学習
-svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
+# svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
+svm_model = SVC(kernel='poly', degree=3, coef0=1, C=5)
 svm_model.fit(X_train, y_train)
 
 # テストデータでの予測

@@ -23,7 +23,7 @@ def svm_for_matlab_noacc_noguide(model_basename, scenario, x, y, speed):
     # データを標準化
     [dist, speed, angle] = ([dist, speed, angle] - stats[1]) / stats[0]
     # デバッグ用
-    tmp = [dist, speed, angle]
+    tmp = [dist, speed, angle] * stats[0] + stats[1]
     # print(stats[0])
 
     data = np.array([dist, speed, angle]).reshape(1, -1)
