@@ -45,10 +45,12 @@ y = df['best'].to_numpy()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # SVMモデルの作成と学習
+
 # svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
-svm_model = SVC(kernel='poly', degree=3, coef0=1, C=5)
-svm_model = SVC(kernel='rbf', gamma=5, C=5, random_state=0)
+# svm_model = SVC(kernel='poly', degree=3, coef0=1, C=5)
+# svm_model = SVC(kernel='rbf', gamma=5, C=5, random_state=0)
 svm_model = SVC(kernel='sigmoid')
+
 svm_model.fit(X_train, y_train)
 
 # テストデータでの予測
@@ -77,9 +79,9 @@ for i in np.unique(y_train):
 xx, yy = np.meshgrid(np.linspace(X[:, 0].min(), X[:, 0].max(), 100),
                      np.linspace(X[:, 1].min(), X[:, 1].max(), 100))
 # 平面の式 ax+by+cz+d=0 a:svm_model.coef_[0, 0], b:svm_model.coef_[0, 1], c:svm_model.coef_[0, 2], d:vm_model.intercept_[0]
-zz = (-svm_model.intercept_[0] - svm_model.coef_[0, 0] * xx - svm_model.coef_[0, 1] * yy) / svm_model.coef_[0, 2]
-xx, yy, zz = [p * std + mean for p, std, mean in zip([xx, yy, zz], ss.scale_, ss.mean_)]
-ax.plot_surface(xx, yy, zz, alpha=0.3, color='gray')
+# zz = (-svm_model.intercept_[0] - svm_model.coef_[0, 0] * xx - svm_model.coef_[0, 1] * yy) / svm_model.coef_[0, 2]
+# xx, yy, zz = [p * std + mean for p, std, mean in zip([xx, yy, zz], ss.scale_, ss.mean_)]
+# ax.plot_surface(xx, yy, zz, alpha=0.3, color='gray')
 
 # サポートベクトルのプロット
 # ax.scatter(svm_model.support_vectors_[:, 0], svm_model.support_vectors_[:, 1], svm_model.support_vectors_[:, 2],
