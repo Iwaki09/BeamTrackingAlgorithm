@@ -37,7 +37,7 @@ df = df.iloc[::interval]
 
 ss = StandardScaler()
 # X = ss.fit_transform(df[['dist', 'speed', 'accel_abs']].to_numpy())
-X = ss.fit_transform(df[['dist', 'speed', 'angle']].to_numpy())
+X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
 # X = ss.fit_transform(df[['x', 'y', 'speed']].to_numpy())
 y = df['best'].to_numpy()
 

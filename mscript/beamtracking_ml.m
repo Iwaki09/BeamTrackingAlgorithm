@@ -31,8 +31,11 @@ function beamtracking_ml(output_name)
   % noguideモード(yを自前で用意する。distはガイドを使う(結局ガイド使ってる))
   no_guide = 1;
 
+  % angle_diffモード
+  angle_diff_mode = 1;
+
   % svm_modelの名前
-  model_basename = 'dt_noacc_basic';
+  model_basename = 'svm_noacc_test';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')
@@ -46,6 +49,10 @@ function beamtracking_ml(output_name)
 
   if no_guide == 1
     model_type = 4;
+  end
+
+  if angle_diff_mode == 1
+    model_type = 5;
   end
 
   % シナリオの座標を0基準にする
@@ -290,6 +297,7 @@ function beamtracking_ml(output_name)
   result_list2 = [];
   speed = 0; % 初速
   RU.ary.x = 5; % 車の長さ分のoffset
+  angle_ml = 90;
   % main loop.
   for nt = 1:numel(t)
       traci.simulation.step(); % sumoの1ステップを進める
@@ -425,6 +433,10 @@ function beamtracking_ml(output_name)
               pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
             elseif model_type == 4
               pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
+            end
+            elseif model_type == 5
+              pyres = pyrunfile("svm_for_matlab_anglediff.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+              angle_ml = pyres(2)
             end
             search_way = int16(pyres(1))
           end
