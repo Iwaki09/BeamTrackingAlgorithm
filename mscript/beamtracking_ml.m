@@ -32,10 +32,12 @@ function beamtracking_ml(output_name)
   no_guide = 1;
 
   % svm_modelの名前
-  model_basename = 'svm_noacc_basic';
+  model_basename = 'dt_noacc_basic';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')
+    model_type = 2;
+  elseif strcmp(model_basename(4:8), 'noacc')
     model_type = 2;
   % elseif strcmp(model_basename(end-5:end), 'noacc2')
   %   保留
