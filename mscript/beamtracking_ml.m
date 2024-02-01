@@ -77,6 +77,11 @@ function beamtracking_ml(output_name)
     turn_x = -1;
     offset_y = 347;
     turn_y = -1;
+  elseif strcmp(output_name(1:8), 'korakuen')
+    scenario = 'korakuen';
+    offset_x = 1123;
+    offset_y = 1462;
+    turn_y = -1;
   end
 
   %% システムパラメータ
