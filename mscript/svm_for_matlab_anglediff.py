@@ -4,7 +4,7 @@ import numpy as np
 import os
 import sklearn
 
-def svm_for_matlab_noacc_noguide(model_basename, scenario, x, y, speed, angle_prev):
+def svm_for_matlab_anglediff(model_basename, scenario, x, y, speed, angle_prev):
 
     ml_models_dir = '../ml_models'
 
@@ -39,4 +39,4 @@ def svm_for_matlab_noacc_noguide(model_basename, scenario, x, y, speed, angle_pr
     # tmp[2]はangle
     return [search_way, tmp[2], tmp]
 
-res = svm_for_matlab_noacc_noguide(model_basename, scenario, x, y, speed, angle_prev)
+res = svm_for_matlab_anglediff(model_basename, scenario, x, y, speed, angle_prev)
