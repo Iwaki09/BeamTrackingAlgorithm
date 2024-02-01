@@ -16,7 +16,7 @@ def plot_main():
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 1
+    plot_mode = 11
 
     if plot_mode == 1:
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
