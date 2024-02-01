@@ -32,7 +32,7 @@ function beamtracking_ml(output_name)
   no_guide = 1;
 
   % svm_modelの名前
-  model_basename = 'svm_noacc_rbf';
+  model_basename = 'svm_noacc_basic';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')
