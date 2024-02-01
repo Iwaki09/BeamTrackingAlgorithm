@@ -47,6 +47,7 @@ function beamtracking_ml(output_name)
   end
 
   % シナリオの座標を0基準にする
+  % 左向きに進むならturn_x = -1, 上に基地局があるならturn_y = -1
   offset_x = 0;
   turn_x = 1;
   offset_y = 0;
@@ -69,8 +70,12 @@ function beamtracking_ml(output_name)
     turn_y = -1;
   elseif strcmp(output_name(1:9), 'shinobazu')
     scenario = 'shinobazu';
-    offset_x = 269;
-    offset_y = 348;
+    % offset_x = 269;
+    % offset_y = 348;
+    % turn_y = -1;
+    offset_x = 325;
+    turn_x = -1;
+    offset_y = 347;
     turn_y = -1;
   end
 

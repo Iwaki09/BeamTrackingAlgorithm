@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-02-01 22:22:19 by Eclipse SUMO netedit Version 1.19.0
+<!-- generated on 2024-02-01 22:50:52 by Eclipse SUMO netedit Version 1.19.0
 -->
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     <!-- Vehicles, persons and containers (sorted by depart) -->
-    <trip id="t_0" depart="0.00" from="264459842#9.41" to="1019987802#1"/>
+    <trip id="t_0" depart="0.00" from="-1019987802#1.110" to="-264459842#9"/>
 </routes>
