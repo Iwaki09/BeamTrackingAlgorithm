@@ -20,7 +20,7 @@ function beamtracking_ml(output_name)
   file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../datasource';
+  output_dir = '../ml_result';
 
   % グラフを保存するかどうか
   graph_save = 0;
@@ -29,7 +29,7 @@ function beamtracking_ml(output_name)
   alpha = 3;
 
   % noguideモード(yを自前で用意する。distはガイドを使う(結局ガイド使ってる))
-  no_guide = 0;
+  no_guide = 1;
 
   % svm_modelの名前
   model_basename = 'svm_noacc_rbf';
@@ -63,7 +63,7 @@ function beamtracking_ml(output_name)
   elseif strcmp(output_name(1:10), 'curve_r150')
     scenario = 'curve_r150';
   elseif strcmp(output_name(1:7), 'okutama')
-    scenario = 'okutama'
+    scenario = 'okutama';
     offset_x = 180;
     offset_y = 130;
     turn_y = -1;

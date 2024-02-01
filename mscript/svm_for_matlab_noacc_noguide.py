@@ -36,4 +36,4 @@ def svm_for_matlab_noacc_noguide(model_basename, scenario, x, y, speed):
 
     return [search_way, tmp]
 
-res = svm_for_matlab_noacc(model_basename, scenario, x, y, speed)
+res = svm_for_matlab_noacc_noguide(model_basename, scenario, x, y, speed)
