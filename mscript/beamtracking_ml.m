@@ -1,5 +1,6 @@
 % beamtracking_ml_('curve_r60_ml_2dim')
 % 引数の仕様：prefix: scenario名, suffix: ml, 4wayなど
+
 function beamtracking_ml(output_name)
   clc
 
@@ -61,6 +62,11 @@ function beamtracking_ml(output_name)
     scenario = 'curve_r60';
   elseif strcmp(output_name(1:10), 'curve_r150')
     scenario = 'curve_r150';
+  elseif strcmp(output_name(1:7), 'okutama')
+    scenario = 'okutama'
+    offset_x = 180;
+    offset_y = 130;
+    turn_y = -1;
   end
 
   %% システムパラメータ
