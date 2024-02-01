@@ -20,7 +20,7 @@ function beamtracking_ml(output_name)
   file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../datasource';
+  output_dir = '../ml_result';
 
   % グラフを保存するかどうか
   graph_save = 0;
