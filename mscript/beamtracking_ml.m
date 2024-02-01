@@ -20,7 +20,7 @@ function beamtracking_ml(output_name)
   file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../ml_result';
+  output_dir = '../datasource';
 
   % グラフを保存するかどうか
   graph_save = 0;
@@ -69,8 +69,9 @@ function beamtracking_ml(output_name)
     turn_y = -1;
   elseif strcmp(output_name(1:9), 'shinobazu')
     scenario = 'shinobazu';
-    offset_x = 266;
-    offset_y = 335;
+    offset_x = 269;
+    offset_y = 348;
+    turn_y = -1;
   end
 
   %% システムパラメータ
