@@ -17,10 +17,10 @@ function beamtracking_ml(output_name)
 
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。
   % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
-  file_write = 11;
+  file_write = 13;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../ml_result';
+  output_dir = '../ml_models';
 
   % グラフを保存するかどうか
   graph_save = 0;
@@ -67,6 +67,10 @@ function beamtracking_ml(output_name)
     offset_x = 180;
     offset_y = 130;
     turn_y = -1;
+  elseif strcmp(output_name(1:9), 'shinobazu')
+    scenario = 'shinobazu';
+    offset_x = 266;
+    offset_y = 335;
   end
 
   %% システムパラメータ
@@ -311,6 +315,9 @@ function beamtracking_ml(output_name)
       RU.ary.y = y_ru + position(2);
 
       pos_list(end+1) = RU.ary.x;
+      if RU.ary.x >= 60
+        break;
+      end
 
       RU_pos   = RU_el + repmat([RU.ary.x, RU.ary.y, z_ru],[n_ru,1]);
       
