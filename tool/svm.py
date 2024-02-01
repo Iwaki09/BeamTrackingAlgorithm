@@ -28,7 +28,7 @@ df = pd.concat([pd.read_csv(os.path.join(dataset_dir, file)) for file in file_li
 print(df.shape)
 
 # 間引く
-interval = 10
+interval = 30
 df = df.iloc[::interval]
 
 '''
@@ -46,9 +46,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # SVMモデルの作成と学習
 
-svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
+# svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
 # svm_model = SVC(kernel='poly', degree=3, coef0=1, C=5)
-# svm_model = SVC(kernel='rbf', gamma=5, C=5, random_state=0)
+svm_model = SVC(kernel='rbf', gamma=8, C=2**15, random_state=0)
 # svm_model = SVC(kernel='sigmoid')
 
 svm_model.fit(X_train, y_train)
@@ -70,18 +70,19 @@ X_train_nonstd = ss.scale_*X_train + ss.mean_
 
 # トレーニングデータのプロット
 labels = ['2dim', '4way']
-# for i in np.unique(y_train):
-#     indices = np.where(y_train == i)  
-#     ax.scatter(X_train_nonstd[indices, 0], X_train_nonstd[indices, 1], X_train_nonstd[indices, 2], label=labels[i])
+for i in np.unique(y_train):
+    indices = np.where(y_train == i)  
+    ax.scatter(X_train_nonstd[indices, 0], X_train_nonstd[indices, 1], X_train_nonstd[indices, 2], label=labels[i])
 
 # 分離超平面のプロット
 # 3次元データの場合、超平面は2次元平面として可視化できる
 xx, yy = np.meshgrid(np.linspace(X[:, 0].min(), X[:, 0].max(), 100),
                      np.linspace(X[:, 1].min(), X[:, 1].max(), 100))
+
 # 平面の式 ax+by+cz+d=0 a:svm_model.coef_[0, 0], b:svm_model.coef_[0, 1], c:svm_model.coef_[0, 2], d:vm_model.intercept_[0]
-zz = (-svm_model.intercept_[0] - svm_model.coef_[0, 0] * xx - svm_model.coef_[0, 1] * yy) / svm_model.coef_[0, 2]
-xx, yy, zz = [p * std + mean for p, std, mean in zip([xx, yy, zz], ss.scale_, ss.mean_)]
-ax.plot_surface(xx, yy, zz, alpha=0.3, color='gray')
+# zz = (-svm_model.intercept_[0] - svm_model.coef_[0, 0] * xx - svm_model.coef_[0, 1] * yy) / svm_model.coef_[0, 2]
+# xx, yy, zz = [p * std + mean for p, std, mean in zip([xx, yy, zz], ss.scale_, ss.mean_)]
+# ax.plot_surface(xx, yy, zz, alpha=0.3, color='gray')
 
 # サポートベクトルのプロット
 # ax.scatter(svm_model.support_vectors_[:, 0], svm_model.support_vectors_[:, 1], svm_model.support_vectors_[:, 2],
@@ -107,6 +108,6 @@ ax.set_title('SVM 3D Plot')
 ax.legend()
 
 # グラフの表示
-plt.show()
+# plt.show()
 
 # print(df[['dist', 'speed', 'accel_abs']][100:11200].min())
