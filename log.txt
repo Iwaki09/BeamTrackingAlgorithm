@@ -264,3 +264,17 @@ model: rbf, C: 3, gamma: 2,  pre1: [1], pre2: [1], acc: 0.9227627181581879
 model: rbf, C: 3, gamma: 3,  pre1: [1], pre2: [1], acc: 0.9327887114741924
 model: rbf, C: 3, gamma: 4,  pre1: [1], pre2: [1], acc: 0.9257333828444114
 model: rbf, C: 3, gamma: 5,  pre1: [1], pre2: [1], acc: 0.9268473821017452
+model: rbf, C: 3, gamma: 6,  pre1: [1], pre2: [1], acc: 0.9242480505012997
+model: linear, C: 1, pre1: [0], pre2: [0], acc: 0.8165614556256963
+model: linear, C: 5, pre1: [0], pre2: [0], acc: 0.8143334571110286
+model: linear, C: 10, pre1: [0], pre2: [0], acc: 0.8150761232825845
+model: linear, C: 50, pre1: [0], pre2: [0], acc: 0.812105458596361
+model: linear, C: 100, pre1: [0], pre2: [0], acc: 0.8150761232825845
+model: linear, C: 1024, pre1: [0], pre2: [0], acc: 0.8221314519123654
+model: linear, C: 32768, pre1: [0], pre2: [0], acc: 0.8199034533976978
+model: poly, C: 1, degree: 1,  pre1: [0], pre2: [0], acc: 0.8332714444857037
+model: poly, C: 1, degree: 2,  pre1: [0], pre2: [0], acc: 0.8243594504270331
+model: poly, C: 1, degree: 3,  pre1: [0], pre2: [0], acc: 0.8380987746008169
+model: poly, C: 1, degree: 4,  pre1: [0], pre2: [0], acc: 0.8399554400297067
+model: poly, C: 1, degree: 5,  pre1: [0], pre2: [0], acc: 0.8429261047159302
+model: poly, C: 1, degree: 6,  pre1: [0], pre2: [0], acc: 0.8280727812848124
