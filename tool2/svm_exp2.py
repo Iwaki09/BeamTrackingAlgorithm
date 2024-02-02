@@ -112,18 +112,18 @@ def svm_exp(model, C=1, degree=1, coef0=1, gamma=1):
 
 C_list = [1, 5, 10, 50, 100, 2**10, 2**15]
 
-# for C in C_list:
-#     pre1, pre2, accuracy = svm_exp('linear', C=C)
-#     content = 'model: linear, C: {}, pre1: {}, pre2: {}, acc: {}'.format(C, pre1, pre2, accuracy)
-#     with open('log2.txt', 'a') as file:
-#         file.write(content+'\n')
+for C in C_list:
+    pre1, pre2, accuracy = svm_exp('linear', C=C)
+    content = 'model: linear, C: {}, pre1: {}, pre2: {}, acc: {}'.format(C, pre1, pre2, accuracy)
+    with open('log2.txt', 'a') as file:
+        file.write(content+'\n')
 
-# for C in C_list:
-#     for degree in [1,3,5,9]:
-#         pre1, pre2, accuracy = svm_exp('poly', C=C, degree=degree)
-#         content = 'model: poly, C: {}, degree: {},  pre1: {}, pre2: {}, acc: {}'.format(C, degree, pre1, pre2, accuracy)
-#         with open('log2.txt', 'a') as file:
-#             file.write(content+'\n')
+for C in C_list:
+    for degree in [1,3,5,9]:
+        pre1, pre2, accuracy = svm_exp('poly', C=C, degree=degree)
+        content = 'model: poly, C: {}, degree: {},  pre1: {}, pre2: {}, acc: {}'.format(C, degree, pre1, pre2, accuracy)
+        with open('log2.txt', 'a') as file:
+            file.write(content+'\n')
 
 for C in C_list:
     for gamma in range(1, 10):

@@ -10,6 +10,8 @@ import os
 import pandas as pd
 import pickle
 
+import numpy as np
+
 dataset_dir = './dataset'
 ml_models_dir = './ml_models'
 model_name = './dt_noacc_basic'
@@ -57,3 +59,14 @@ with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer = csv.writer(f)
     writer.writerow(ss.scale_)
     writer.writerow(ss.mean_)
+
+# [dist, angle, angle_diff] = [12, 90, 0]
+# data = np.array([dist, angle, angle_diff]).reshape(1, -1)
+# pre1 = decision_tree_model.predict(data)
+
+# # [dist, speed, angle, angle_diff] = [19, 14, 111, 0.24]
+# [dist, angle, angle_diff] = [19, 121, 0.24]
+# data = np.array([dist, angle, angle_diff]).reshape(1, -1)
+# pre2 = decision_tree_model.predict(data)
+
+# print(pre1, pre2)

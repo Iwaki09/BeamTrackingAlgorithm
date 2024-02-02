@@ -319,7 +319,7 @@ function beamtracking_4way_2dim(output_name)
           SNR = real2db(abs(Wr*HG*Wt).^2/Np);
 
           if (search_way == 4) || (search_way == 44)
-            angle = 2;
+            angle = 1;
           else
             angle = 7;
           end
