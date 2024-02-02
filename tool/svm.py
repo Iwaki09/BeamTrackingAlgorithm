@@ -28,8 +28,8 @@ df = pd.concat([pd.read_csv(os.path.join(dataset_dir, file)) for file in file_li
 print(df.shape)
 
 # 間引く
-interval = 30
-df = df.iloc[::interval]
+# interval = 1
+# df = df.iloc[::interval]
 
 '''
 位置(x), 位置(y), 基地局からの距離, 速度, 加速度x, 加速度y, 向き, SNRが良いほう(2dimなら0, 4wayなら1), accel絶対値
@@ -48,7 +48,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
 # svm_model = SVC(kernel='poly', degree=3, coef0=1, C=5)
-svm_model = SVC(kernel='rbf', gamma=8, C=2**15, random_state=0)
+svm_model = SVC(kernel='rbf', gamma=8, C=2**16, random_state=0)
 # svm_model = SVC(kernel='sigmoid')
 
 svm_model.fit(X_train, y_train)
