@@ -416,7 +416,8 @@ function beamtracking_ml(output_name)
               pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
             elseif model_type == 5
               pyres = pyrunfile("svm_for_matlab_anglediff.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
-              angle_ml = int16(pyres(2))
+              angle_ml = double(pyres(2))
+              items = pyres(3)
             end
             search_way = int16(pyres(1))
           end
