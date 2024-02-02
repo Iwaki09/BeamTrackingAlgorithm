@@ -221,21 +221,7 @@ function beamtracking_ml(output_name)
     end
   end
 
-  % VAPの移動方向  
-  motion = 0;
-  switch motion
-    case 0 % 直進
-      RU.dir = zeros(numel(t),1);  % 時系列の配列
-    case 1 % ランダムに方向変化
-      RU.dir = randi([-180 180],numel(t),1);
-    case 2 % 一定区間ごとに方向変化
-      RU.dir = [ repmat(9,floor(numel(t)/4),1); ...
-                  repmat(6,floor(numel(t)/4),1); ...
-                  repmat(3,floor(numel(t)/4),1); ...
-                  zeros(numel(t)-3*floor(numel(t)/4),1) ];
-    case 3 % 一定方向変化
-      RU.dir = 2.2906*ones(numel(t),1);  
-  end
+  RU.dir = zeros(numel(t),1);  % 時系列の配列
 
   state = 'wait';
   a_ini = 140;
@@ -252,11 +238,6 @@ function beamtracking_ml(output_name)
   y_est = 0;
   x_est = 0;
 
-  % Fixed
-  a_fix = 90;
-  p_fix = atand(dz_k/dy_k*abs(sind(180-a_fix)))+90;
-  Wt_c = gen_beam(n_tx, n_tz, fc, a_fix, p_fix);
-
   % Search
   a_div = 7;
   p_div = 10;
@@ -270,7 +251,6 @@ function beamtracking_ml(output_name)
 
   ns = 1;
 
-  % output_name = 'curve_r60_75to90_2dim_44';
   output_file = strcat(output_dir, '/', output_name, '.csv');
   output_file2 = strcat(output_dir, '/', output_name, '2.csv');
   ml_mode = 0;
@@ -288,11 +268,11 @@ function beamtracking_ml(output_name)
     ml_mode = 1;
   end
 
-  if strcmp(output_name(1:6), 'direct')
-      direct_or_not = 1;
-  else
-      direct_or_not = 0;
-  end
+  % if strcmp(output_name(1:6), 'direct')
+  %     direct_or_not = 1;
+  % else
+  %     direct_or_not = 0;
+  % end
 
 
   % 車速用
@@ -520,47 +500,47 @@ function beamtracking_ml(output_name)
               end
             end
           % 2次元4方向ビームサーチ
-          elseif search_way == 44
-            if SNR - SNR_0 < 0
-              W_a  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
-              W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
-              W_c  = gen_beam(n_tx, n_tz, fc, a_est, p_est+angle);
-              W_d  = gen_beam(n_tx, n_tz, fc, a_est, p_est-angle);
-              W_a2  = gen_beam(n_tx, n_tz, fc, a_est+2*angle, p_est);
-              W_b2  = gen_beam(n_tx, n_tz, fc, a_est-2*angle, p_est);
-              W_c2  = gen_beam(n_tx, n_tz, fc, a_est, p_est+2*angle);
-              W_d2  = gen_beam(n_tx, n_tz, fc, a_est, p_est-2*angle);
+          % elseif search_way == 44
+          %   if SNR - SNR_0 < 0
+          %     W_a  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
+          %     W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
+          %     W_c  = gen_beam(n_tx, n_tz, fc, a_est, p_est+angle);
+          %     W_d  = gen_beam(n_tx, n_tz, fc, a_est, p_est-angle);
+          %     W_a2  = gen_beam(n_tx, n_tz, fc, a_est+2*angle, p_est);
+          %     W_b2  = gen_beam(n_tx, n_tz, fc, a_est-2*angle, p_est);
+          %     W_c2  = gen_beam(n_tx, n_tz, fc, a_est, p_est+2*angle);
+          %     W_d2  = gen_beam(n_tx, n_tz, fc, a_est, p_est-2*angle);
 
-              SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
-              SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
-              SNR_c = real2db(abs(Wr*HG*W_c).^2/Np);
-              SNR_d = real2db(abs(Wr*HG*W_d).^2/Np);
-              SNR_a2 = real2db(abs(Wr*HG*W_a2).^2/Np);
-              SNR_b2 = real2db(abs(Wr*HG*W_b2).^2/Np);
-              SNR_c2 = real2db(abs(Wr*HG*W_c2).^2/Np);
-              SNR_d2 = real2db(abs(Wr*HG*W_d2).^2/Np);
+          %     SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
+          %     SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
+          %     SNR_c = real2db(abs(Wr*HG*W_c).^2/Np);
+          %     SNR_d = real2db(abs(Wr*HG*W_d).^2/Np);
+          %     SNR_a2 = real2db(abs(Wr*HG*W_a2).^2/Np);
+          %     SNR_b2 = real2db(abs(Wr*HG*W_b2).^2/Np);
+          %     SNR_c2 = real2db(abs(Wr*HG*W_c2).^2/Np);
+          %     SNR_d2 = real2db(abs(Wr*HG*W_d2).^2/Np);
 
-              u = db2real(abs(SNR - SNR_0));
+          %     u = db2real(abs(SNR - SNR_0));
 
-              SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d, SNR_a2, SNR_b2, SNR_c2, SNR_d2]);
-              if SNR_max == SNR_a
-                  v_est = v_est - alpha*u;
-              elseif SNR_max == SNR_b
-                  v_est = v_est + alpha*u;
-              elseif SNR_max == SNR_c
-                  vy_est = vy_est - alpha*u;
-              elseif SNR_max == SNR_d
-                  vy_est = vy_est + alpha*u;
-              elseif SNR_max == SNR_a2
-                  v_est = v_est - 2*alpha*u;
-              elseif SNR_max == SNR_b2
-                  v_est = v_est + 2*alpha*u;
-              elseif SNR_max == SNR_c2
-                  vy_est = vy_est - 2*alpha*u;
-              else
-                  vy_est = vy_est + 2*alpha*u;
-              end
-            end
+          %     SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d, SNR_a2, SNR_b2, SNR_c2, SNR_d2]);
+          %     if SNR_max == SNR_a
+          %         v_est = v_est - alpha*u;
+          %     elseif SNR_max == SNR_b
+          %         v_est = v_est + alpha*u;
+          %     elseif SNR_max == SNR_c
+          %         vy_est = vy_est - alpha*u;
+          %     elseif SNR_max == SNR_d
+          %         vy_est = vy_est + alpha*u;
+          %     elseif SNR_max == SNR_a2
+          %         v_est = v_est - 2*alpha*u;
+          %     elseif SNR_max == SNR_b2
+          %         v_est = v_est + 2*alpha*u;
+          %     elseif SNR_max == SNR_c2
+          %         vy_est = vy_est - 2*alpha*u;
+          %     else
+          %         vy_est = vy_est + 2*alpha*u;
+          %     end
+          %   end
           end
           
           if (search_way == 22) || (search_way == 44)
@@ -575,8 +555,6 @@ function beamtracking_ml(output_name)
           x_est = (dy_k+y_est) / tand(a_est) + 30;
 
           SNR_0 = SNR;
-
-          % disp(SNR);
     
           if a_est < a_fin
             state = 'wait';
@@ -654,10 +632,10 @@ function beamtracking_ml(output_name)
         grid on;
         hold on;
         
-        for nj = 1:numel(phi)
-          H_  = gen_channel(n_tx, n_tz, fc, 180-phi(nj), the(nj), 1);
-          S(nj,1) = real2db(abs((H_*G_)*Wt).^2/Np);
-        end
+        % for nj = 1:numel(phi)
+        %   H_  = gen_channel(n_tx, n_tz, fc, 180-phi(nj), the(nj), 1);
+        %   S(nj,1) = real2db(abs((H_*G_)*Wt).^2/Np);
+        % end
         subplot(2,1,2);
         plot(pos_list,speed_list);
         xlim([0,60]);
