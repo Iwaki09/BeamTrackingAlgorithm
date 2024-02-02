@@ -36,7 +36,11 @@ y = df['best'].to_numpy()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # 決定木モデルの作成と学習
-decision_tree_model = DecisionTreeClassifier()
+decision_tree_model = DecisionTreeClassifier(criterion='gini', 
+                                             max_depth=None, 
+                                             min_samples_split=2, 
+                                             min_samples_leaf=1, 
+                                             max_features=None)
 decision_tree_model.fit(X_train, y_train)
 
 # テストデータでの予測
