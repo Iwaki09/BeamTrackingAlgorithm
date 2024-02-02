@@ -1,0 +1,94 @@
+model: linear, C: 1, pre1: [0], pre2: [0], acc: 0.8035647976234682
+model: linear, C: 5, pre1: [0], pre2: [0], acc: 0.8150761232825845
+model: linear, C: 10, pre1: [0], pre2: [0], acc: 0.8213887857408095
+model: linear, C: 50, pre1: [0], pre2: [0], acc: 0.8132194578536948
+model: linear, C: 100, pre1: [0], pre2: [0], acc: 0.8191607872261418
+model: linear, C: 1024, pre1: [0], pre2: [0], acc: 0.8225027849981433
+model: linear, C: 32768, pre1: [0], pre2: [0], acc: 0.8199034533976978
+model: poly, C: 1, degree: 1,  pre1: [0], pre2: [0], acc: 0.8406981062012625
+model: poly, C: 1, degree: 2,  pre1: [0], pre2: [0], acc: 0.8187894541403639
+model: poly, C: 1, degree: 3,  pre1: [0], pre2: [0], acc: 0.8243594504270331
+model: poly, C: 1, degree: 4,  pre1: [0], pre2: [0], acc: 0.8295581136279242
+model: poly, C: 1, degree: 5,  pre1: [0], pre2: [0], acc: 0.8421834385443743
+model: linear, C: 1, pre1: [0], pre2: [0], acc: 0.8098774600816933
+model: linear, C: 5, pre1: [0], pre2: [0], acc: 0.811734125510583
+model: linear, C: 10, pre1: [0], pre2: [0], acc: 0.8150761232825845
+model: linear, C: 50, pre1: [0], pre2: [0], acc: 0.8217601188265874
+model: linear, C: 100, pre1: [0], pre2: [0], acc: 0.8187894541403639
+model: linear, C: 1024, pre1: [0], pre2: [0], acc: 0.8228741180839213
+model: linear, C: 32768, pre1: [0], pre2: [0], acc: 0.8147047901968065
+model: poly, C: 1, degree: 1,  pre1: [0], pre2: [0], acc: 0.8458967694021537
+model: poly, C: 1, degree: 3,  pre1: [0], pre2: [0], acc: 0.8432974378017082
+model: poly, C: 1, degree: 5,  pre1: [0], pre2: [0], acc: 0.84478277014482
+model: poly, C: 1, degree: 9,  pre1: [0], pre2: [0], acc: 0.844411437059042
+model: poly, C: 5, degree: 1,  pre1: [0], pre2: [0], acc: 0.8410694392870405
+model: poly, C: 5, degree: 3,  pre1: [0], pre2: [0], acc: 0.8395841069439287
+model: poly, C: 5, degree: 5,  pre1: [0], pre2: [0], acc: 0.8303007797994801
+model: poly, C: 5, degree: 9,  pre1: [0], pre2: [0], acc: 0.843668770887486
+model: poly, C: 10, degree: 1,  pre1: [0], pre2: [0], acc: 0.8432974378017082
+model: rbf, C: 1, gamma: 1,  pre1: [0], pre2: [0], acc: 0.9138507240995173
+model: rbf, C: 1, gamma: 2,  pre1: [0], pre2: [0], acc: 0.9253620497586335
+model: rbf, C: 1, gamma: 1,  pre1: [0], pre2: [0], acc: 0.913946587537092
+model: rbf, C: 1, gamma: 2,  pre1: [0], pre2: [0], acc: 0.9169139465875371
+model: rbf, C: 1, gamma: 3,  pre1: [1], pre2: [1], acc: 0.8976261127596439
+model: rbf, C: 1, gamma: 4,  pre1: [0], pre2: [0], acc: 0.9050445103857567
+model: rbf, C: 1, gamma: 5,  pre1: [0], pre2: [0], acc: 0.9020771513353115
+model: rbf, C: 1, gamma: 6,  pre1: [0], pre2: [0], acc: 0.9183976261127597
+model: rbf, C: 1, gamma: 7,  pre1: [0], pre2: [0], acc: 0.9080118694362018
+model: rbf, C: 1, gamma: 8,  pre1: [1], pre2: [1], acc: 0.8946587537091988
+model: rbf, C: 1, gamma: 9,  pre1: [0], pre2: [0], acc: 0.9050445103857567
+model: rbf, C: 5, gamma: 1,  pre1: [0], pre2: [0], acc: 0.900593471810089
+model: rbf, C: 5, gamma: 2,  pre1: [0], pre2: [0], acc: 0.900593471810089
+model: rbf, C: 5, gamma: 3,  pre1: [0], pre2: [0], acc: 0.9080118694362018
+model: rbf, C: 5, gamma: 4,  pre1: [0], pre2: [0], acc: 0.900593471810089
+model: rbf, C: 5, gamma: 5,  pre1: [1], pre2: [1], acc: 0.8931750741839762
+model: rbf, C: 5, gamma: 6,  pre1: [0], pre2: [0], acc: 0.8916913946587537
+model: rbf, C: 5, gamma: 7,  pre1: [1], pre2: [1], acc: 0.9050445103857567
+model: rbf, C: 5, gamma: 8,  pre1: [0], pre2: [0], acc: 0.913946587537092
+model: rbf, C: 5, gamma: 9,  pre1: [0], pre2: [0], acc: 0.9124629080118695
+model: rbf, C: 10, gamma: 1,  pre1: [0], pre2: [0], acc: 0.9020771513353115
+model: rbf, C: 10, gamma: 2,  pre1: [0], pre2: [0], acc: 0.9080118694362018
+model: rbf, C: 10, gamma: 3,  pre1: [0], pre2: [0], acc: 0.9035608308605341
+model: rbf, C: 10, gamma: 4,  pre1: [0], pre2: [0], acc: 0.913946587537092
+model: rbf, C: 10, gamma: 5,  pre1: [1], pre2: [1], acc: 0.9124629080118695
+model: rbf, C: 10, gamma: 6,  pre1: [0], pre2: [0], acc: 0.8946587537091988
+model: rbf, C: 10, gamma: 7,  pre1: [0], pre2: [0], acc: 0.9109792284866469
+model: rbf, C: 10, gamma: 8,  pre1: [0], pre2: [0], acc: 0.9124629080118695
+model: rbf, C: 10, gamma: 9,  pre1: [0], pre2: [0], acc: 0.9109792284866469
+model: rbf, C: 50, gamma: 1,  pre1: [0], pre2: [0], acc: 0.9035608308605341
+model: rbf, C: 50, gamma: 2,  pre1: [0], pre2: [0], acc: 0.9228486646884273
+model: rbf, C: 50, gamma: 3,  pre1: [0], pre2: [0], acc: 0.9094955489614244
+model: rbf, C: 50, gamma: 4,  pre1: [0], pre2: [0], acc: 0.9169139465875371
+model: rbf, C: 50, gamma: 5,  pre1: [0], pre2: [0], acc: 0.9228486646884273
+model: rbf, C: 50, gamma: 6,  pre1: [0], pre2: [0], acc: 0.913946587537092
+model: rbf, C: 50, gamma: 7,  pre1: [0], pre2: [0], acc: 0.9035608308605341
+model: rbf, C: 50, gamma: 8,  pre1: [0], pre2: [0], acc: 0.9109792284866469
+model: rbf, C: 50, gamma: 9,  pre1: [0], pre2: [0], acc: 0.9169139465875371
+model: rbf, C: 100, gamma: 1,  pre1: [0], pre2: [0], acc: 0.9065281899109793
+model: rbf, C: 100, gamma: 2,  pre1: [0], pre2: [0], acc: 0.9065281899109793
+model: rbf, C: 100, gamma: 3,  pre1: [0], pre2: [0], acc: 0.9065281899109793
+model: rbf, C: 100, gamma: 4,  pre1: [0], pre2: [0], acc: 0.9035608308605341
+model: rbf, C: 100, gamma: 5,  pre1: [0], pre2: [0], acc: 0.900593471810089
+model: rbf, C: 100, gamma: 6,  pre1: [0], pre2: [0], acc: 0.9213649851632048
+model: rbf, C: 100, gamma: 7,  pre1: [1], pre2: [1], acc: 0.884272997032641
+model: rbf, C: 100, gamma: 8,  pre1: [0], pre2: [0], acc: 0.8976261127596439
+model: rbf, C: 100, gamma: 9,  pre1: [0], pre2: [0], acc: 0.8916913946587537
+model: rbf, C: 1024, gamma: 1,  pre1: [0], pre2: [0], acc: 0.8961424332344213
+model: rbf, C: 1024, gamma: 2,  pre1: [0], pre2: [0], acc: 0.9065281899109793
+model: rbf, C: 1024, gamma: 3,  pre1: [0], pre2: [0], acc: 0.9065281899109793
+model: rbf, C: 1024, gamma: 4,  pre1: [0], pre2: [0], acc: 0.8946587537091988
+model: rbf, C: 1024, gamma: 5,  pre1: [0], pre2: [0], acc: 0.8931750741839762
+model: rbf, C: 1024, gamma: 6,  pre1: [0], pre2: [0], acc: 0.9035608308605341
+model: rbf, C: 1024, gamma: 7,  pre1: [0], pre2: [0], acc: 0.9183976261127597
+model: rbf, C: 1024, gamma: 8,  pre1: [0], pre2: [0], acc: 0.8991097922848664
+model: rbf, C: 1024, gamma: 9,  pre1: [0], pre2: [0], acc: 0.9287833827893175
+model: rbf, C: 32768, gamma: 1,  pre1: [0], pre2: [0], acc: 0.900593471810089
+model: rbf, C: 32768, gamma: 2,  pre1: [1], pre2: [1], acc: 0.9020771513353115
+model: rbf, C: 32768, gamma: 3,  pre1: [0], pre2: [0], acc: 0.8946587537091988
+model: rbf, C: 32768, gamma: 4,  pre1: [0], pre2: [0], acc: 0.9198813056379822
+model: rbf, C: 32768, gamma: 5,  pre1: [0], pre2: [0], acc: 0.8902077151335311
+model: rbf, C: 32768, gamma: 6,  pre1: [0], pre2: [0], acc: 0.8902077151335311
+model: rbf, C: 32768, gamma: 7,  pre1: [0], pre2: [0], acc: 0.9080118694362018
+model: rbf, C: 32768, gamma: 8,  pre1: [0], pre2: [0], acc: 0.8991097922848664
+model: rbf, C: 32768, gamma: 9,  pre1: [0], pre2: [0], acc: 0.9243323442136498
+model: sigmoid, pre1: [0], pre2: [0], acc: 0.6379821958456974

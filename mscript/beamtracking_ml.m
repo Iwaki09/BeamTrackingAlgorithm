@@ -10,7 +10,7 @@ function beamtracking_ml(output_name)
   % 特に重要なパラメータ
   
   % グラフプロットの有無。0ならなし。1ならあり。
-  f_plot = 1;
+  f_plot = 0;
 
   % 1なら実際の速度を、2なら予測速度をプロットする。
   speed_plot = 1;
@@ -31,8 +31,11 @@ function beamtracking_ml(output_name)
   % noguideモード(yを自前で用意する。distはガイドを使う(結局ガイド使ってる))
   no_guide = 1;
 
+  % angle_diffモード
+  angle_diff_mode = 1;
+
   % svm_modelの名前
-  model_basename = 'dt_noacc_basic';
+  model_basename = 'svm_noacc_test';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')
@@ -46,6 +49,10 @@ function beamtracking_ml(output_name)
 
   if no_guide == 1
     model_type = 4;
+  end
+
+  if angle_diff_mode == 1
+    model_type = 5;
   end
 
   % シナリオの座標を0基準にする
@@ -295,6 +302,7 @@ function beamtracking_ml(output_name)
   result_list2 = [];
   speed = 0; % 初速
   RU.ary.x = 5; % 車の長さ分のoffset
+  angle_ml = 90;
   % main loop.
   for nt = 1:numel(t)
       traci.simulation.step(); % sumoの1ステップを進める
@@ -339,21 +347,6 @@ function beamtracking_ml(output_name)
 
       RU_pos   = RU_el + repmat([RU.ary.x, RU.ary.y, z_ru],[n_ru,1]);
       
-      pos_plot = 0;
-      % 位置プロット
-      if pos_plot == 1
-        figure(2);
-        hold on;
-        plot3(DU_pos(:,1),DU_pos(:,2),DU_pos(:,3), 'bs', 'LineWidth', 1);
-        hold on;
-        grid on;
-        stem3(RU_pos(:,1),RU_pos(:,2),RU_pos(:,3), 'rv', 'LineWidth', 1);
-        xlabel('x [m]');
-        ylabel('y [m]');
-        zlabel('z [m]');
-        hold off;
-      end
-      
       dx  = RU.ary(1).x - DU.ary(1).x;
       dy  = RU.ary(1).y - DU.ary(1).y;
       dz  = RU.ary(1).z - DU.ary(1).z; 
@@ -397,10 +390,6 @@ function beamtracking_ml(output_name)
           Wr_i  = nrmlzm((HG*Wt_i)','sum');        
           SNR_o = real2db(abs(Wr_i*HG*Wt_i).^2/Np);
           
-          % Fixed beam
-          Wr_c  = nrmlzm((HG*Wt_c)','sum');
-          SNR_c = real2db(abs(Wr_c*HG*Wt_c).^2/Np);
-          
           % Search
           for ni = 1:numel(a_sch)
             for nj = 1:numel(p_sch)           
@@ -430,6 +419,10 @@ function beamtracking_ml(output_name)
               pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
             elseif model_type == 4
               pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
+            elseif model_type == 5
+              pyres = pyrunfile("svm_for_matlab_anglediff.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+              angle_ml = double(pyres(2))
+              items = pyres(3)
             end
             search_way = int16(pyres(1))
           end
@@ -452,13 +445,6 @@ function beamtracking_ml(output_name)
             angle = 1;
           else
             angle = 7;
-          end
-          
-          % 使われていない変数
-          if search_way == 44
-            angle_p = 2;
-          else
-            angle_p = 7;
           end
 
           % 2方向ビームサーチ

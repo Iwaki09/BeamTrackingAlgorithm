@@ -21,7 +21,7 @@ df = pd.concat([pd.read_csv(os.path.join(dataset_dir, file)) for file in file_li
 print(df.shape)
 
 # 間引く
-interval = 4
+interval = 1
 df = df.iloc[::interval]
 
 '''
@@ -36,7 +36,7 @@ y = df['best'].to_numpy()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # 決定木モデルの作成と学習
-decision_tree_model = DecisionTreeClassifier(criterion='gini', 
+decision_tree_model = DecisionTreeClassifier(criterion='entropy', 
                                              max_depth=None, 
                                              min_samples_split=2, 
                                              min_samples_leaf=1, 

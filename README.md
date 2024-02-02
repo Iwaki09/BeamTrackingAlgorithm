@@ -9,6 +9,7 @@
 - /result : 自動化シミュレーションの結果置き場。この後/datasetに行く
 - /sumo_xml : 大量に複製されたsumoスクリプト
 - /tool : いろいろやるpythonファイル
+- /tool2 : angle_diffを加えたもの。toolとの統合が面倒だったので分けた。
 
 ## mscript/beamtracking_4way_2dim
 機械学習用に整形済

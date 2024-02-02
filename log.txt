@@ -1,0 +1,280 @@
+model: linear, C: 1, pre1: [0], pre2: [0], acc: 0.8191607872261418
+model: linear, C: 2, pre1: [0], pre2: [0], acc: 0.8236167842554771
+model: linear, C: 3, pre1: [0], pre2: [0], acc: 0.8143334571110286
+model: linear, C: 5, pre1: [0], pre2: [0], acc: 0.8210174526550316
+model: linear, C: 10, pre1: [0], pre2: [0], acc: 0.8161901225399183
+model: linear, C: 20, pre1: [0], pre2: [0], acc: 0.8232454511696993
+model: linear, C: 30, pre1: [0], pre2: [0], acc: 0.8072781284812477
+model: linear, C: 40, pre1: [0], pre2: [0], acc: 0.818418121054586
+model: linear, C: 50, pre1: [0], pre2: [0], acc: 0.8124767916821389
+model: linear, C: 70, pre1: [0], pre2: [0], acc: 0.8187894541403639
+model: linear, C: 100, pre1: [0], pre2: [0], acc: 0.8195321203119198
+model: linear, C: 150, pre1: [0], pre2: [0], acc: 0.8187894541403639
+model: linear, C: 200, pre1: [0], pre2: [0], acc: 0.8187894541403639
+model: linear, C: 250, pre1: [0], pre2: [0], acc: 0.8206461195692536
+model: linear, C: 300, pre1: [0], pre2: [0], acc: 0.8065354623096918
+model: linear, C: 512, pre1: [0], pre2: [0], acc: 0.8132194578536948
+model: linear, C: 1024, pre1: [0], pre2: [0], acc: 0.8046787968808021
+model: linear, C: 2048, pre1: [0], pre2: [0], acc: 0.8258447827701448
+model: linear, C: 4096, pre1: [0], pre2: [0], acc: 0.8083921277385815
+model: linear, C: 8192, pre1: [0], pre2: [0], acc: 0.824730783512811
+model: linear, C: 16384, pre1: [0], pre2: [0], acc: 0.8206461195692536
+model: linear, C: 32768, pre1: [0], pre2: [0], acc: 0.8147047901968065
+model: linear, C: 65536, pre1: [0], pre2: [0], acc: 0.811362792424805
+model: linear, C: 131072, pre1: [0], pre2: [0], acc: 0.805421463052358
+model: linear, C: 262144, pre1: [0], pre2: [0], acc: 0.8199034533976978
+model: linear, C: 524288, pre1: [0], pre2: [0], acc: 0.8273301151132566
+model: linear, C: 1048576, pre1: [0], pre2: [0], acc: 0.8254734496843669
+model: poly, C: 1, degree: 1,  pre1: [0], pre2: [0], acc: 0.8674340883772744
+model: poly, C: 1, degree: 2,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 1, degree: 3,  pre1: [0], pre2: [0], acc: 0.8670627552914965
+model: poly, C: 1, degree: 4,  pre1: [0], pre2: [0], acc: 0.8622354251763832
+model: poly, C: 1, degree: 5,  pre1: [0], pre2: [0], acc: 0.8570367619754921
+model: poly, C: 1, degree: 6,  pre1: [0], pre2: [0], acc: 0.850724099517267
+model: poly, C: 1, degree: 7,  pre1: [0], pre2: [0], acc: 0.863720757519495
+model: poly, C: 1, degree: 8,  pre1: [0], pre2: [0], acc: 0.8659487560341627
+model: poly, C: 2, degree: 1,  pre1: [0], pre2: [0], acc: 0.8484961010025993
+model: poly, C: 2, degree: 2,  pre1: [0], pre2: [0], acc: 0.876346082435945
+model: poly, C: 2, degree: 3,  pre1: [0], pre2: [0], acc: 0.850724099517267
+model: poly, C: 2, degree: 4,  pre1: [0], pre2: [0], acc: 0.8655774229483847
+model: poly, C: 2, degree: 5,  pre1: [0], pre2: [0], acc: 0.8622354251763832
+model: poly, C: 2, degree: 6,  pre1: [0], pre2: [0], acc: 0.8659487560341627
+model: poly, C: 2, degree: 7,  pre1: [0], pre2: [0], acc: 0.8674340883772744
+model: poly, C: 2, degree: 8,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 3, degree: 1,  pre1: [0], pre2: [0], acc: 0.8741180839212774
+model: poly, C: 3, degree: 2,  pre1: [0], pre2: [0], acc: 0.8566654288897141
+model: poly, C: 3, degree: 3,  pre1: [0], pre2: [0], acc: 0.8626067582621612
+model: poly, C: 3, degree: 4,  pre1: [0], pre2: [0], acc: 0.8681767545488303
+model: poly, C: 3, degree: 5,  pre1: [0], pre2: [0], acc: 0.8614927590048274
+model: poly, C: 3, degree: 6,  pre1: [0], pre2: [0], acc: 0.8659487560341627
+model: poly, C: 3, degree: 7,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 3, degree: 8,  pre1: [0], pre2: [0], acc: 0.869662086891942
+model: poly, C: 5, degree: 1,  pre1: [0], pre2: [0], acc: 0.877088748607501
+model: poly, C: 5, degree: 2,  pre1: [0], pre2: [0], acc: 0.8689194207203862
+model: poly, C: 5, degree: 3,  pre1: [0], pre2: [0], acc: 0.8499814333457111
+model: poly, C: 5, degree: 4,  pre1: [0], pre2: [0], acc: 0.8596360935759376
+model: poly, C: 5, degree: 5,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 5, degree: 6,  pre1: [0], pre2: [0], acc: 0.8644634236910509
+model: poly, C: 5, degree: 7,  pre1: [0], pre2: [0], acc: 0.8785740809506127
+model: poly, C: 5, degree: 8,  pre1: [0], pre2: [0], acc: 0.863720757519495
+model: poly, C: 10, degree: 1,  pre1: [0], pre2: [0], acc: 0.8611214259190494
+model: poly, C: 10, degree: 2,  pre1: [0], pre2: [0], acc: 0.8685480876346082
+model: poly, C: 10, degree: 3,  pre1: [0], pre2: [0], acc: 0.850724099517267
+model: poly, C: 10, degree: 4,  pre1: [0], pre2: [0], acc: 0.8607500928332714
+model: poly, C: 10, degree: 5,  pre1: [0], pre2: [0], acc: 0.8611214259190494
+model: poly, C: 10, degree: 6,  pre1: [0], pre2: [0], acc: 0.8614927590048274
+model: poly, C: 10, degree: 7,  pre1: [0], pre2: [0], acc: 0.8496101002599331
+model: poly, C: 10, degree: 8,  pre1: [0], pre2: [0], acc: 0.8718900854066097
+model: poly, C: 20, degree: 1,  pre1: [0], pre2: [0], acc: 0.869662086891942
+model: poly, C: 20, degree: 2,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 20, degree: 3,  pre1: [0], pre2: [0], acc: 0.8551800965466023
+model: poly, C: 20, degree: 4,  pre1: [0], pre2: [0], acc: 0.8577794281470479
+model: poly, C: 20, degree: 5,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 20, degree: 6,  pre1: [0], pre2: [0], acc: 0.8778314147790568
+model: poly, C: 20, degree: 7,  pre1: [0], pre2: [0], acc: 0.8581507612328259
+model: poly, C: 20, degree: 8,  pre1: [0], pre2: [0], acc: 0.8741180839212774
+model: poly, C: 30, degree: 1,  pre1: [0], pre2: [0], acc: 0.8574080950612699
+model: poly, C: 30, degree: 2,  pre1: [0], pre2: [0], acc: 0.8603787597474934
+model: poly, C: 30, degree: 3,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 30, degree: 4,  pre1: [0], pre2: [0], acc: 0.8574080950612699
+model: poly, C: 30, degree: 5,  pre1: [0], pre2: [0], acc: 0.8522094318603788
+model: poly, C: 30, degree: 6,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 30, degree: 7,  pre1: [0], pre2: [0], acc: 0.8681767545488303
+model: poly, C: 30, degree: 8,  pre1: [0], pre2: [0], acc: 0.8540660972892685
+model: poly, C: 40, degree: 1,  pre1: [0], pre2: [0], acc: 0.8711474192350538
+model: poly, C: 40, degree: 2,  pre1: [0], pre2: [0], acc: 0.8536947642034906
+model: poly, C: 40, degree: 3,  pre1: [0], pre2: [0], acc: 0.8544374303750464
+model: poly, C: 40, degree: 4,  pre1: [0], pre2: [0], acc: 0.8592647604901597
+model: poly, C: 40, degree: 5,  pre1: [0], pre2: [0], acc: 0.8529520980319346
+model: poly, C: 40, degree: 6,  pre1: [0], pre2: [0], acc: 0.8730040846639435
+model: poly, C: 40, degree: 7,  pre1: [0], pre2: [0], acc: 0.8633494244337171
+model: poly, C: 40, degree: 8,  pre1: [0], pre2: [0], acc: 0.8577794281470479
+model: poly, C: 50, degree: 1,  pre1: [0], pre2: [0], acc: 0.8707760861492759
+model: poly, C: 50, degree: 2,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 50, degree: 3,  pre1: [0], pre2: [0], acc: 0.8518380987746008
+model: poly, C: 50, degree: 4,  pre1: [0], pre2: [0], acc: 0.8681767545488303
+model: poly, C: 50, degree: 5,  pre1: [0], pre2: [0], acc: 0.8611214259190494
+model: poly, C: 50, degree: 6,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 50, degree: 7,  pre1: [0], pre2: [0], acc: 0.8715187523208318
+model: poly, C: 50, degree: 8,  pre1: [0], pre2: [0], acc: 0.876346082435945
+model: poly, C: 70, degree: 1,  pre1: [0], pre2: [0], acc: 0.8618640920906053
+model: poly, C: 70, degree: 2,  pre1: [0], pre2: [0], acc: 0.8529520980319346
+model: poly, C: 70, degree: 3,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 70, degree: 4,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 70, degree: 5,  pre1: [0], pre2: [0], acc: 0.8588934274043817
+model: poly, C: 70, degree: 6,  pre1: [0], pre2: [0], acc: 0.8670627552914965
+model: poly, C: 70, degree: 7,  pre1: [0], pre2: [0], acc: 0.8737467508354995
+model: poly, C: 70, degree: 8,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 100, degree: 1,  pre1: [0], pre2: [0], acc: 0.8570367619754921
+model: poly, C: 100, degree: 2,  pre1: [0], pre2: [0], acc: 0.8529520980319346
+model: poly, C: 100, degree: 3,  pre1: [0], pre2: [0], acc: 0.8815447456368363
+model: poly, C: 100, degree: 4,  pre1: [0], pre2: [0], acc: 0.8555514296323803
+model: poly, C: 100, degree: 5,  pre1: [0], pre2: [0], acc: 0.8540660972892685
+model: poly, C: 100, degree: 6,  pre1: [0], pre2: [0], acc: 0.8685480876346082
+model: poly, C: 100, degree: 7,  pre1: [0], pre2: [0], acc: 0.869662086891942
+model: poly, C: 100, degree: 8,  pre1: [0], pre2: [0], acc: 0.8652060898626067
+model: poly, C: 150, degree: 1,  pre1: [0], pre2: [0], acc: 0.8536947642034906
+model: poly, C: 150, degree: 2,  pre1: [0], pre2: [0], acc: 0.8596360935759376
+model: poly, C: 150, degree: 3,  pre1: [0], pre2: [0], acc: 0.8614927590048274
+model: poly, C: 150, degree: 4,  pre1: [0], pre2: [0], acc: 0.8488674340883773
+model: poly, C: 150, degree: 5,  pre1: [0], pre2: [0], acc: 0.870404753063498
+model: poly, C: 150, degree: 6,  pre1: [0], pre2: [0], acc: 0.8678054214630524
+model: poly, C: 150, degree: 7,  pre1: [0], pre2: [0], acc: 0.8748607500928333
+model: poly, C: 150, degree: 8,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 200, degree: 1,  pre1: [0], pre2: [0], acc: 0.8566654288897141
+model: poly, C: 200, degree: 2,  pre1: [0], pre2: [0], acc: 0.8689194207203862
+model: poly, C: 200, degree: 3,  pre1: [0], pre2: [0], acc: 0.8711474192350538
+model: poly, C: 200, degree: 4,  pre1: [0], pre2: [0], acc: 0.8588934274043817
+model: poly, C: 200, degree: 5,  pre1: [0], pre2: [0], acc: 0.8640920906052729
+model: poly, C: 200, degree: 6,  pre1: [0], pre2: [0], acc: 0.8681767545488303
+model: poly, C: 200, degree: 7,  pre1: [0], pre2: [0], acc: 0.8633494244337171
+model: poly, C: 200, degree: 8,  pre1: [0], pre2: [0], acc: 0.8473821017452655
+model: poly, C: 250, degree: 1,  pre1: [0], pre2: [0], acc: 0.8544374303750464
+model: poly, C: 250, degree: 2,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 250, degree: 3,  pre1: [0], pre2: [0], acc: 0.8663200891199406
+model: poly, C: 250, degree: 4,  pre1: [0], pre2: [0], acc: 0.8607500928332714
+model: poly, C: 250, degree: 5,  pre1: [0], pre2: [0], acc: 0.877088748607501
+model: poly, C: 250, degree: 6,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 250, degree: 7,  pre1: [0], pre2: [0], acc: 0.8536947642034906
+model: poly, C: 250, degree: 8,  pre1: [0], pre2: [0], acc: 0.8614927590048274
+model: poly, C: 300, degree: 1,  pre1: [0], pre2: [0], acc: 0.8525807649461568
+model: poly, C: 300, degree: 2,  pre1: [0], pre2: [0], acc: 0.8681767545488303
+model: poly, C: 300, degree: 3,  pre1: [0], pre2: [0], acc: 0.8611214259190494
+model: poly, C: 300, degree: 4,  pre1: [0], pre2: [0], acc: 0.8640920906052729
+model: poly, C: 300, degree: 5,  pre1: [0], pre2: [0], acc: 0.8718900854066097
+model: poly, C: 300, degree: 6,  pre1: [0], pre2: [0], acc: 0.8555514296323803
+model: poly, C: 300, degree: 7,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 300, degree: 8,  pre1: [0], pre2: [0], acc: 0.8529520980319346
+model: poly, C: 512, degree: 1,  pre1: [0], pre2: [0], acc: 0.8644634236910509
+model: poly, C: 512, degree: 2,  pre1: [0], pre2: [0], acc: 0.8533234311177126
+model: poly, C: 512, degree: 3,  pre1: [0], pre2: [0], acc: 0.8633494244337171
+model: poly, C: 512, degree: 4,  pre1: [0], pre2: [0], acc: 0.8592647604901597
+model: poly, C: 512, degree: 5,  pre1: [0], pre2: [0], acc: 0.8670627552914965
+model: poly, C: 512, degree: 6,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 512, degree: 7,  pre1: [0], pre2: [0], acc: 0.8722614184923877
+model: poly, C: 512, degree: 8,  pre1: [0], pre2: [0], acc: 0.863720757519495
+model: poly, C: 1024, degree: 1,  pre1: [0], pre2: [0], acc: 0.863720757519495
+model: poly, C: 1024, degree: 2,  pre1: [0], pre2: [0], acc: 0.8681767545488303
+model: poly, C: 1024, degree: 3,  pre1: [0], pre2: [0], acc: 0.8540660972892685
+model: poly, C: 1024, degree: 4,  pre1: [0], pre2: [0], acc: 0.876346082435945
+model: poly, C: 1024, degree: 5,  pre1: [0], pre2: [0], acc: 0.8603787597474934
+model: poly, C: 1024, degree: 6,  pre1: [0], pre2: [0], acc: 0.8722614184923877
+model: poly, C: 1024, degree: 7,  pre1: [0], pre2: [0], acc: 0.8585220943186038
+model: poly, C: 1024, degree: 8,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 2048, degree: 1,  pre1: [0], pre2: [0], acc: 0.8640920906052729
+model: poly, C: 2048, degree: 2,  pre1: [0], pre2: [0], acc: 0.8477534348310435
+model: poly, C: 2048, degree: 3,  pre1: [0], pre2: [0], acc: 0.8685480876346082
+model: poly, C: 2048, degree: 4,  pre1: [0], pre2: [0], acc: 0.8592647604901597
+model: poly, C: 2048, degree: 5,  pre1: [0], pre2: [0], acc: 0.8663200891199406
+model: poly, C: 2048, degree: 6,  pre1: [0], pre2: [0], acc: 0.8566654288897141
+model: poly, C: 2048, degree: 7,  pre1: [0], pre2: [0], acc: 0.869662086891942
+model: poly, C: 2048, degree: 8,  pre1: [0], pre2: [0], acc: 0.8752320831786112
+model: poly, C: 4096, degree: 1,  pre1: [0], pre2: [0], acc: 0.8707760861492759
+model: poly, C: 4096, degree: 2,  pre1: [0], pre2: [0], acc: 0.8648347567768289
+model: poly, C: 4096, degree: 3,  pre1: [0], pre2: [0], acc: 0.8514667656888228
+model: poly, C: 4096, degree: 4,  pre1: [0], pre2: [0], acc: 0.8551800965466023
+model: poly, C: 4096, degree: 5,  pre1: [0], pre2: [0], acc: 0.8577794281470479
+model: poly, C: 4096, degree: 6,  pre1: [0], pre2: [0], acc: 0.8633494244337171
+model: poly, C: 4096, degree: 7,  pre1: [0], pre2: [0], acc: 0.850724099517267
+model: poly, C: 4096, degree: 8,  pre1: [0], pre2: [0], acc: 0.8644634236910509
+model: poly, C: 8192, degree: 1,  pre1: [0], pre2: [0], acc: 0.8536947642034906
+model: poly, C: 8192, degree: 2,  pre1: [0], pre2: [0], acc: 0.8522094318603788
+model: poly, C: 8192, degree: 3,  pre1: [0], pre2: [0], acc: 0.8581507612328259
+model: poly, C: 8192, degree: 4,  pre1: [0], pre2: [0], acc: 0.8644634236910509
+model: poly, C: 8192, degree: 5,  pre1: [0], pre2: [0], acc: 0.8585220943186038
+model: poly, C: 8192, degree: 6,  pre1: [0], pre2: [0], acc: 0.8640920906052729
+model: poly, C: 8192, degree: 7,  pre1: [0], pre2: [0], acc: 0.8622354251763832
+model: poly, C: 8192, degree: 8,  pre1: [0], pre2: [0], acc: 0.8525807649461568
+model: poly, C: 16384, degree: 1,  pre1: [0], pre2: [0], acc: 0.8592647604901597
+model: poly, C: 16384, degree: 2,  pre1: [0], pre2: [0], acc: 0.8678054214630524
+model: poly, C: 16384, degree: 3,  pre1: [0], pre2: [0], acc: 0.844411437059042
+model: poly, C: 16384, degree: 4,  pre1: [0], pre2: [0], acc: 0.8614927590048274
+model: poly, C: 16384, degree: 5,  pre1: [0], pre2: [0], acc: 0.8603787597474934
+model: poly, C: 16384, degree: 6,  pre1: [0], pre2: [0], acc: 0.8618640920906053
+model: poly, C: 16384, degree: 7,  pre1: [0], pre2: [0], acc: 0.876346082435945
+model: poly, C: 16384, degree: 8,  pre1: [0], pre2: [0], acc: 0.8652060898626067
+model: poly, C: 32768, degree: 1,  pre1: [0], pre2: [0], acc: 0.8555514296323803
+model: poly, C: 32768, degree: 2,  pre1: [0], pre2: [0], acc: 0.8622354251763832
+model: poly, C: 32768, degree: 3,  pre1: [0], pre2: [0], acc: 0.8644634236910509
+model: poly, C: 32768, degree: 4,  pre1: [0], pre2: [0], acc: 0.8718900854066097
+model: poly, C: 32768, degree: 5,  pre1: [0], pre2: [0], acc: 0.8518380987746008
+model: poly, C: 32768, degree: 6,  pre1: [0], pre2: [0], acc: 0.8655774229483847
+model: poly, C: 32768, degree: 7,  pre1: [0], pre2: [0], acc: 0.8499814333457111
+model: poly, C: 32768, degree: 8,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 65536, degree: 1,  pre1: [0], pre2: [0], acc: 0.8525807649461568
+model: poly, C: 65536, degree: 2,  pre1: [0], pre2: [0], acc: 0.8730040846639435
+model: poly, C: 65536, degree: 3,  pre1: [0], pre2: [0], acc: 0.8655774229483847
+model: poly, C: 65536, degree: 4,  pre1: [0], pre2: [0], acc: 0.8529520980319346
+model: poly, C: 65536, degree: 5,  pre1: [0], pre2: [0], acc: 0.8652060898626067
+model: poly, C: 65536, degree: 6,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 65536, degree: 7,  pre1: [0], pre2: [0], acc: 0.8555514296323803
+model: poly, C: 65536, degree: 8,  pre1: [0], pre2: [0], acc: 0.8548087634608244
+model: poly, C: 131072, degree: 1,  pre1: [0], pre2: [0], acc: 0.8600074266617156
+model: poly, C: 131072, degree: 2,  pre1: [0], pre2: [0], acc: 0.8681767545488303
+model: poly, C: 131072, degree: 3,  pre1: [0], pre2: [0], acc: 0.8711474192350538
+model: poly, C: 131072, degree: 4,  pre1: [0], pre2: [0], acc: 0.8622354251763832
+model: poly, C: 131072, degree: 5,  pre1: [0], pre2: [0], acc: 0.8592647604901597
+model: poly, C: 131072, degree: 6,  pre1: [0], pre2: [0], acc: 0.8666914222057185
+model: poly, C: 131072, degree: 7,  pre1: [0], pre2: [0], acc: 0.8622354251763832
+model: poly, C: 131072, degree: 8,  pre1: [0], pre2: [0], acc: 0.8722614184923877
+model: poly, C: 262144, degree: 1,  pre1: [0], pre2: [0], acc: 0.8592647604901597
+model: poly, C: 262144, degree: 2,  pre1: [0], pre2: [0], acc: 0.8640920906052729
+model: poly, C: 262144, degree: 3,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 262144, degree: 4,  pre1: [0], pre2: [0], acc: 0.8473821017452655
+model: poly, C: 262144, degree: 5,  pre1: [0], pre2: [0], acc: 0.8536947642034906
+model: poly, C: 262144, degree: 6,  pre1: [0], pre2: [0], acc: 0.8711474192350538
+model: poly, C: 262144, degree: 7,  pre1: [0], pre2: [0], acc: 0.8551800965466023
+model: poly, C: 262144, degree: 8,  pre1: [0], pre2: [0], acc: 0.8562940958039361
+model: poly, C: 524288, degree: 1,  pre1: [0], pre2: [0], acc: 0.8670627552914965
+model: poly, C: 524288, degree: 2,  pre1: [0], pre2: [0], acc: 0.8577794281470479
+model: poly, C: 524288, degree: 3,  pre1: [0], pre2: [0], acc: 0.8529520980319346
+model: poly, C: 524288, degree: 4,  pre1: [0], pre2: [0], acc: 0.8592647604901597
+model: poly, C: 524288, degree: 5,  pre1: [0], pre2: [0], acc: 0.8588934274043817
+model: poly, C: 524288, degree: 6,  pre1: [0], pre2: [0], acc: 0.8644634236910509
+model: poly, C: 524288, degree: 7,  pre1: [0], pre2: [0], acc: 0.8644634236910509
+model: poly, C: 524288, degree: 8,  pre1: [0], pre2: [0], acc: 0.8629780913479391
+model: poly, C: 1048576, degree: 1,  pre1: [0], pre2: [0], acc: 0.8666914222057185
+model: poly, C: 1048576, degree: 2,  pre1: [0], pre2: [0], acc: 0.8640920906052729
+model: poly, C: 1048576, degree: 3,  pre1: [0], pre2: [0], acc: 0.8577794281470479
+model: poly, C: 1048576, degree: 4,  pre1: [0], pre2: [0], acc: 0.8640920906052729
+model: poly, C: 1048576, degree: 5,  pre1: [0], pre2: [0], acc: 0.8555514296323803
+model: poly, C: 1048576, degree: 6,  pre1: [0], pre2: [0], acc: 0.8633494244337171
+model: poly, C: 1048576, degree: 7,  pre1: [0], pre2: [0], acc: 0.8600074266617156
+model: poly, C: 1048576, degree: 8,  pre1: [0], pre2: [0], acc: 0.8596360935759376
+model: rbf, C: 1, gamma: 1,  pre1: [1], pre2: [1], acc: 0.9305607129595247
+model: rbf, C: 1, gamma: 2,  pre1: [1], pre2: [1], acc: 0.9235053843297438
+model: rbf, C: 1, gamma: 3,  pre1: [1], pre2: [1], acc: 0.9238767174155217
+model: rbf, C: 1, gamma: 4,  pre1: [1], pre2: [1], acc: 0.9220200519866321
+model: rbf, C: 1, gamma: 5,  pre1: [1], pre2: [1], acc: 0.9357593761604159
+model: rbf, C: 1, gamma: 6,  pre1: [1], pre2: [1], acc: 0.9298180467879688
+model: rbf, C: 1, gamma: 7,  pre1: [1], pre2: [1], acc: 0.9313033791310806
+model: rbf, C: 1, gamma: 8,  pre1: [1], pre2: [1], acc: 0.9372447085035277
+model: rbf, C: 1, gamma: 9,  pre1: [1], pre2: [1], acc: 0.9223913850724099
+model: rbf, C: 2, gamma: 1,  pre1: [1], pre2: [1], acc: 0.9342740438173042
+model: rbf, C: 2, gamma: 2,  pre1: [1], pre2: [1], acc: 0.9357593761604159
+model: rbf, C: 2, gamma: 3,  pre1: [1], pre2: [1], acc: 0.9327887114741924
+model: rbf, C: 2, gamma: 4,  pre1: [1], pre2: [1], acc: 0.9205347196435202
+model: rbf, C: 2, gamma: 5,  pre1: [1], pre2: [1], acc: 0.9305607129595247
+model: rbf, C: 2, gamma: 6,  pre1: [0], pre2: [0], acc: 0.9405867062755291
+model: rbf, C: 2, gamma: 7,  pre1: [1], pre2: [1], acc: 0.9316747122168585
+model: rbf, C: 2, gamma: 8,  pre1: [1], pre2: [1], acc: 0.9357593761604159
+model: rbf, C: 2, gamma: 9,  pre1: [0], pre2: [0], acc: 0.9279613813590791
+model: rbf, C: 3, gamma: 1,  pre1: [1], pre2: [1], acc: 0.9327887114741924
+model: rbf, C: 3, gamma: 2,  pre1: [1], pre2: [1], acc: 0.9227627181581879
+model: rbf, C: 3, gamma: 3,  pre1: [1], pre2: [1], acc: 0.9327887114741924
+model: rbf, C: 3, gamma: 4,  pre1: [1], pre2: [1], acc: 0.9257333828444114
+model: rbf, C: 3, gamma: 5,  pre1: [1], pre2: [1], acc: 0.9268473821017452
+model: rbf, C: 3, gamma: 6,  pre1: [1], pre2: [1], acc: 0.9242480505012997
+model: linear, C: 1, pre1: [0], pre2: [0], acc: 0.8165614556256963
+model: linear, C: 5, pre1: [0], pre2: [0], acc: 0.8143334571110286
+model: linear, C: 10, pre1: [0], pre2: [0], acc: 0.8150761232825845
+model: linear, C: 50, pre1: [0], pre2: [0], acc: 0.812105458596361
+model: linear, C: 100, pre1: [0], pre2: [0], acc: 0.8150761232825845
+model: linear, C: 1024, pre1: [0], pre2: [0], acc: 0.8221314519123654
+model: linear, C: 32768, pre1: [0], pre2: [0], acc: 0.8199034533976978
+model: poly, C: 1, degree: 1,  pre1: [0], pre2: [0], acc: 0.8332714444857037
+model: poly, C: 1, degree: 2,  pre1: [0], pre2: [0], acc: 0.8243594504270331
+model: poly, C: 1, degree: 3,  pre1: [0], pre2: [0], acc: 0.8380987746008169
+model: poly, C: 1, degree: 4,  pre1: [0], pre2: [0], acc: 0.8399554400297067
+model: poly, C: 1, degree: 5,  pre1: [0], pre2: [0], acc: 0.8429261047159302
+model: poly, C: 1, degree: 6,  pre1: [0], pre2: [0], acc: 0.8280727812848124
