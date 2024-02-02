@@ -20,7 +20,7 @@ function beamtracking_ml(output_name)
   file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../ml_result';
+  output_dir = '../datasource';
 
   % グラフを保存するかどうか
   graph_save = 0;
@@ -83,6 +83,11 @@ function beamtracking_ml(output_name)
     scenario = 'korakuen';
     offset_x = 1123;
     offset_y = 1462;
+    turn_y = -1;
+  elseif strcmp(output_name(1:7), 'yomiuri')
+    scenario = 'yomiuri';
+    offset_x = 320;
+    offset_y = 508;
     turn_y = -1;
   end
 
@@ -444,7 +449,7 @@ function beamtracking_ml(output_name)
           SNR = real2db(abs(Wr*HG*Wt).^2/Np);
 
           if (search_way == 4) || (search_way == 44)
-            angle = 2;
+            angle = 1;
           else
             angle = 7;
           end
@@ -479,6 +484,10 @@ function beamtracking_ml(output_name)
               W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
               W_c  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
               W_d  = gen_beam(n_tx, n_tz, fc, a_est+2*angle, p_est);
+              % W_a  = gen_beam(n_tx, n_tz, fc, a_est-7, p_est);
+              % W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
+              % W_c  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
+              % W_d  = gen_beam(n_tx, n_tz, fc, a_est+7, p_est);
 
               SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
               SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);

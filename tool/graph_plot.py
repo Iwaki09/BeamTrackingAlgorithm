@@ -8,15 +8,15 @@ def plot_main():
     input_dir2 = './ml_result'
     output_dir = './ml_result'
 
-    scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen']
+    scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri']
     tags = ['']
 
-    scenario = scenarios[7]
+    scenario = scenarios[4]
 
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 11
+    plot_mode = 1
 
     if plot_mode == 1:
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
@@ -138,7 +138,7 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth):
     plt.ylim(0, 60)
     plt.grid(alpha=0.3)
     plt.legend(loc='upper right')
-    plt.savefig(os.path.join(output_dir, scenario+'_SNR_all.pdf'))
+    plt.savefig(os.path.join(output_dir, scenario+'_SNR_all_ml.pdf'))
 
     # df_all.to_csv(output_dir+scenario_now+'_all.csv')
     # df_non.to_csv(output_dir+scenario_now+'_all2.csv')
