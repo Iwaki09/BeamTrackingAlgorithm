@@ -17,9 +17,9 @@ for scenario in scenarios:
             filename_suffix = '_ms{}_ac{}_ds{}'.format(max_speed, accel, depart_speed)
             filename = scenario + filename_suffix
             cmd1 = 'sumo --remote-port 8813 -c ' + sumo_xml_dir + '/' + scenario + '/' + filename + '.sumocfg &'
-            subprocess.call(cmd1, shell=True)
-            cmd2 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_4way_2dim(\'' + filename + '_2dim\')\"'
-            subprocess.call(cmd2, shell=True)
+            # subprocess.call(cmd1, shell=True)
+            # cmd2 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_4way_2dim(\'' + filename + '_2dim\')\"'
+            # subprocess.call(cmd2, shell=True)
 
             subprocess.call(cmd1, shell=True)
             cmd3 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_4way_2dim(\'' + filename + '_4way\')\"'
