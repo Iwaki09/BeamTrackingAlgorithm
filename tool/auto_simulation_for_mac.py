@@ -9,7 +9,7 @@ scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
 depart_speed = '0.00'
 
 for scenario in scenarios:
-    # if scenario == 'direct':
+    # if scenario != 'direct':
     #     continue
     for max_speed in reversed(range(3, 20, 1)):
         for accel in reversed(range(1, 10, 1)):
@@ -18,9 +18,9 @@ for scenario in scenarios:
             filename = scenario + filename_suffix
             cmd1 = 'sumo --remote-port 8813 -c ' + sumo_xml_dir + '/' + scenario + '/' + filename + '.sumocfg &'
             # subprocess.call(cmd1, shell=True)
-            # cmd2 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_4way_2dim(\'' + filename + '_2dim\')\"'
+            # cmd2 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + filename + '_2dim\')\"'
             # subprocess.call(cmd2, shell=True)
 
             subprocess.call(cmd1, shell=True)
-            cmd3 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_4way_2dim(\'' + filename + '_4way\')\"'
+            cmd3 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + filename + '_4way\')\"'
             subprocess.call(cmd3, shell=True)

@@ -11,7 +11,7 @@ def plot_main():
     scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri']
     tags = ['']
 
-    scenario = scenarios[4]
+    scenario = scenarios[0]
 
     linewidth = 2
 
@@ -58,11 +58,11 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
     })
 
     # print(df_2dim)
-    plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = 'blue', linewidth=linewidth)
-    plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = 'orange', linewidth=linewidth)
-    plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = 'green', linewidth=linewidth)
-    plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = 'red', linewidth=linewidth)
-    plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = 'pink', linewidth=linewidth)
+    plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
+    plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = '#03AF7A', linewidth=linewidth)
+    plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
+    plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
+    plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
     plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
     plt.ylabel('SNR[dB]')
@@ -123,11 +123,11 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth):
     })
 
     # print(df_2dim)
-    plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = 'blue', linewidth=linewidth)
-    plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = 'orange', linewidth=linewidth)
-    plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = 'green', linewidth=linewidth)
-    plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = 'red', linewidth=linewidth)
-    plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = 'pink', linewidth=linewidth)
+    plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
+    plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = '#03AF7A', linewidth=linewidth)
+    plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
+    plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
+    plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
     plt.plot(df_ml['x'], df_ml['SNR_ml'], label='SVM', color = 'purple', linewidth=linewidth, linestyle='dashed')
     # plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
