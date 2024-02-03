@@ -20,7 +20,7 @@ def svm_for_matlab_anglediff2(model_basename, scenario, x, y, speed, angle_prev)
         svm_model = pickle.load(model_path)
 
     # 1行目がscale, 2行目がmean
-    stats = pd.read_csv(os.path.join(ml_models_dir, model_basename+'_stats.csv'), names=['dist', 'speed', 'angle', 'angle_diff']).to_numpy()
+    stats = pd.read_csv(os.path.join(ml_models_dir, model_basename+'_stats.csv'), names=['angle', 'angle_diff']).to_numpy()
     # データを標準化
     [angle, angle_diff] = ([angle, angle_diff] - stats[1]) / stats[0]
     # デバッグ用
