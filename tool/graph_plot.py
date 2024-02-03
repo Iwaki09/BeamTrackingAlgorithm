@@ -11,7 +11,7 @@ def plot_main():
     scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri']
     tags = ['']
 
-    scenario = scenarios[0]
+    scenario = scenarios[4]
 
     linewidth = 2
 

@@ -60,13 +60,14 @@ with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer.writerow(ss.scale_)
     writer.writerow(ss.mean_)
 
-# [dist, angle, angle_diff] = [12, 90, 0]
-# data = np.array([dist, angle, angle_diff]).reshape(1, -1)
-# pre1 = decision_tree_model.predict(data)
+# [dist, speed, angle, angle_diff] = [12, 7.5, 90, 0]
+[dist,speed, angle] = [12, 7.5, 90]
+data = np.array([dist, speed, angle]).reshape(1, -1)
+pre1 = decision_tree_model.predict(data)
 
-# # [dist, speed, angle, angle_diff] = [19, 14, 111, 0.24]
-# [dist, angle, angle_diff] = [19, 121, 0.24]
-# data = np.array([dist, angle, angle_diff]).reshape(1, -1)
-# pre2 = decision_tree_model.predict(data)
+# [dist, speed, angle, angle_diff] = [19, 14, 111, 0.24]
+[dist, speed, angle] = [19, 14, 111]
+data = np.array([dist, speed, angle]).reshape(1, -1)
+pre2 = decision_tree_model.predict(data)
 
-# print(pre1, pre2)
+print(pre1, pre2)
