@@ -7,21 +7,22 @@ def plot_main():
     input_dir1 = './datasource'
     input_dir2 = './ml_result'
     output_dir = './ml_result'
-
+    #              0            1            2            3           4             5        6             7           8
     scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri']
     tags = ['']
 
-    scenario = scenarios[4]
+    scenario = scenarios[7]
 
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 1
+    plot_mode = 11
 
     if plot_mode == 1:
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
-        plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth)
+        ver = 1
+        plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
 
 
 def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
@@ -82,14 +83,14 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
     plt.clf()
 
 
-def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth):
+def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver):
     scenario_path1 = os.path.join(input_dir1, scenario)
     scenario_path2 = os.path.join(input_dir2, scenario)
 
     df_2way = pd.read_csv(scenario_path1+'_2way.csv', names=['x', 'SNR_2way', 'SNR_o', 'SNR_s'])
     df_2dim = pd.read_csv(scenario_path1+'_2dim.csv', names=['x', 'SNR_2dim', 'SNR_o', 'SNR_s'])
     df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
-    df_ml = pd.read_csv(scenario_path2+'_ml.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s'])
+    df_ml = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s'])
 
     dfs = [df_2way, df_2dim, df_4way, df_ml]
 
@@ -138,7 +139,7 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth):
     plt.ylim(0, 60)
     plt.grid(alpha=0.3)
     plt.legend(loc='upper right')
-    plt.savefig(os.path.join(output_dir, scenario+'_SNR_all_ml.pdf'))
+    plt.savefig(os.path.join(output_dir, scenario+'_SNR_all_ml_ver'+ver+'.pdf'))
 
     # df_all.to_csv(output_dir+scenario_now+'_all.csv')
     # df_non.to_csv(output_dir+scenario_now+'_all2.csv')
