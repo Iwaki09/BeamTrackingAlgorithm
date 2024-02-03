@@ -100,11 +100,11 @@ def svm_exp(model, C=1, degree=1, coef0=1, gamma=1):
     #     writer.writerow(ss.scale_)
     #     writer.writerow(ss.mean_)
 
-    [dist, speed, angle, angle_diff] = [12, 7.5, 90, 0]
+    [dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
     data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
     prediction1 = svm_model.predict(data)
 
-    [dist, speed, angle, angle_diff] = [19, 14, 111, 0.24]
+    [dist, speed, angle, angle_diff] = ([19, 14, 111, 0.24] - ss.mean_) / ss.scale_
     data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
     prediction2 = svm_model.predict(data)
 

@@ -23,15 +23,16 @@ df = pd.concat([pd.read_csv(os.path.join(dataset_dir, file)) for file in file_li
 print(df.shape)
 
 # 間引く
-interval = 1
-df = df.iloc[::interval]
+# interval = 1
+# df = df.iloc[::interval]
 
 '''
 位置(x), 位置(y), 基地局からの距離, 速度, 加速度x, 加速度y, 向き, SNRが良いほう(2dimなら0, 4wayなら1), accel絶対値
 '''
 
 ss = StandardScaler()
-X = ss.fit_transform(df[['dist', 'speed', 'angle']].to_numpy())
+# X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
+X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
 y = df['best'].to_numpy()
 
 # データセットをトレーニングセットとテストセットに分割
@@ -61,13 +62,49 @@ with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer.writerow(ss.mean_)
 
 # [dist, speed, angle, angle_diff] = [12, 7.5, 90, 0]
-[dist,speed, angle] = [12, 7.5, 90]
-data = np.array([dist, speed, angle]).reshape(1, -1)
+print('----')
+print(ss.scale_, ss.mean_)
+print('----')
+[angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
+data = np.array([angle, angle_diff]).reshape(1, -1)
+print(data)
 pre1 = decision_tree_model.predict(data)
 
 # [dist, speed, angle, angle_diff] = [19, 14, 111, 0.24]
-[dist, speed, angle] = [19, 14, 111]
-data = np.array([dist, speed, angle]).reshape(1, -1)
+[angle, angle_diff] = ([111, 0.24] - ss.mean_) / ss.scale_
+data = np.array([angle, angle_diff]).reshape(1, -1)
 pre2 = decision_tree_model.predict(data)
 
 print(pre1, pre2)
+
+
+import matplotlib.pyplot as plt
+
+X = X * ss.scale_ + ss.mean_
+
+# データの準備
+data_class0 = X[y == 0]  # ラベルが0のデータ
+data_class1 = X[y == 1]  # ラベルが1のデータ
+
+# プロット
+plt.figure(figsize=(10, 6))
+
+# ラベルが0のデータをプロット
+plt.scatter(data_class0[:, 0], data_class0[:, 1], c='blue', label='Label 0')
+
+# ラベルが1のデータをプロット
+plt.scatter(data_class1[:, 0], data_class1[:, 1], c='red', label='Label 1')
+
+# 軸ラベルとタイトルの設定
+plt.xlabel('Angle')
+plt.ylabel('Angle Difference')
+plt.title('Distribution of Labels based on Angle and Angle Difference')
+
+# 凡例の表示
+plt.legend()
+
+# グリッドの表示
+plt.grid(True)
+
+# プロットの表示
+# plt.show()
