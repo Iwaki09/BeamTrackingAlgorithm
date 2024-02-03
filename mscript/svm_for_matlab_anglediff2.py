@@ -36,6 +36,6 @@ def svm_for_matlab_anglediff2(model_basename, scenario, x, y, speed, angle_prev)
         search_way = 4
 
     # tmp[2]はangle
-    return [search_way, tmp[2], tmp]
+    return [search_way, tmp[0], tmp]
 
 res = svm_for_matlab_anglediff2(model_basename, scenario, x, y, speed, angle_prev)

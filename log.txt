@@ -70,3 +70,4 @@ model: rbf, C: 1, gamma: 6,  pre1: [0], pre2: [0], acc: 0.9012299664554603
 model: rbf, C: 1, gamma: 7,  pre1: [1], pre2: [0], acc: 0.9075661572866195
 model: rbf, C: 1, gamma: 8,  pre1: [0], pre2: [0], acc: 0.900857249347745
 model: rbf, C: 1, gamma: 9,  pre1: [0], pre2: [0], acc: 0.8989936638091688
+model: rbf, C: 5, gamma: 1,  pre1: [1], pre2: [0], acc: 0.9057025717480433
