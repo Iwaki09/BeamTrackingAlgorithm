@@ -31,8 +31,8 @@ function beamtracking_ml(output_name)
   % noguideモード(yを自前で用意する。distはガイドを使う(結局ガイド使ってる))
   no_guide = 1;
 
-  % angle_diffモード
-  angle_diff_mode = 1;
+  % angle_diffモード　2ならangleとangle_diffだけ
+  angle_diff_mode = 2;
 
   % svm_modelの名前
   model_basename = 'svm_noacc_ad';
@@ -53,6 +53,8 @@ function beamtracking_ml(output_name)
 
   if angle_diff_mode == 1
     model_type = 5;
+  elseif angle_diff_mode == 2
+    model_type = 6;
   end
 
   % シナリオの座標を0基準にする
@@ -401,6 +403,10 @@ function beamtracking_ml(output_name)
               pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
             elseif model_type == 5
               pyres = pyrunfile("svm_for_matlab_anglediff.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+              angle_ml = double(pyres(2))
+              items = pyres(3)
+            elseif model_type == 6
+              pyres = pyrunfile("svm_for_matlab_anglediff2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
               angle_ml = double(pyres(2))
               items = pyres(3)
             end

@@ -30,7 +30,7 @@ print(df.shape)
 # 間引く
 # interval = 1
 # df = df.iloc[::interval]
-df = df.sample(frac=0.1)
+df = df.sample(frac=0.05)
 
 '''
 位置(x), 位置(y), 基地局からの距離, 速度, 加速度x, 加速度y, 向き, SNRが良いほう(2dimなら0, 4wayなら1), accel絶対値

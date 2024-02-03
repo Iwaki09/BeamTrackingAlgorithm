@@ -62,12 +62,8 @@ with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer.writerow(ss.mean_)
 
 # [dist, speed, angle, angle_diff] = [12, 7.5, 90, 0]
-print('----')
-print(ss.scale_, ss.mean_)
-print('----')
 [angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
 data = np.array([angle, angle_diff]).reshape(1, -1)
-print(data)
 pre1 = decision_tree_model.predict(data)
 
 # [dist, speed, angle, angle_diff] = [19, 14, 111, 0.24]
