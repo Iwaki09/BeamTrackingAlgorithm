@@ -265,7 +265,7 @@ function beamtracking_ml(output_name)
     search_way = 4;
   elseif strcmp(output_name(end-6:end), '2dim_44')
     search_way = 44;
-  elseif strcmp(output_name(end-1:end), 'ml')
+  elseif strcmp(output_name(end-1:end), 'ml') | strcmp(output_name(end-6:end-5), 'ml')
     search_way = 22;
     ml_mode = 1;
   end
