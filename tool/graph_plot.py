@@ -21,7 +21,7 @@ def plot_main():
     if plot_mode == 1:
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
-        ver = 1
+        ver = '1'
         plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
 
 
