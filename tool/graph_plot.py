@@ -11,7 +11,7 @@ def plot_main():
     scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri']
     tags = ['']
 
-    scenario = scenarios[7]
+    scenario = scenarios[8]
 
     linewidth = 2
 
@@ -21,7 +21,7 @@ def plot_main():
     if plot_mode == 1:
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
-        ver = '1'
+        ver = '2'
         plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
 
 
@@ -129,7 +129,7 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
     plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
     plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
     plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
-    plt.plot(df_ml['x'], df_ml['SNR_ml'], label='SVM', color = 'purple', linewidth=linewidth, linestyle='dashed')
+    plt.plot(df_ml['x'], df_ml['SNR_ml'], label='ML', color = 'purple', linewidth=linewidth, linestyle='dashed')
     # plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
     plt.ylabel('SNR[dB]')

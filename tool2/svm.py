@@ -112,3 +112,13 @@ ax.legend()
 # plt.show()
 
 # print(df[['dist', 'speed', 'accel_abs']][100:11200].min())
+
+[dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
+data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
+prediction1 = svm_model.predict(data)
+
+[dist, speed, angle, angle_diff] = ([19, 14, 111, 0.24] - ss.mean_) / ss.scale_
+data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
+prediction2 = svm_model.predict(data)
+
+print(prediction1, prediction2)
