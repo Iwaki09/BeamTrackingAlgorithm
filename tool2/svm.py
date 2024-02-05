@@ -19,7 +19,7 @@ import pickle
 
 dataset_dir = './dataset'
 ml_models_dir = './ml_models'
-model_name = './svm_noacc_ad'
+model_name = './svm_noacc_ad2'
 
 file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
 
@@ -30,7 +30,7 @@ print(df.shape)
 # 間引く
 # interval = 1
 # df = df.iloc[::interval]
-df = df.sample(frac=0.2)
+df = df.sample(frac=0.05)
 
 '''
 位置(x), 位置(y), 基地局からの距離, 速度, 加速度x, 加速度y, 向き, SNRが良いほう(2dimなら0, 4wayなら1), accel絶対値
@@ -38,7 +38,8 @@ df = df.sample(frac=0.2)
 
 ss = StandardScaler()
 # X = ss.fit_transform(df[['dist', 'speed', 'accel_abs']].to_numpy())
-X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
+# X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
+X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
 # X = ss.fit_transform(df[['x', 'y', 'speed']].to_numpy())
 y = df['best'].to_numpy()
 
@@ -49,7 +50,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # svm_model = LinearSVC(C=1)  # カーネルは線形カーネルを使用
 # svm_model = SVC(kernel='poly', degree=3, coef0=1, C=5)
-svm_model = SVC(kernel='rbf', gamma=7, C=32768, random_state=0)
+svm_model = SVC(kernel='rbf', gamma=1, C=1024, random_state=0)
 # svm_model = SVC(kernel='sigmoid')
 
 svm_model.fit(X_train, y_train)
@@ -70,10 +71,10 @@ X_train_nonstd = ss.scale_*X_train + ss.mean_
 # print(X_train_nonstd)
 
 # トレーニングデータのプロット
-labels = ['2dim', '4way']
-for i in np.unique(y_train):
-    indices = np.where(y_train == i)  
-    ax.scatter(X_train_nonstd[indices, 0], X_train_nonstd[indices, 1], X_train_nonstd[indices, 2], label=labels[i])
+# labels = ['2dim', '4way']
+# for i in np.unique(y_train):
+#     indices = np.where(y_train == i)  
+#     ax.scatter(X_train_nonstd[indices, 0], X_train_nonstd[indices, 1], X_train_nonstd[indices, 2], label=labels[i])
 
 # 分離超平面のプロット
 # 3次元データの場合、超平面は2次元平面として可視化できる
@@ -113,12 +114,14 @@ ax.legend()
 
 # print(df[['dist', 'speed', 'accel_abs']][100:11200].min())
 
-[dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
-data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
+# [dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
+[angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
+data = np.array([angle, angle_diff]).reshape(1, -1)
 prediction1 = svm_model.predict(data)
 
-[dist, speed, angle, angle_diff] = ([19, 14, 111, 0.24] - ss.mean_) / ss.scale_
-data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
+# [dist, speed, angle, angle_diff] = ([19, 14, 111, 0.24] - ss.mean_) / ss.scale_
+[angle, angle_diff] = ([111, 0.24] - ss.mean_) / ss.scale_
+data = np.array([angle, angle_diff]).reshape(1, -1)
 prediction2 = svm_model.predict(data)
 
 print(prediction1, prediction2)
