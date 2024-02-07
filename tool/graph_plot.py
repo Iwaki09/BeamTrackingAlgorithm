@@ -22,7 +22,9 @@ def plot_main():
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
         ver = '2'
-        plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
+        for ver in ['1', '2']:
+            for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
+                plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
 
 
 def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
@@ -94,24 +96,24 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
 
     dfs = [df_2way, df_2dim, df_4way, df_ml]
 
-    # min_df_x = dfs[0]['x']
-    # for df in dfs:
-    #     if len(df['x']) < len(min_df_x):
-    #         min_df_x = df['x']
+    min_df_x = dfs[0]['x']
+    for df in dfs:
+        if len(df['x']) < len(min_df_x):
+            min_df_x = df['x']
 
-    # if (min_df_x.equals(dfs[0]['x'])):
-    #     df_non = pd.read_csv(scenario_path1+'_2way2.csv', names=['x', 'SNR_non'])
-    # elif (min_df_x.equals(dfs[1]['x'])):
-    #     df_non = pd.read_csv(scenario_path1+'_2dim2.csv', names=['x', 'SNR_non'])
-    # elif (min_df_x.equals(dfs[2]['x'])):
-    #     df_non = pd.read_csv(scenario_path1+'_4way2.csv', names=['x', 'SNR_non'])
-    # else:
-    #     df_non = pd.read_csv(scenario_path2+'_ml2.csv', names=['x', 'SNR_non'])
+    if (min_df_x.equals(dfs[0]['x'])):
+        df_non = pd.read_csv(scenario_path1+'_2way2.csv', names=['x', 'SNR_non'])
+    elif (min_df_x.equals(dfs[1]['x'])):
+        df_non = pd.read_csv(scenario_path1+'_2dim2.csv', names=['x', 'SNR_non'])
+    elif (min_df_x.equals(dfs[2]['x'])):
+        df_non = pd.read_csv(scenario_path1+'_4way2.csv', names=['x', 'SNR_non'])
+    else:
+        df_non = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_non'])
 
-    # df_2way = df_2way.iloc[:len(min_df_x)]
-    # df_2dim = df_2dim.iloc[:len(min_df_x)]
-    # df_4way = df_4way.iloc[:len(min_df_x)]
-    # df_ml = df_ml.iloc[:len(min_df_x)]
+    df_2way = df_2way.iloc[:len(min_df_x)]
+    df_2dim = df_2dim.iloc[:len(min_df_x)]
+    df_4way = df_4way.iloc[:len(min_df_x)]
+    df_ml = df_ml.iloc[:len(min_df_x)]
 
     df_all = pd.DataFrame({
         'x': df_2way['x'],
@@ -130,7 +132,7 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
     plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
     plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
     plt.plot(df_ml['x'], df_ml['SNR_ml'], label='ML', color = 'purple', linewidth=linewidth, linestyle='dashed')
-    # plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
+    plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
     plt.ylabel('SNR[dB]')
     plt.xlim(5, 60.1)
