@@ -16,10 +16,11 @@ def plot_main():
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 11
+    plot_mode = 1
 
     if plot_mode == 1:
-        plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
+        for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
+            plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
         ver = '2'
         for ver in ['1', '2']:
@@ -64,8 +65,8 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
     plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
     plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = '#03AF7A', linewidth=linewidth)
     plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
-    plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
-    plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
+    plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way(Proposal I)', color = '#FF4B00', linewidth=linewidth)
+    plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim(Proposal II)', color = '#F6AA00', linewidth=linewidth)
     plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
     plt.ylabel('SNR[dB]')
