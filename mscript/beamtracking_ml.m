@@ -100,12 +100,24 @@ function beamtracking_ml(output_name)
     offset_x = 320;
     offset_y = 508;
     turn_y = -1;
-  elseif strcmp(output_name(1:5), 'paris')
+  elseif strcmp(output_name(1:6), 'paris_')
     scenario = 'paris';
     offset_x = 3459;
     offset_y = 2481;
     turn_y = -1;
     tilt = -26;
+  elseif strcmp(output_name(1:6), 'paris2')
+    scenario = 'paris2';
+    offset_x = 4420;
+    offset_y = 3569;
+    turn_y = -1;
+    tilt = 4.08;
+  elseif strcmp(output_name(1:7), 'charles')
+    scenario = 'charles';
+    offset_x = 634;
+    offset_y = 394;
+    turn_x = -1;
+    tilt = 0.27;
   end
 
   %% システムパラメータ

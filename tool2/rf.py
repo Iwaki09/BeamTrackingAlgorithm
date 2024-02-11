@@ -40,8 +40,8 @@ df = df.sample(frac=0.05)
 
 ss = StandardScaler()
 # X = ss.fit_transform(df[['dist', 'speed', 'accel_abs']].to_numpy())
-# X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
-X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
+X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
+# X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
 # X = ss.fit_transform(df[['x', 'y', 'speed']].to_numpy())
 y = df['best'].to_numpy()
 
@@ -51,7 +51,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # SVMモデルの作成と学習
 
 # ランダムフォレストモデルの作成と学習
-rf_model = RandomForestClassifier(n_estimators=200, random_state=42)
+rf_model = RandomForestClassifier(n_estimators=1, random_state=42)
 rf_model.fit(X_train, y_train)
 
 # テストデータでの予測
@@ -74,14 +74,14 @@ with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer.writerow(ss.scale_)
     writer.writerow(ss.mean_)
 
-# [dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
-[angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
-data = np.array([angle, angle_diff]).reshape(1, -1)
+[dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
+# [angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
+data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
 prediction1 = rf_model.predict(data)
 
-# [dist, speed, angle, angle_diff] = ([19, 14, 111, 0.24] - ss.mean_) / ss.scale_
-[angle, angle_diff] = ([111, 0.24] - ss.mean_) / ss.scale_
-data = np.array([angle, angle_diff]).reshape(1, -1)
+[dist, speed, angle, angle_diff] = ([19, 14, 70, 0.24] - ss.mean_) / ss.scale_
+# [angle, angle_diff] = ([111, 0.24] - ss.mean_) / ss.scale_
+data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
 prediction2 = rf_model.predict(data)
 
 print(prediction1, prediction2)

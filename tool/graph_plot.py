@@ -8,15 +8,16 @@ def plot_main():
     input_dir2 = './ml_result'
     output_dir = './ml_result'
     #              0            1            2            3           4             5        6             7           8          9
-    scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris']
+    scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris', 
+                 'paris2', 'charles']
     tags = ['']
 
-    scenario = scenarios[9]
+    scenario = scenarios[11]
 
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 11
+    plot_mode = 1
 
     if plot_mode == 1:
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
@@ -43,25 +44,25 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
         if len(df['x']) < len(min_df_x):
             min_df_x = df['x']
 
-    if (min_df_x.equals(dfs[0]['x'])):
-        df_non = pd.read_csv(scenario_path+'_2way2.csv', names=['x', 'SNR_non'])
-    elif (min_df_x.equals(dfs[1]['x'])):
-        df_non = pd.read_csv(scenario_path+'_2dim2.csv', names=['x', 'SNR_non'])
-    else:
-        df_non = pd.read_csv(scenario_path+'_4way2.csv', names=['x', 'SNR_non'])
+    # if (min_df_x.equals(dfs[0]['x'])):
+    #     df_non = pd.read_csv(scenario_path+'_2way2.csv', names=['x', 'SNR_non'])
+    # elif (min_df_x.equals(dfs[1]['x'])):
+    #     df_non = pd.read_csv(scenario_path+'_2dim2.csv', names=['x', 'SNR_non'])
+    # else:
+    #     df_non = pd.read_csv(scenario_path+'_4way2.csv', names=['x', 'SNR_non'])
 
-    df_2way = df_2way.iloc[:len(min_df_x)]
-    df_2dim = df_2dim.iloc[:len(min_df_x)]
-    df_4way = df_4way.iloc[:len(min_df_x)]
+    # df_2way = df_2way.iloc[:len(min_df_x)]
+    # df_2dim = df_2dim.iloc[:len(min_df_x)]
+    # df_4way = df_4way.iloc[:len(min_df_x)]
 
-    df_all = pd.DataFrame({
-        'x': df_2way['x'],
-        'SNR_opt': df_2way['SNR_o'],
-        'SNR_con': df_2way['SNR_2way'],
-        'SNR_swe': df_2way['SNR_s'],
-        'SNR_2dim': df_2dim['SNR_2dim'],
-        'SNR_4way': df_4way['SNR_4way'],
-    })
+    # df_all = pd.DataFrame({
+    #     'x': df_2way['x'],
+    #     'SNR_opt': df_2way['SNR_o'],
+    #     'SNR_con': df_2way['SNR_2way'],
+    #     'SNR_swe': df_2way['SNR_s'],
+    #     'SNR_2dim': df_2dim['SNR_2dim'],
+    #     'SNR_4way': df_4way['SNR_4way'],
+    # })
 
     # print(df_2dim)
     plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
@@ -69,7 +70,7 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
     plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
     plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way(Proposal I)', color = '#FF4B00', linewidth=linewidth)
     plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim(Proposal II)', color = '#F6AA00', linewidth=linewidth)
-    plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
+    # plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
     plt.ylabel('SNR[dB]')
     plt.xlim(5, 60.1)
