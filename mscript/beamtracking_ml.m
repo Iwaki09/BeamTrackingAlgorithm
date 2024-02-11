@@ -17,7 +17,7 @@ function beamtracking_ml(output_name)
 
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。
   % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
-  file_write = 13;
+  file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
   output_dir = '../datasource';

@@ -7,20 +7,21 @@ def plot_main():
     input_dir1 = './datasource'
     input_dir2 = './ml_result'
     output_dir = './ml_result'
-    #              0            1            2            3           4             5        6             7           8
-    scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri']
+    #              0            1            2            3           4             5        6             7           8          9
+    scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris']
     tags = ['']
 
-    scenario = scenarios[8]
+    scenario = scenarios[9]
 
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 11
+    plot_mode = 1
 
     if plot_mode == 1:
-        for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
-            plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
+        plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
+        # for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
+        #     plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
         ver = '2'
         for ver in ['1', '2']:
