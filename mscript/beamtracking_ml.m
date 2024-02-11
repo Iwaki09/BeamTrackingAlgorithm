@@ -63,6 +63,8 @@ function beamtracking_ml(output_name)
   turn_x = 1;
   offset_y = 0;
   turn_y = 1;
+  % 右上に傾いているなら-をつける。
+  tilt = 0;
   % 新しいシナリオを使う時はここを編集
   if strcmp(output_name(1:6), 'direct')
     scenario = 'direct';
@@ -308,8 +310,11 @@ function beamtracking_ml(output_name)
 
       vehicleID = 't_0'; % 取得したい車両のIDに置き換える
       position = traci.vehicle.getPosition(vehicleID);
-      position(1) = turn_x * (position(1) - offset_x);
-      position(2) = turn_y * (position(2) - offset_y);
+      tmp_x = turn_x * (position(1) - offset_x);
+      tmp_y = turn_y * (position(2) - offset_y);
+      % 回転
+      position(1) = tmp_x * cosd(tilt) - tmp_y * sind(tilt);
+      position(2) = tmp_x * sind(tilt) + tmp_y * cosd(tilt);
       % disp(['車両位置 (x, y): ', num2str(position)]);
 
       accel = traci.vehicle.getPosition(vehicleID);
