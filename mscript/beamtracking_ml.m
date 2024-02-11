@@ -140,7 +140,7 @@ function beamtracking_ml(output_name)
   orz  = 0;
 
   % 捕捉開始SNR [dB]
-  snr_cap = -15;
+  snr_cap = -150;
 
   % 送信電力 - フィーダ損失
   Ptx = dbm2real(40-3)/(n_du);  
