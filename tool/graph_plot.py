@@ -16,7 +16,7 @@ def plot_main():
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 1
+    plot_mode = 11
 
     if plot_mode == 1:
         for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
@@ -24,7 +24,7 @@ def plot_main():
     elif plot_mode == 11:
         ver = '2'
         for ver in ['1', '2']:
-            for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
+            for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'korakuen']:
                 plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
 
 
