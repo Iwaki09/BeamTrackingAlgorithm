@@ -17,7 +17,7 @@ function beamtracking_ml(output_name)
 
   % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。
   % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
-  file_write = 11;
+  file_write = 13;
 
   % 上記のファイルを書き出す先。..にすること
   output_dir = '../datasource';
@@ -63,7 +63,7 @@ function beamtracking_ml(output_name)
   turn_x = 1;
   offset_y = 0;
   turn_y = 1;
-  % 右上に傾いているなら-をつける。
+  % 右上に傾いているなら-をつける。ただし、turn_xかturn_yが-1なら逆になる。
   tilt = 0;
   % 新しいシナリオを使う時はここを編集
   if strcmp(output_name(1:6), 'direct')
@@ -100,11 +100,12 @@ function beamtracking_ml(output_name)
     offset_x = 320;
     offset_y = 508;
     turn_y = -1;
-  elseif strcmp(output_name(1:7), 'paris')
+  elseif strcmp(output_name(1:5), 'paris')
     scenario = 'paris';
     offset_x = 3459;
     offset_y = 2481;
     turn_y = -1;
+    tilt = -26;
   end
 
   %% システムパラメータ
@@ -315,10 +316,17 @@ function beamtracking_ml(output_name)
       % 回転
       position(1) = tmp_x * cosd(tilt) - tmp_y * sind(tilt);
       position(2) = tmp_x * sind(tilt) + tmp_y * cosd(tilt);
-      % disp(['車両位置 (x, y): ', num2str(position)]);
 
       accel = traci.vehicle.getPosition(vehicleID);
       direction = traci.vehicle.getAngle(vehicleID);
+      if turn_x == -1
+        direction = 360 - direction;
+      end
+      if turn_y == -1
+        direction = 180 - direction;
+      end
+      direction = direction - tilt;
+      
 
       % if direct_or_not == 1
       %   % カーブ
