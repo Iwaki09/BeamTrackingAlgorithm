@@ -140,7 +140,7 @@ function beamtracking_ml(output_name)
   orz  = 0;
 
   % 捕捉開始SNR [dB]
-  snr_cap = -150;
+  snr_cap = 15;
 
   % 送信電力 - フィーダ損失
   Ptx = dbm2real(40-3)/(n_du);  
@@ -579,7 +579,7 @@ function beamtracking_ml(output_name)
           x_est = (dy_k+y_est) / tand(a_est) + 30;
 
           SNR_0 = SNR;
-    
+
           if a_est < a_fin
             state = 'wait';
             Wt_ini = Wt;
