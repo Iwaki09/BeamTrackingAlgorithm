@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-02-12 00:46:03 by Eclipse SUMO netedit Version 1.19.0
+<!-- generated on 2024-02-12 03:21:57 by Eclipse SUMO netedit Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/neteditConfiguration.xsd">
 
     <input>
@@ -2494,6 +2494,9 @@
         <lane id=":J0_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="0.36" shape="614.17,391.94 614.12,391.93 614.08,391.93 614.05,391.93 613.99,391.93"/>
         <lane id=":J0_0_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="0.36" shape="614.55,388.76 614.39,388.74 614.28,388.73 614.17,388.73 614.01,388.73"/>
     </edge>
+    <edge id=":J1_0" function="internal">
+        <lane id=":J1_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="19.44" length="0.10" shape="660.91,253.13 660.91,253.13"/>
+    </edge>
 
     <edge id="-1009959438#0" from="9318511858" to="9318511854" priority="1" type="highway.service">
         <lane id="-1009959438#0_0" index="0" allow="pedestrian delivery bicycle" speed="5.56" length="5.53" shape="340.74,199.55 335.23,199.10"/>
@@ -3110,8 +3113,11 @@
     <edge id="13884100#5" from="2444019165" to="2444019160" priority="11" type="highway.secondary" spreadType="center">
         <lane id="13884100#5_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="19.44" length="17.08" shape="733.00,258.81 715.99,257.30"/>
     </edge>
-    <edge id="13884100#6" from="2444019160" to="130559636" priority="11" type="highway.secondary" spreadType="center">
-        <lane id="13884100#6_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="19.44" length="56.34" shape="693.88,255.62 637.70,251.38"/>
+    <edge id="13884100#6" from="2444019160" to="J1" priority="11" type="highway.secondary" spreadType="center">
+        <lane id="13884100#6_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="19.44" length="33.06" shape="693.88,255.62 660.91,253.13"/>
+    </edge>
+    <edge id="13884100#6.53" from="J1" to="130559636" priority="11" type="highway.secondary" spreadType="center">
+        <lane id="13884100#6.53_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="19.44" length="23.27" shape="660.91,253.13 637.70,251.38"/>
     </edge>
     <edge id="13884126#0" from="130545172" to="130546427" priority="4" type="highway.unclassified" shape="338.25,34.33 339.41,48.74 341.57,75.40 337.46,108.67 330.53,129.55 321.51,146.72 309.55,164.59 295.52,179.44">
         <lane id="13884126#0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="155.93" shape="339.84,34.20 341.00,48.61 343.18,75.43 339.03,109.02 332.01,130.18 322.89,147.54 310.81,165.59 299.06,178.02"/>
@@ -4710,7 +4716,7 @@
         <request index="0" response="00" foes="00" cont="0"/>
         <request index="1" response="00" foes="00" cont="0"/>
     </junction>
-    <junction id="130559636" type="priority" x="636.00" y="251.25" incLanes="13884100#6_0" intLanes=":130559636_0_0 :130559636_1_0" shape="637.58,252.97 637.82,249.78 622.12,248.60 621.88,251.79 621.90,252.17 622.47,255.32 625.67,254.63 628.04,253.98 629.99,253.42 631.94,253.02 634.33,252.85">
+    <junction id="130559636" type="priority" x="636.00" y="251.25" incLanes="13884100#6.53_0" intLanes=":130559636_0_0 :130559636_1_0" shape="637.58,252.97 637.82,249.78 622.12,248.60 621.88,251.79 621.90,252.17 622.47,255.32 625.67,254.63 628.04,253.98 629.99,253.42 631.94,253.02 634.33,252.85">
         <request index="0" response="00" foes="00" cont="0"/>
         <request index="1" response="00" foes="00" cont="0"/>
     </junction>
@@ -5812,6 +5818,9 @@
         <request index="0" response="00" foes="00" cont="0"/>
         <request index="1" response="00" foes="00" cont="0"/>
     </junction>
+    <junction id="J1" type="priority" x="660.91" y="253.13" incLanes="13884100#6_0" intLanes=":J1_0_0" shape="660.79,254.72 661.03,251.53 660.79,254.72">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
 
     <junction id=":1123397505_9_0" type="internal" x="1043.20" y="389.49" incLanes=":1123397505_5_0 -96941446#0_0 96941460#0_0" intLanes=":1123397505_1_0 :1123397505_6_0"/>
     <junction id=":1123397505_10_0" type="internal" x="1040.16" y="393.87" incLanes=":1123397505_7_0 -96941460#1_0" intLanes=":1123397505_1_0 :1123397505_2_0 :1123397505_3_0 :1123397505_4_0"/>
@@ -6142,8 +6151,9 @@
     <connection from="13884100#4" to="13884100#5" fromLane="0" toLane="0" via=":2444019165_1_0" dir="s" state="M"/>
     <connection from="13884100#5" to="236366787" fromLane="0" toLane="0" via=":2444019160_0_0" dir="R" state="M"/>
     <connection from="13884100#5" to="13884100#6" fromLane="0" toLane="0" via=":2444019160_1_0" dir="s" state="M"/>
-    <connection from="13884100#6" to="13884624#0" fromLane="0" toLane="0" via=":130559636_0_0" dir="R" state="M"/>
-    <connection from="13884100#6" to="679116454" fromLane="0" toLane="0" via=":130559636_1_0" dir="s" state="M"/>
+    <connection from="13884100#6" to="13884100#6.53" fromLane="0" toLane="0" via=":J1_0_0" dir="s" state="M"/>
+    <connection from="13884100#6.53" to="13884624#0" fromLane="0" toLane="0" via=":130559636_0_0" dir="R" state="M"/>
+    <connection from="13884100#6.53" to="679116454" fromLane="0" toLane="0" via=":130559636_1_0" dir="s" state="M"/>
     <connection from="13884126#0" to="13884126#1" fromLane="0" toLane="0" via=":130546427_0_0" dir="s" state="M"/>
     <connection from="13884126#0" to="1080515069" fromLane="0" toLane="0" via=":130546427_1_0" dir="l" state="m"/>
     <connection from="13884126#1" to="191827275#3" fromLane="0" toLane="0" via=":130546432_2_0" dir="l" state="m"/>
@@ -7479,5 +7489,6 @@
     <connection from=":9903917253_0" to="-1080515069" fromLane="0" toLane="0" dir="t" state="M"/>
     <connection from=":J0_0" to="96941458.21" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from=":J0_0" to="96941458.21" fromLane="1" toLane="1" dir="s" state="M"/>
+    <connection from=":J1_0" to="13884100#6.53" fromLane="0" toLane="0" dir="s" state="M"/>
 
 </net>

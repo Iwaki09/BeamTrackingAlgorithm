@@ -20,7 +20,7 @@ function beamtracking_ml(output_name)
   file_write = 11;
 
   % 上記のファイルを書き出す先。..にすること
-  output_dir = '../ml_result';
+  output_dir = '../datasource';
 
   % グラフを保存するかどうか
   graph_save = 0;
@@ -114,10 +114,10 @@ function beamtracking_ml(output_name)
     tilt = 4.08;
   elseif strcmp(output_name(1:7), 'charles')
     scenario = 'charles';
-    offset_x = 634;
-    offset_y = 394;
+    offset_x = 660.82;
+    offset_y = 253;
     turn_x = -1;
-    tilt = 0.27;
+    tilt = 4.31;
   end
 
   %% システムパラメータ
