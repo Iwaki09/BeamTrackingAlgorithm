@@ -38,4 +38,12 @@ def svm_for_matlab_anglediff2(model_basename, scenario, x, y, speed, angle_prev)
     # tmp[2]はangle
     return [search_way, tmp[0], tmp]
 
+# model_basename = 'xgb_noacc_ad2'
+# scenario = 'korakuen'
+# x = 20
+# y = 16
+# speed = 5.5
+# angle_prev = 90
+
 res = svm_for_matlab_anglediff2(model_basename, scenario, x, y, speed, angle_prev)
+# print(res)
