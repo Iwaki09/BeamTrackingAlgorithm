@@ -17,7 +17,7 @@ def plot_main():
     linewidth = 2
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 1
+    plot_mode = 11
 
     if plot_mode == 1:
         plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
@@ -136,7 +136,7 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
     plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
     plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
     plt.plot(df_ml['x'], df_ml['SNR_ml'], label='ML', color = 'purple', linewidth=linewidth, linestyle='dashed')
-    plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
+    # plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
     plt.ylabel('SNR[dB]')
     plt.xlim(5, 60.1)
