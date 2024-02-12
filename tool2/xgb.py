@@ -52,8 +52,7 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
 
 # モデルの保存
-with open(os.path.join(ml_models_dir, model_name+'_model.pkl'), 'wb') as f:
-    pickle.dump(xgb_model, f)
+xgb_model.save_model(os.path.join(ml_models_dir, model_name+'_model.json'))
 with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer = csv.writer(f)
     writer.writerow(ss.scale_)
