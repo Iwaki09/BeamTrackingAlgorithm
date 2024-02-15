@@ -58,7 +58,11 @@ function beamtracking_ml(output_name)
   end
 
   if strcmp(model_basename(1:3), 'xgb')
-    model_type = 7;
+    if model_basename == 'xgb_noacc_ad'
+      model_type = 7;
+    elseif model_basename == 'xgb_noacc_ad2'
+      model_type = 8;
+    end
   end
   % シナリオの座標を0基準にする
   % 左向きに進むならturn_x = -1, 上に基地局があるならturn_y = -1
@@ -443,6 +447,10 @@ function beamtracking_ml(output_name)
               angle_ml = double(pyres(2))
               items = pyres(3)
             elseif model_type == 7
+              pyres = pyrunfile("xgb_for_matlab_ad.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+              angle_ml = double(pyres(2))
+              items = pyres(3)
+            elseif model_type == 8
               pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
               angle_ml = double(pyres(2))
               items = pyres(3)

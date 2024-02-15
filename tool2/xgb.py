@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 dataset_dir = './dataset'
 ml_models_dir = './ml_models'
-model_name = './xgb_noacc_ad2'
+model_name = './xgb_noacc_ad'
 
 file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
 
@@ -33,8 +33,8 @@ print(df.shape)
 '''
 
 ss = StandardScaler()
-# X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
-X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
+X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
+# X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
 y = df['best'].to_numpy()
 
 # データセットをトレーニングセットとテストセットに分割
@@ -58,14 +58,14 @@ with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
     writer.writerow(ss.scale_)
     writer.writerow(ss.mean_)
 
-# [dist, speed, angle, angle_diff] = [12, 7.5, 90, 0]
-[angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
-data = np.array([angle, angle_diff]).reshape(1, -1)
+[dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
+# [angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
+data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
 pre1 = xgb_model.predict(data)
 
-# [dist, speed, angle, angle_diff] = [19, 14, 111, 0.24]
-[angle, angle_diff] = ([111, 0.24] - ss.mean_) / ss.scale_
-data = np.array([angle, angle_diff]).reshape(1, -1)
+[dist, speed, angle, angle_diff] = ([19, 14, 111, 0.24] - ss.mean_) / ss.scale_
+# [angle, angle_diff] = ([111, 0.24] - ss.mean_) / ss.scale_
+data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
 pre2 = xgb_model.predict(data)
 
 print(pre1, pre2)
@@ -82,8 +82,8 @@ xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1),
                      np.arange(y_min, y_max, 0.1))
 
 # メッシュ上の各点で予測を行う
-Z = xgb_model.predict(np.c_[xx.ravel(), yy.ravel()])
-Z = Z.reshape(xx.shape)
+# Z = xgb_model.predict(np.c_[xx.ravel(), yy.ravel()])
+# Z = Z.reshape(xx.shape)
 
 
 # プロット
@@ -94,6 +94,6 @@ plt.colorbar()  # カラーバーの表示
 plt.xlabel('Angle')
 plt.ylabel('Angle Difference')
 plt.title('Predictions on Meshgrid Points')
-plt.show()
+# plt.show()
 
 
