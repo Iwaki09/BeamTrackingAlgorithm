@@ -29,7 +29,8 @@ def svm_for_matlab_anglediff(model_basename, scenario, x, y, speed, angle_prev):
     # print(stats[0])
 
     data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
-    prediction = model.predict(data)[0]
+    data_xgb = xgb.DMatrix(data)
+    prediction = model.predict(data_xgb)[0]
     prediction2 = 1 if prediction >= 0.5 else 0
 
     if prediction2 == 0:
