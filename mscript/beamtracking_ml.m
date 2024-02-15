@@ -57,12 +57,10 @@ function beamtracking_ml(output_name)
     model_type = 6;
   end
 
-  if strcmp(model_basename(1:3), 'xgb')
-    if model_basename == 'xgb_noacc_ad'
-      model_type = 7;
-    elseif model_basename == 'xgb_noacc_ad2'
-      model_type = 8;
-    end
+  if strcmp(model_basename, 'xgb_noacc_ad')
+    model_type = 7;
+  elseif strcmp(model_basename, 'xgb_noacc_ad2')
+    model_type = 8;
   end
   % シナリオの座標を0基準にする
   % 左向きに進むならturn_x = -1, 上に基地局があるならturn_y = -1
