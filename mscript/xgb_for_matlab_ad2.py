@@ -1,4 +1,3 @@
-import pickle
 import pandas as pd
 import numpy as np
 import os
@@ -30,12 +29,12 @@ def svm_for_matlab_anglediff2(model_basename, scenario, x, y, speed, angle_prev)
     data = np.array([angle, angle_diff]).reshape(1, -1)
     data_xgb = xgb.DMatrix(data)
     prediction = model.predict(data_xgb)[0]
-    prediction2 = 1 if prediction >= 0.5 else 0
+    # prediction2 = 1 if prediction >= 0.5 else 0
 
-    if prediction2 == 0:
-        search_way = 22
-    elif prediction2 == 1:
-        search_way = 4
+    # if prediction2 == 0:
+    #     search_way = 22
+    # elif prediction2 == 1:
+    #     search_way = 4
 
     # tmp[2]はangle
     return [search_way, tmp[0], tmp]
