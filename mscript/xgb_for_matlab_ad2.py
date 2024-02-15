@@ -28,11 +28,12 @@ def svm_for_matlab_anglediff2(model_basename, scenario, x, y, speed, angle_prev)
     # print(stats[0])
 
     data = np.array([angle, angle_diff]).reshape(1, -1)
-    prediction = model.predict(data)
+    prediction = model.predict(data)[0]
+    prediction2 = 1 if prediction >= 0.5 else 0
 
-    if prediction[0] == 0:
+    if prediction2 == 0:
         search_way = 22
-    elif prediction[0] == 1:
+    elif prediction2 == 1:
         search_way = 4
 
     # tmp[2]はangle
