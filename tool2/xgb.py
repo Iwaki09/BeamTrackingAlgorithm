@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 dataset_dir = './dataset'
 ml_models_dir = './ml_models'
-model_name = './xgb_noacc_ad'
+model_name = './xgb_noacc_absad'
 
 file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
 

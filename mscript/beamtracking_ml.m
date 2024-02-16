@@ -35,7 +35,7 @@ function beamtracking_ml(output_name)
   angle_diff_mode = 2;
 
   % svm_modelの名前
-  model_basename = 'xgb_noacc_ad2';
+  model_basename = 'xgb_noacc_ad';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')
@@ -100,6 +100,7 @@ function beamtracking_ml(output_name)
     offset_x = 1123;
     offset_y = 1462;
     turn_y = -1;
+    tilt = -0.5;
   elseif strcmp(output_name(1:7), 'yomiuri')
     scenario = 'yomiuri';
     offset_x = 320;
@@ -430,30 +431,49 @@ function beamtracking_ml(output_name)
             if model_type == 1
               pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d_2dim, speed=speed_abs, accel=accel_abs);
               items = [d, speed, accel_abs]
+              search_way = int16(pyres(1))
             elseif model_type == 2
               pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed)
+              search_way = int16(pyres(1))
             elseif model_type == 3
               pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
+              search_way = int16(pyres(1))
             elseif model_type == 4
               pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
+              search_way = int16(pyres(1))
             elseif model_type == 5
               pyres = pyrunfile("svm_for_matlab_anglediff.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
               angle_ml = double(pyres(2))
               items = pyres(3)
+              search_way = int16(pyres(1))
             elseif model_type == 6
               pyres = pyrunfile("svm_for_matlab_anglediff2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
               angle_ml = double(pyres(2))
               items = pyres(3)
+              search_way = int16(pyres(1))
             elseif model_type == 7
-              pyres = pyrunfile("xgb_for_matlab_ad.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
-              angle_ml = double(pyres(2))
-              items = pyres(3)
+              python_cmd = 'python';
+              script_name = 'xgb_for_matlab_ad.py';
+              command_str = sprintf('%s %s %s %s %d %d %d %d', python_cmd, script_name, model_basename, scenario, x_est, y_est, speed, angle_ml);
+              [status, result] = system(command_str);
+              result = strsplit(result, ' ');
+              % pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+              search_way = str2num(result{1});
+              angle_ml = str2double(result{2});
+              angle_diff = str2double(result{3});
+              [RU.ary.x, direction, angle_ml, angle_diff, search_way]
             elseif model_type == 8
-              pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
-              angle_ml = double(pyres(2))
-              items = pyres(3)
+              python_cmd = 'python';
+              script_name = 'xgb_for_matlab_ad2_new.py';
+              command_str = sprintf('%s %s %s %s %d %d %d %d', python_cmd, script_name, model_basename, scenario, x_est, y_est, speed, angle_ml);
+              [status, result] = system(command_str);
+              result = strsplit(result, ' ');
+              % pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+              search_way = str2num(result{1});
+              angle_ml = str2double(result{2});
+              angle_diff = str2double(result{3});
+              [RU.ary.x, direction, angle_ml, angle_diff, search_way]
             end
-            search_way = int16(pyres(1))
           end
 
           v_prev = v_est;

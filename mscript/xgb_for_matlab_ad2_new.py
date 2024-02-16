@@ -22,7 +22,6 @@ ml_models_dir = '../ml_models'
 df_guide = pd.read_csv(os.path.join(ml_models_dir, scenario+'_guide.csv'), names=['x', 'y', 'angle'])
 nearest_x = df_guide.iloc[(df_guide['x'] - x).abs().idxmin()]['x']
 angle = df_guide[df_guide['x'] == nearest_x]['angle'].values[0]
-dist = np.sqrt((30-x)**2 + (y+5)**2)
 
 angle_diff = angle - angle_prev
 
@@ -31,14 +30,14 @@ model = xgb.Booster({'nthread': 4})
 model.load_model(os.path.join(ml_models_dir, model_basename+'_model.json'))
 
 # 1行目がscale, 2行目がmean
-stats = pd.read_csv(os.path.join(ml_models_dir, model_basename+'_stats.csv'), names=['dist', 'speed', 'angle', 'angle_diff']).to_numpy()
+stats = pd.read_csv(os.path.join(ml_models_dir, model_basename+'_stats.csv'), names=['angle', 'angle_diff']).to_numpy()
 # データを標準化
-[dist, speed, angle, angle_diff] = ([dist, speed, angle, angle_diff] - stats[1]) / stats[0]
+[angle, angle_diff] = ([angle, angle_diff] - stats[1]) / stats[0]
 # デバッグ用
-tmp = [dist, speed, angle, angle_diff] * stats[0] + stats[1]
+tmp = [angle, angle_diff] * stats[0] + stats[1]
 # print(stats[0])
 
-data = np.array([dist, speed, angle, angle_diff]).reshape(1, -1)
+data = np.array([angle, angle_diff]).reshape(1, -1)
 data_xgb = xgb.DMatrix(data)
 prediction = model.predict(data_xgb)[0]
 prediction2 = 1 if prediction >= 0.5 else 0
@@ -48,4 +47,4 @@ if prediction2 == 0:
 elif prediction2 == 1:
     search_way = 4
 
-print(search_way, tmp[2], tmp[3])
+print(search_way, tmp[0], tmp[1])
