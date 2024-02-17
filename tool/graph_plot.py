@@ -24,7 +24,7 @@ def plot_main():
         # for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
         #     plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
     elif plot_mode == 11:
-        ver = '3'
+        ver = '1'
         plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
         # for ver in ['1', '2']:
         #     for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'korakuen']:
