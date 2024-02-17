@@ -32,10 +32,10 @@ function beamtracking_ml(output_name)
   no_guide = 1;
 
   % angle_diffモード　2ならangleとangle_diffだけ
-  angle_diff_mode = 2;
+  angle_diff_mode = 1;
 
   % svm_modelの名前
-  model_basename = 'xgb_noacc_ad2';
+  model_basename = 'svm_noacc_ad';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')
