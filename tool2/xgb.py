@@ -33,8 +33,8 @@ print(df.shape)
 '''
 
 ss = StandardScaler()
-X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
-# X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
+# X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
+X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
 y = df['best'].to_numpy()
 
 # データセットをトレーニングセットとテストセットに分割
@@ -52,11 +52,11 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
 
 # モデルの保存
-xgb_model.save_model(os.path.join(ml_models_dir, model_name+'_model.json'))
-with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
-    writer = csv.writer(f)
-    writer.writerow(ss.scale_)
-    writer.writerow(ss.mean_)
+# xgb_model.save_model(os.path.join(ml_models_dir, model_name+'_model.json'))
+# with open(os.path.join(ml_models_dir, model_name+'_stats.csv'), 'w') as f:
+#     writer = csv.writer(f)
+#     writer.writerow(ss.scale_)
+#     writer.writerow(ss.mean_)
 
 [dist, speed, angle, angle_diff] = ([12, 7.5, 90, 0] - ss.mean_) / ss.scale_
 # [angle, angle_diff] = ([90, 0] - ss.mean_) / ss.scale_
