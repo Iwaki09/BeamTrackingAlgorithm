@@ -1,10 +1,7 @@
-% beamtracking_ml_('curve_r60_ml_2dim')
-% 引数の仕様：prefix: scenario名, suffix: ml, 4wayなど
-
-function beamtracking_ml(output_name)
+function beamtracking_ml(scenarioPath, output_name)
   clc
 
-  scenarioPath = '../datasource/curve_r60.sumocfg';
+  % scenarioPath = '../datasource/curve_r60.sumocfg';
   [traciVersion,sumoVersion] = traci.start(['sumo -c ' '"' scenarioPath '"']);
 
   % 特に重要なパラメータ

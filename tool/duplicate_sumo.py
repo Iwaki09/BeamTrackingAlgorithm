@@ -7,8 +7,8 @@ import xml.etree.ElementTree as ET
 
 # ファイルの読み込みとxmlツールの設定
 
-datasource_dir = './datasource'
-output_rootdir = './sumo_xml'
+input_dir = './sumo/original'
+output_rootdir = './sumo/duplicated'
 
 scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
 
@@ -17,9 +17,9 @@ for scenario in scenarios:
     output_dir = os.path.join(output_rootdir, scenario)
     os.mkdir(output_dir)
 
-    net_xml_filename = os.path.join(datasource_dir, scenario+'.net.xml')
-    rou_xml_filename = os.path.join(datasource_dir, scenario+'.rou.xml')
-    sumocfg_filename = os.path.join(datasource_dir, scenario+'.sumocfg')
+    net_xml_filename = os.path.join(input_dir, scenario+'.net.xml')
+    rou_xml_filename = os.path.join(input_dir, scenario+'.rou.xml')
+    sumocfg_filename = os.path.join(input_dir, scenario+'.sumocfg')
 
     tree_net = ET.parse(net_xml_filename)
     tree_rou = ET.parse(rou_xml_filename)
