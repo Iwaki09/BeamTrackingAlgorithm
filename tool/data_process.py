@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-sumo_xml_dir = './sumo_xml'
 input_dir = './result'
 output_dir = './dataset'
 matlab_dir = './mscript'

@@ -1,7 +1,8 @@
 function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir, graph_save)
   arguments
+    output_name = '';
     % グラフプロットの有無。0ならなし。1ならあり。
-    f_plot = 0
+    f_plot = 0;
     % 1なら実際の速度を、2なら予測速度をプロットする。
     speed_plot = 1;
     % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。

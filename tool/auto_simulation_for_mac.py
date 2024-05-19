@@ -23,4 +23,5 @@ for scenario in scenarios:
                 cmd2 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + filename + '_2dim\', 0, 1, 12, \'../' + output_subdir + '\', 0)\"'
                 subprocess.call(cmd2, shell=True)
                 cmd3 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + filename + '_4way\', 0, 1, 12, \'../' + output_subdir + '\', 0)\"'
+                subprocess.call(cmd1, shell=True)
                 subprocess.call(cmd3, shell=True)
