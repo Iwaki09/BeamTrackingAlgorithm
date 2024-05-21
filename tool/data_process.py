@@ -29,8 +29,10 @@ for scenario in scenarios:
                 # df_2dim['best'] = 0 if (df_2dim['SNR_2dim'] > df_2dim['SNR_4way']) else 1
                 df_2dim['best'] = df_2dim.apply(lambda row: 0 if row['SNR_2dim'] > row['SNR_4way'] else 1, axis=1)
                 # print(df_2dim)
+                df_2dim['angle_diff'] = df_2dim['angle'].diff()
+                df_2dim['angle_diff'].fillna(0, inplace=True)
 
-                df_all = pd.concat([df_all, df_2dim[['x', 'y', 'dist', 'speed', 'accel_x', 'accel_y', 'angle', 'best']]])
+                df_all = pd.concat([df_all, df_2dim[['x', 'y', 'dist', 'speed', 'accel_x', 'accel_y', 'angle', 'angle_diff', 'best']]])
 
     df_all['accel_abs'] = (df_all['accel_x'] ** 2 + df_all['accel_y'] ** 2) ** 0.5
     df_all.to_csv(output_dir+'/'+'all_dataset_'+scenario+'.csv')

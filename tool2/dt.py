@@ -12,19 +12,20 @@ import pickle
 
 import numpy as np
 
-dataset_dir = './dataset'
-ml_models_dir = './ml_models'
-model_name = './dt_noacc_basic'
+dataset_dir = './dataset/all'
+ml_models_dir = './model'
+model_name = './dt_noacc_basic_cha'
 
-file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
+# file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
+file_list = ['all_dataset_charles.csv']
 
 # 全てのCSVファイルを読み込んでDataFrameに結合
 df = pd.concat([pd.read_csv(os.path.join(dataset_dir, file)) for file in file_list], ignore_index=True)
 print(df.shape)
 
 # 間引く
-# interval = 1
-# df = df.iloc[::interval]
+interval = 100
+df = df.iloc[::interval]
 
 '''
 位置(x), 位置(y), 基地局からの距離, 速度, 加速度x, 加速度y, 向き, SNRが良いほう(2dimなら0, 4wayなら1), accel絶対値
