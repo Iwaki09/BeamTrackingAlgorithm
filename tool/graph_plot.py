@@ -9,8 +9,8 @@ import os
 
 def plot_main():
     input_dir1 = './datasource'
-    input_dir2 = './ml_result'
-    output_dir = './ml_result'
+    input_dir2 = './result'
+    output_dir = './result'
     #              0            1            2            3           4             5        6             7           8          9
     scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris', 
                  'paris2', 'charles']
