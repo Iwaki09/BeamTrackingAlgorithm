@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-02-12 00:11:13 by Eclipse SUMO netedit Version 1.19.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <vType id="my_car" length="5.0" maxSpeed="0.01" accel="2.6" decel="4.5"/>
+    <trip id="t_0" depart="0.00" departLane="0" arrivalLane="2" from="816466391#2.28.9" to="816466391#3"/>
+    <trip id="t_1" depart="0.00" departLane="1" departSpeed="3.00" arrivalLane="1" from="816466391#2.28.9" to="816466391#2.28.9"/>
+    <trip id="t_2" depart="0.00" departLane="1" departPos="6.00" arrivalLane="1" from="816466391#2.28.9" to="816466391#2.28.9"/>
+    <trip id="t_3" depart="0.00" departLane="1" departPos="12.00" arrivalLane="1" type="my_car" from="816466391#2.28.9" to="816466391#2.28.9"/>
+</routes>
