@@ -9,7 +9,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
     % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
     file_write = 11;
     % 上記のファイルを書き出す先。..にすること
-    output_dir = '../ml_result';
+    output_dir = '../result';
     % グラフを保存するかどうか
     graph_save = 0;
   end

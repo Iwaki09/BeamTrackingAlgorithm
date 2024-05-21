@@ -16,7 +16,7 @@ def plot_main():
                  'paris2', 'charles']
     tags = ['']
 
-    scenario = scenarios[7]
+    scenario = scenarios[11]
 
     linewidth = 2
 
