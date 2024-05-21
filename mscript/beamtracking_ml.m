@@ -31,7 +31,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   angle_diff_mode = 2;
 
   % svm_modelの名前
-  model_basename = 'dt_noacc_basic';
+  model_basename = 'dt_noacc_basic_cha';
   if strcmp(model_basename(5:9), 'nodir')
     model_type = 1;
   elseif strcmp(model_basename(5:9), 'noacc')
