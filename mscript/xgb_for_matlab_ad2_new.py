@@ -16,7 +16,7 @@ speed = float(sys.argv[5])
 angle_prev = float(sys.argv[6])
 
 
-ml_models_dir = '../ml_models'
+ml_models_dir = '../models'
 
 # ガイドファイルを読み込んで、xからdistとangleを計算
 df_guide = pd.read_csv(os.path.join(ml_models_dir, scenario+'_guide.csv'), names=['x', 'y', 'angle'])
