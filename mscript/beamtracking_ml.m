@@ -435,11 +435,11 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
           speed_abs = sqrt(v_est^2 + vy_est^2);
           accel_abs = sqrt(accel_x^2 + accel_y^2);
 
-          if search_method == 'ml'
+          if strcmp(search_method, 'ml')
             python_cmd = 'python';
             script_name = 'ml_matlab.py';
             command_str = sprintf('%s %s %s %s %s %s %d %d %d %d', python_cmd, script_name, scenario, model_name, type, ver, x_est, y_est, speed, angle_ml);
-            [status, result] = system(command_str)
+            [status, result] = system(command_str);
             result = strsplit(result, ' ');
             search_way = str2num(result{1})
             datum = result{2};
@@ -657,63 +657,74 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
           ns = ns + 1;
       end
 
-      if f_plot == 0
-        switch state
-          case 'wait'
-            if file_write == 11
-              result_list2 = [result_list2; [RU.ary.x, SNR]];
-              writematrix(result_list2, output_file2);
-            elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
-              writematrix(result_list, output_file);
-            end
-          case 'track'
-            if file_write == 11
-              if search_method == 'ml'
-                result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s, search_way]];
-              else
-                result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
-              end
-              writematrix(result_list, output_file);
-            elseif file_write == 12
-              result_list = [result_list; [RU.ary.x, RU.ary.y, d_2dim, speed, accel, direction, SNR]];
-              writematrix(result_list, output_file);
-            elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
-              writematrix(result_list, output_file);
-            end
-        end
-      end
+      % if f_plot == 0
+      %   switch state
+      %     case 'wait'
+      %       if file_write == 11
+      %         result_list2 = [result_list2; [RU.ary.x, SNR]];
+      %         writematrix(result_list2, output_file2);
+      %       elseif file_write == 13
+      %         result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
+      %         writematrix(result_list, output_file);
+      %       end
+      %     case 'track'
+      %       if file_write == 11
+      %         if search_method == 'ml'
+      %           result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s, search_way]];
+      %         else
+      %           result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
+      %         end
+      %         writematrix(result_list, output_file);
+      %       elseif file_write == 12
+      %         result_list = [result_list; [RU.ary.x, RU.ary.y, d_2dim, speed, accel, direction, SNR]];
+      %         writematrix(result_list, output_file);
+      %       elseif file_write == 13
+      %         result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
+      %         writematrix(result_list, output_file);
+      %       end
+      %   end
+      % end
 
       if f_plot == 1      
         figure(1)
         subplot(2,1,1);
-        switch state
-          case 'wait', plot(RU.ary.x, SNR, '.', 'Color', [0.2 0.2 0.2]);
-            if file_write == 11
-              result_list2 = [result_list2; [RU.ary.x, SNR]];
-              writematrix(result_list2, output_file2);
-            elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
-              writematrix(result_list, output_file);
-            end
-          case 'track',
+      switch state
+        case 'wait',
+          if f_plot == 1
+            plot(RU.ary.x, SNR, '.', 'Color', [0.2 0.2 0.2]);
+          end
+          if file_write == 11
+            result_list2 = [result_list2; [RU.ary.x, SNR]];
+            writematrix(result_list2, output_file2);
+          elseif file_write == 13
+            result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
+            writematrix(result_list, output_file);
+          end
+        case 'track',
+          if f_plot == 1
             plot(RU.ary.x, SNR_o, '.', 'Color', 'blue', 'LineWidth', 1.0);
             hold on;
             % plot(RU.ary.x, SNR_c, '.', 'Color', mycolor('orange'), 'LineWidth', 1.0);
             plot(RU.ary.x, SNR_s, '.', 'Color', 'green', 'LineWidth', 1.0);
             plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
-            if file_write == 11
+          end
+          if file_write == 11
+            if search_method == 'ml'
+              result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s, search_way]];
+            else
               result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
-              writematrix(result_list, output_file);
-            elseif file_write == 12
-              result_list = [result_list; [RU.ary.x, RU.ary.y, d_2dim, speed, accel, direction, SNR]];
-              writematrix(result_list, output_file);
-            elseif file_write == 13
-              result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
-              writematrix(result_list, output_file);
             end
+            writematrix(result_list, output_file);
+          elseif file_write == 12
+            result_list = [result_list; [RU.ary.x, RU.ary.y, d_2dim, speed, accel, direction, SNR]];
+            writematrix(result_list, output_file);
+          elseif file_write == 13
+            result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
+            writematrix(result_list, output_file);
+          end
         end
+      end
+      if f_plot == 1
         fig = gcf; % 現在のフィギュアを取得
         fig.Position(3) = 500; % 幅を800ポイントに設定
         fig.Position(4) = 1000; % 高さを600ポイントに設定
