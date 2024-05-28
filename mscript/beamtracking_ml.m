@@ -32,6 +32,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   switch length(splitStr)
     case 2
       [scenario, search_method] = deal(splitStr{:});
+      scenario = 'korakuen';
     case 5
       [scenario, search_method, model_name, type, ver] = deal(splitStr{:});
     otherwise

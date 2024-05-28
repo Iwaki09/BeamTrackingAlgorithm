@@ -13,7 +13,8 @@ matplotlib.rcParams['ps.fonttype'] = 42
 @click.argument('plotlist', nargs=-1)
 @click.option('--linewidth', '--lw', type=int, default=2)
 @click.option('--ver', '--v')
-def plot_main(scenario, plotlist, linewidth, ver):
+@click.option('--scoreprint', '--s', is_flag=True)
+def plot_main(scenario, plotlist, linewidth, ver, scoreprint):
     input_dir1 = './datasource'
     input_dir2 = './result'
     output_dir = './result'
@@ -36,7 +37,7 @@ def plot_main(scenario, plotlist, linewidth, ver):
     # elif (plotmode == 'ml'):
     #     plotlist = ['']
     #     plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
-    plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist, linewidth)
+    plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist, linewidth, scoreprint)
 
 
 def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
@@ -97,11 +98,18 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
     plt.clf()
 
 
-def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist, linewidth):
+def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist, linewidth, scoreprint):
     scenario_path1 = os.path.join(input_dir1, scenario)
     scenario_path2 = os.path.join(input_dir2, scenario)
 
     dfs = []
+
+    if scoreprint:
+        df_2dim = pd.read_csv(scenario_path1+'_2dim.csv', names=['x', 'SNR_2dim', 'SNR_o', 'SNR_s'])
+        df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
+        df_2dim['SNR_4way'] = df_4way['SNR_4way']
+        df_2dim['SNR_4way'].fillna(0, inplace=True)
+        df_2dim['best'] = df_2dim.apply(lambda row: 22 if row['SNR_2dim'] > row['SNR_4way'] else 4, axis=1)
 
     for elem in plotlist:
         if elem in ['2way', 'opt', 'swe']:
@@ -120,6 +128,13 @@ def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist,
             df = pd.read_csv(scenario_path2+'-ml-'+modelname_specific+'-type'+type+'-ver'+ver+'.csv', names=['x', 'SNR_t', 'SNR_o', 'SNR_s', 'search_way'])
             dfs.append(df)
             plotlist.remove(elem)
+
+            if scoreprint:
+                print(df_2dim['best'])
+                print(df['search_way'])
+                correct = (df_2dim['best'] == df['search_way']).sum()
+                score = correct / len(df)
+                print("{}'s score: {}".format(modelname, score))
     # df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
     # df_ml = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 
