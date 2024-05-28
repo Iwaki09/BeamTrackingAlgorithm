@@ -12,10 +12,15 @@ matplotlib.rcParams['ps.fonttype'] = 42
 @click.argument('scenario')
 @click.argument('plotlist', nargs=-1)
 @click.option('--linewidth', '--lw', type=int, default=2)
-def plot_main(scenario, plotlist, linewidth):
+@click.option('--ver', '--v')
+def plot_main(scenario, plotlist, linewidth, ver):
     input_dir1 = './datasource'
     input_dir2 = './result'
     output_dir = './result'
+    if ver:
+        output_filename = os.path.join(output_dir, scenario+'_SNR_ver'+ver+'.pdf')
+    else:
+        output_filename = os.path.join(output_dir, scenario+'_SNR.pdf')
     #              0            1            2            3           4             5        6             7           8          9
     # scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris', 
     #              'paris2', 'charles']
@@ -31,7 +36,7 @@ def plot_main(scenario, plotlist, linewidth):
     # elif (plotmode == 'ml'):
     #     plotlist = ['']
     #     plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
-    plot_individual(input_dir1, input_dir2, output_dir, scenario, plotlist, linewidth)
+    plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist, linewidth)
 
 
 def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
@@ -92,7 +97,7 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
     plt.clf()
 
 
-def plot_individual(input_dir1, input_dir2, output_dir, scenario, plotlist, linewidth):
+def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist, linewidth):
     scenario_path1 = os.path.join(input_dir1, scenario)
     scenario_path2 = os.path.join(input_dir2, scenario)
 
@@ -217,7 +222,7 @@ def plot_individual(input_dir1, input_dir2, output_dir, scenario, plotlist, line
     plt.ylim(0, 60)
     plt.grid(alpha=0.3)
     plt.legend(loc='upper right')
-    # plt.savefig(os.path.join(output_dir, scenario+'_SNR_all_ml_ver'+ver+'.pdf'))
+    plt.savefig(output_filename)
 
     # df_all.to_csv(output_dir+scenario_now+'_all.csv')
     # df_non.to_csv(output_dir+scenario_now+'_all2.csv')
