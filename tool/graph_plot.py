@@ -8,36 +8,30 @@ matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
 
-@click.comannd()
+@click.command()
 @click.argument('scenario')
-@click.argument('plotmode')
-
-def plot_main():
+@click.argument('plotlist', nargs=-1)
+@click.option('--linewidth', '--lw', type=int, default=2)
+def plot_main(scenario, plotlist, linewidth):
     input_dir1 = './datasource'
     input_dir2 = './result'
     output_dir = './result'
     #              0            1            2            3           4             5        6             7           8          9
-    scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris', 
-                 'paris2', 'charles']
-    tags = ['']
+    # scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris', 
+    #              'paris2', 'charles']
+    # tags = ['']
 
-    scenario = scenarios[11]
-
-    linewidth = 2
+    # scenario = scenarios[11]
 
     # 1: NoMLで単体 2: NoMLで全部(未完成) 11: MLをplot
-    plot_mode = 11
+    plotlist = list(plotlist)
 
-    if plot_mode == 1:
-        plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
-        # for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
-        #     plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
-    elif plot_mode == 11:
-        ver = '4'
-        plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
-        # for ver in ['1', '2']:
-        #     for scenario in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'korakuen']:
-        #         plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
+    # if (plotmode == 'normal') or (plotmode == 'n'):
+    #     plot_individual_normal(input_dir1, scenario, output_dir, linewidth)
+    # elif (plotmode == 'ml'):
+    #     plotlist = ['']
+    #     plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver)
+    plot_individual(input_dir1, input_dir2, output_dir, scenario, plotlist, linewidth)
 
 
 def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
@@ -98,52 +92,122 @@ def plot_individual_normal(input_dir, scenario, output_dir, linewidth):
     plt.clf()
 
 
-def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, ver):
+def plot_individual(input_dir1, input_dir2, output_dir, scenario, plotlist, linewidth):
     scenario_path1 = os.path.join(input_dir1, scenario)
     scenario_path2 = os.path.join(input_dir2, scenario)
 
-    df_2way = pd.read_csv(scenario_path1+'_2way.csv', names=['x', 'SNR_2way', 'SNR_o', 'SNR_s'])
-    df_2dim = pd.read_csv(scenario_path1+'_2dim.csv', names=['x', 'SNR_2dim', 'SNR_o', 'SNR_s'])
-    df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
-    df_ml = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
+    dfs = []
 
-    dfs = [df_2way, df_2dim, df_4way, df_ml]
+    for elem in plotlist:
+        if elem in ['2way', 'opt', 'swe']:
+            df= pd.read_csv(scenario_path1+'_2way.csv', names=['x', 'SNR_t', 'SNR_o', 'SNR_s'])
+            dfs.append(df)
+        if elem == '2dim':
+            df = pd.read_csv(scenario_path1+'_2dim.csv', names=['x', 'SNR_t', 'SNR_o', 'SNR_s'])
+            dfs.append(df)
+        if elem == '4way':
+            df = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_t', 'SNR_o', 'SNR_s'])
+            dfs.append(df)      
+        if '-' in elem:
+            modelname_specific, type, ver = elem.split('-')
+            modelname, specific = modelname_specific.split('_')
+            plotlist.append(modelname)
+            df = pd.read_csv(scenario_path2+'-ml-'+modelname_specific+'-type'+type+'-ver'+ver+'.csv', names=['x', 'SNR_t', 'SNR_o', 'SNR_s', 'search_way'])
+            dfs.append(df)
+            plotlist.remove(elem)
+    # df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
+    # df_ml = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 
+    # dfs = [df_2way, df_2dim, df_4way, df_ml]
+
+    '''黒部分
     min_df_x = dfs[0]['x']
     for df in dfs:
         if len(df['x']) < len(min_df_x):
             min_df_x = df['x']
 
-    if (min_df_x.equals(dfs[0]['x'])):
-        df_non = pd.read_csv(scenario_path1+'_2way2.csv', names=['x', 'SNR_non'])
-    elif (min_df_x.equals(dfs[1]['x'])):
-        df_non = pd.read_csv(scenario_path1+'_2dim2.csv', names=['x', 'SNR_non'])
-    elif (min_df_x.equals(dfs[2]['x'])):
-        df_non = pd.read_csv(scenario_path1+'_4way2.csv', names=['x', 'SNR_non'])
-    else:
-        df_non = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_non'])
+    print(min_df_x.shape)
+    for i, df in enumerate(dfs):
+        if min_df_x.equals(df['x']):
+            df_non = pd.read_csv(scenario_path1+'_'+plotlist[i]+'2.csv', names=['x', 'SNR_non'])
 
-    df_2way = df_2way.iloc[:len(min_df_x)]
-    df_2dim = df_2dim.iloc[:len(min_df_x)]
-    df_4way = df_4way.iloc[:len(min_df_x)]
-    df_ml = df_ml.iloc[:len(min_df_x)]
+        df = df.iloc[:len(min_df_x)]
+        print(df.shape)
+    '''
 
-    df_all = pd.DataFrame({
-        'x': df_2way['x'],
-        'SNR_opt': df_2way['SNR_o'],
-        'SNR_con': df_2way['SNR_2way'],
-        'SNR_swe': df_2way['SNR_s'],
-        'SNR_2dim': df_2dim['SNR_2dim'],
-        'SNR_4way': df_4way['SNR_4way'],
-        'SNR_ml': df_ml['SNR_ml'],
-    })
+    # if (min_df_x.equals(dfs[0]['x'])):
+    #     df_non = pd.read_csv(scenario_path1+'_2way2.csv', names=['x', 'SNR_non'])
+    # elif (min_df_x.equals(dfs[1]['x'])):
+    #     df_non = pd.read_csv(scenario_path1+'_2dim2.csv', names=['x', 'SNR_non'])
+    # elif (min_df_x.equals(dfs[2]['x'])):
+    #     df_non = pd.read_csv(scenario_path1+'_4way2.csv', names=['x', 'SNR_non'])
+    # else:
+    #     df_non = pd.read_csv(scenario_path2+'_ml_ver'+ver+'2.csv', names=['x', 'SNR_non'])
 
-    plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
-    plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = '#03AF7A', linewidth=linewidth)
-    plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
-    plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
-    plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
-    plt.plot(df_ml['x'], df_ml['SNR_ml'], label='ML', color = 'purple', linewidth=linewidth, linestyle='dashed')
+    # df_2way = df_2way.iloc[:len(min_df_x)]
+    # df_2dim = df_2dim.iloc[:len(min_df_x)]
+    # df_4way = df_4way.iloc[:len(min_df_x)]
+    # df_ml = df_ml.iloc[:len(min_df_x)]
+
+    # df_all = pd.DataFrame({
+    #     'x': df_2way['x'],
+    #     'SNR_opt': df_2way['SNR_o'],
+    #     'SNR_con': df_2way['SNR_2way'],
+    #     'SNR_swe': df_2way['SNR_s'],
+    #     'SNR_2dim': df_2dim['SNR_2dim'],
+    #     'SNR_4way': df_4way['SNR_4way'],
+    #     'SNR_ml': df_ml['SNR_ml'],
+    # })
+
+    plot_dict = {
+        '2way': {
+            'label': 'Conventional',
+            'color': '#03AF7A',
+        },
+        '2dim': {
+            'label': '2dim',
+            'color': '#F6AA00'
+        },
+        '4way': {
+            'label': '4way',
+            'color': '#FF4B00'
+        },
+        'opt': {
+            'label': 'Optimal',
+            'color': '#005AFF'
+        },
+        'swe': {
+            'label': 'Sweeping',
+            'color': '#4DC4FF',
+        },
+        'dt': {
+            'label': 'DT',
+            'color': '#f781bf',
+        },
+        'svm': {
+            'label': 'SVM',
+            'color': 'purple',
+        },
+        'xgb': {
+            'label': 'XGB',
+            'color': '#a65628',
+        },
+    }
+
+    for i, df in enumerate(dfs):
+        if plotlist[i] == 'opt':
+            plt.plot(df['x'], df['SNR_o'], label=plot_dict[plotlist[i]]['label'], color=plot_dict[plotlist[i]]['color'], linewidth=linewidth)
+        elif plotlist[i] == 'swe':
+            plt.plot(df['x'], df['SNR_s'], label=plot_dict[plotlist[i]]['label'], color=plot_dict[plotlist[i]]['color'], linewidth=linewidth)
+        else:
+            plt.plot(df['x'], df['SNR_t'], label=plot_dict[plotlist[i]]['label'], color=plot_dict[plotlist[i]]['color'], linewidth=linewidth)
+
+    # plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
+    # plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = '#03AF7A', linewidth=linewidth)
+    # plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
+    # plt.plot(df_4way['x'], df_4way['SNR_4way'], label='4way', color = '#FF4B00', linewidth=linewidth)
+    # plt.plot(df_2dim['x'], df_2dim['SNR_2dim'], label='2dim', color = '#F6AA00', linewidth=linewidth)
+    # plt.plot(df_ml['x'], df_ml['SNR_ml'], label='ML', color = 'purple', linewidth=linewidth, linestyle='dashed')
     # plt.plot(df_non['x'], df_non['SNR_non'], color = 'black', linewidth=linewidth)
     plt.xlabel('position[m]')
     plt.ylabel('SNR[dB]')
@@ -153,7 +217,7 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
     plt.ylim(0, 60)
     plt.grid(alpha=0.3)
     plt.legend(loc='upper right')
-    plt.savefig(os.path.join(output_dir, scenario+'_SNR_all_ml_ver'+ver+'.pdf'))
+    # plt.savefig(os.path.join(output_dir, scenario+'_SNR_all_ml_ver'+ver+'.pdf'))
 
     # df_all.to_csv(output_dir+scenario_now+'_all.csv')
     # df_non.to_csv(output_dir+scenario_now+'_all2.csv')
