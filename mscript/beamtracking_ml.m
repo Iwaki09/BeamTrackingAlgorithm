@@ -688,6 +688,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
       if f_plot == 1      
         figure(1)
         subplot(2,1,1);
+      end
       switch state
         case 'wait',
           if f_plot == 1
@@ -722,7 +723,6 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
             result_list = [result_list; [RU.ary.x, RU.ary.y, direction]];
             writematrix(result_list, output_file);
           end
-        end
       end
       if f_plot == 1
         fig = gcf; % 現在のフィギュアを取得
