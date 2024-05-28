@@ -9,10 +9,11 @@ import csv
 import os
 import pandas as pd
 import pickle
+import sys
 
-dataset_dir = './dataset'
-ml_models_dir = './ml_models'
-model_name = './dt_noacc_basic'
+dataset_dir = './dataset/all'
+ml_models_dir = './model'
+model_name = sys.argv[0]
 
 file_list = [file for file in os.listdir(dataset_dir) if file.startswith("all_dataset_")]
 

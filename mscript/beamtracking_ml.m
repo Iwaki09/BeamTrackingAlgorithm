@@ -1,5 +1,8 @@
 function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir, graph_save)
   arguments
+    % output_name: シナリオ名-探索方法 or シナリオ名-ml-モデル名-type-ver
+    % typeは1なら全部使う。2なら角度だけ。3なら全部使う(no_guide)
+    % モデル名はdt_charles or dt_generic みたいな感じ
     output_name = '';
     % グラフプロットの有無。0ならなし。1ならあり。
     f_plot = 0;
@@ -24,6 +27,18 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   % 速度更新のパラメータ
   alpha = 3;
 
+  splitStr = strsplit(output_name, '-');
+  switch length(splitStr)
+    case 2
+      [scenario, search_method] = deal(splitStr{:});
+    case 5
+      [scenario, search_method, model_name, type, ver] = deal(splitStr{:});
+    otherwise
+      warning('input is wrong.')
+  end
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % noguideモード(yを自前で用意する。distはガイドを使う(結局ガイド使ってる))
   no_guide = 1;
 
@@ -58,6 +73,8 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   elseif strcmp(model_basename, 'xgb_noacc_ad2')
     model_type = 8;
   end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
   % シナリオの座標を0基準にする
   % 左向きに進むならturn_x = -1, 上に基地局があるならturn_y = -1
   offset_x = 0;
@@ -67,23 +84,16 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   % 右上に傾いているなら-をつける。ただし、turn_xかturn_yが-1なら逆になる。
   tilt = 0;
   % 新しいシナリオを使う時はここを編集
-  if strcmp(output_name(1:6), 'direct')
-    scenario = 'direct';
-  elseif strcmp(output_name(1:9), 'curve_r30')
-    scenario = 'curve_r30';
-  elseif strcmp(output_name(1:9), 'curve_r40')
-    scenario = 'curve_r40';
-  elseif strcmp(output_name(1:9), 'curve_r60')
-    scenario = 'curve_r60';
-  elseif strcmp(output_name(1:10), 'curve_r150')
-    scenario = 'curve_r150';
-  elseif strcmp(output_name(1:7), 'okutama')
-    scenario = 'okutama';
+  if scenario == 'direct'
+  elseif scenario == 'curve_r30'
+  elseif scenario == 'curve_r40'
+  elseif scenario == 'curve_r60'
+  elseif scenario == 'curve_r150'
+  elseif scenario == 'okutama'
     offset_x = 180;
     offset_y = 130;
     turn_y = -1;
-  elseif strcmp(output_name(1:9), 'shinobazu')
-    scenario = 'shinobazu';
+  elseif scenario = 'shinobazu'
     % offset_x = 269;
     % offset_y = 348;
     % turn_y = -1;
@@ -91,36 +101,53 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
     turn_x = -1;
     offset_y = 347;
     turn_y = -1;
-  elseif strcmp(output_name(1:8), 'korakuen')
-    scenario = 'korakuen';
+  elseif scenario = 'korakuen'
     offset_x = 1123;
     offset_y = 1462;
     turn_y = -1;
     tilt = -0.5;
-  elseif strcmp(output_name(1:7), 'yomiuri')
-    scenario = 'yomiuri';
+  elseif scenario = 'yomiuri'
     offset_x = 320;
     offset_y = 508;
     turn_y = -1;
-  elseif strcmp(output_name(1:6), 'paris_')
-    scenario = 'paris';
+  elseif scenario = 'paris'
     offset_x = 3459;
     offset_y = 2481;
     turn_y = -1;
     tilt = -26;
-  elseif strcmp(output_name(1:6), 'paris2')
-    scenario = 'paris2';
+  elseif scenario = 'paris2'
     offset_x = 4420;
     offset_y = 3569;
     turn_y = -1;
     tilt = 4.08;
-  elseif strcmp(output_name(1:7), 'charles')
-    scenario = 'charles';
+  elseif scenario = 'charles'
     offset_x = 660.82;
     offset_y = 253;
     turn_x = -1;
     tilt = 4.31;
+  else
+    warning('scenario name is wrong.');
   end
+
+  % ml_mode = 0;
+
+  if search_method == '2way'
+    search_way = 2;
+  elseif search_method == '2dim'
+    search_way = 22;
+  elseif search_method == '4way'
+    search_way = 4;
+  elseif search_method == '2dim_44'
+    search_way = 44;
+  elseif search_method == 'ml'
+    search_way = 22;
+    % ml_mode = 1;
+  else
+    warning('search_method is wrong');
+  end
+
+
+
 
   %% システムパラメータ
 
@@ -277,27 +304,6 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
 
   output_file = strcat(output_dir, '/', output_name, '.csv');
   output_file2 = strcat(output_dir, '/', output_name, '2.csv');
-  ml_mode = 0;
-
-  if strcmp(output_name(end-3:end), '2way')
-    search_way = 2;
-  elseif strcmp(output_name(end-3:end), '2dim')
-    search_way = 22;
-  elseif strcmp(output_name(end-3:end), '4way')
-    search_way = 4;
-  elseif strcmp(output_name(end-6:end), '2dim_44')
-    search_way = 44;
-  elseif strcmp(output_name(end-1:end), 'ml') | strcmp(output_name(end-6:end-5), 'ml')
-    search_way = 22;
-    ml_mode = 1;
-  end
-
-  % if strcmp(output_name(1:6), 'direct')
-  %     direct_or_not = 1;
-  % else
-  %     direct_or_not = 0;
-  % end
-
 
   % 車速用
   speed_list = [];
@@ -423,54 +429,67 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
           speed_abs = sqrt(v_est^2 + vy_est^2);
           accel_abs = sqrt(accel_x^2 + accel_y^2);
 
-          if ml_mode == 1
-            if model_type == 1
-              pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d_2dim, speed=speed_abs, accel=accel_abs);
-              items = [d, speed, accel_abs]
-              search_way = int16(pyres(1))
-            elseif model_type == 2
-              pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed)
-              search_way = int16(pyres(1))
-            elseif model_type == 3
-              pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
-              search_way = int16(pyres(1))
-            elseif model_type == 4
-              pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
-              search_way = int16(pyres(1))
-            elseif model_type == 5
-              pyres = pyrunfile("svm_for_matlab_anglediff.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
-              angle_ml = double(pyres(2))
-              items = pyres(3)
-              search_way = int16(pyres(1))
-            elseif model_type == 6
-              pyres = pyrunfile("svm_for_matlab_anglediff2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
-              angle_ml = double(pyres(2))
-              items = pyres(3)
-              search_way = int16(pyres(1))
-            elseif model_type == 7
-              python_cmd = 'python';
-              script_name = 'xgb_for_matlab_ad.py';
-              command_str = sprintf('%s %s %s %s %d %d %d %d', python_cmd, script_name, model_basename, scenario, x_est, y_est, speed, angle_ml);
-              [status, result] = system(command_str);
-              result = strsplit(result, ' ');
-              % pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
-              search_way = str2num(result{1});
-              angle_ml = str2double(result{2});
-              angle_diff = str2double(result{3});
-              [RU.ary.x, direction, angle_ml, angle_diff, search_way]
-            elseif model_type == 8
-              python_cmd = 'python';
-              script_name = 'xgb_for_matlab_ad2_new.py';
-              command_str = sprintf('%s %s %s %s %d %d %d %d', python_cmd, script_name, model_basename, scenario, x_est, y_est, speed, angle_ml);
-              [status, result] = system(command_str);
-              result = strsplit(result, ' ');
-              % pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
-              search_way = str2num(result{1});
-              angle_ml = str2double(result{2});
-              angle_diff = str2double(result{3});
-              [RU.ary.x, direction, angle_ml, angle_diff, search_way]
-            end
+          if search_method == 'ml'
+            python_cmd = 'python';
+            script_name = 'ml_matlab.py';
+            command_str = sprintf('%s %s %s %s %s %s %d %d %d %d', python_cmd, script_name, scenario, model_name, type, ver, x_est, y_est, speed, angle_ml);
+            [status, result] = system(command_str);
+            result = strsplit(result, ' ');
+            search_way = str2num(result{1});
+            datum = result{2};
+            % angle_ml = str2double(result{2});
+            % angle_diff = str2double(result{3});
+            % [RU.ary.x, direction, angle_ml, angle_diff, search_way]
           end
+
+          % if ml_mode == 1
+          %   if model_type == 1
+          %     pyres = pyrunfile("svm_for_matlab_nodir.py", "res", model_basename=model_basename, dist=d_2dim, speed=speed_abs, accel=accel_abs);
+          %     items = [d, speed, accel_abs]
+          %     search_way = int16(pyres(1))
+          %   elseif model_type == 2
+          %     pyres = pyrunfile("svm_for_matlab_noacc.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed)
+          %     search_way = int16(pyres(1))
+          %   elseif model_type == 3
+          %     pyres = pyrunfile("svm_for_matlab_noacc2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, speed=speed);
+          %     search_way = int16(pyres(1))
+          %   elseif model_type == 4
+          %     pyres = pyrunfile("svm_for_matlab_noacc_noguide.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed);
+          %     search_way = int16(pyres(1))
+          %   elseif model_type == 5
+          %     pyres = pyrunfile("svm_for_matlab_anglediff.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+          %     angle_ml = double(pyres(2))
+          %     items = pyres(3)
+          %     search_way = int16(pyres(1))
+          %   elseif model_type == 6
+          %     pyres = pyrunfile("svm_for_matlab_anglediff2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+          %     angle_ml = double(pyres(2))
+          %     items = pyres(3)
+          %     search_way = int16(pyres(1))
+          %   elseif model_type == 7
+          %     python_cmd = 'python';
+          %     script_name = 'xgb_for_matlab_ad.py';
+          %     command_str = sprintf('%s %s %s %s %d %d %d %d', python_cmd, script_name, model_basename, scenario, x_est, y_est, speed, angle_ml);
+          %     [status, result] = system(command_str);
+          %     result = strsplit(result, ' ');
+          %     % pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+          %     search_way = str2num(result{1});
+          %     angle_ml = str2double(result{2});
+          %     angle_diff = str2double(result{3});
+          %     [RU.ary.x, direction, angle_ml, angle_diff, search_way]
+          %   elseif model_type == 8
+          %     python_cmd = 'python';
+          %     script_name = 'xgb_for_matlab_ad2_new.py';
+          %     command_str = sprintf('%s %s %s %s %d %d %d %d', python_cmd, script_name, model_basename, scenario, x_est, y_est, speed, angle_ml);
+          %     [status, result] = system(command_str);
+          %     result = strsplit(result, ' ');
+          %     % pyres = pyrunfile("xgb_for_matlab_ad2.py", "res", model_basename=model_basename, scenario=scenario, x=x_est, y=y_est, speed=speed, angle_prev=angle_ml);
+          %     search_way = str2num(result{1});
+          %     angle_ml = str2double(result{2});
+          %     angle_diff = str2double(result{3});
+          %     [RU.ary.x, direction, angle_ml, angle_diff, search_way]
+          %   end
+          % end
 
           v_prev = v_est;
           vy_prev = vy_est;
@@ -565,47 +584,47 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
               end
             end
           % 2次元4方向ビームサーチ
-          % elseif search_way == 44
-          %   if SNR - SNR_0 < 0
-          %     W_a  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
-          %     W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
-          %     W_c  = gen_beam(n_tx, n_tz, fc, a_est, p_est+angle);
-          %     W_d  = gen_beam(n_tx, n_tz, fc, a_est, p_est-angle);
-          %     W_a2  = gen_beam(n_tx, n_tz, fc, a_est+2*angle, p_est);
-          %     W_b2  = gen_beam(n_tx, n_tz, fc, a_est-2*angle, p_est);
-          %     W_c2  = gen_beam(n_tx, n_tz, fc, a_est, p_est+2*angle);
-          %     W_d2  = gen_beam(n_tx, n_tz, fc, a_est, p_est-2*angle);
+          elseif search_way == 44
+            if SNR - SNR_0 < 0
+              W_a  = gen_beam(n_tx, n_tz, fc, a_est+angle, p_est);
+              W_b  = gen_beam(n_tx, n_tz, fc, a_est-angle, p_est);
+              W_c  = gen_beam(n_tx, n_tz, fc, a_est, p_est+angle);
+              W_d  = gen_beam(n_tx, n_tz, fc, a_est, p_est-angle);
+              W_a2  = gen_beam(n_tx, n_tz, fc, a_est+2*angle, p_est);
+              W_b2  = gen_beam(n_tx, n_tz, fc, a_est-2*angle, p_est);
+              W_c2  = gen_beam(n_tx, n_tz, fc, a_est, p_est+2*angle);
+              W_d2  = gen_beam(n_tx, n_tz, fc, a_est, p_est-2*angle);
 
-          %     SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
-          %     SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
-          %     SNR_c = real2db(abs(Wr*HG*W_c).^2/Np);
-          %     SNR_d = real2db(abs(Wr*HG*W_d).^2/Np);
-          %     SNR_a2 = real2db(abs(Wr*HG*W_a2).^2/Np);
-          %     SNR_b2 = real2db(abs(Wr*HG*W_b2).^2/Np);
-          %     SNR_c2 = real2db(abs(Wr*HG*W_c2).^2/Np);
-          %     SNR_d2 = real2db(abs(Wr*HG*W_d2).^2/Np);
+              SNR_a = real2db(abs(Wr*HG*W_a).^2/Np);
+              SNR_b = real2db(abs(Wr*HG*W_b).^2/Np);
+              SNR_c = real2db(abs(Wr*HG*W_c).^2/Np);
+              SNR_d = real2db(abs(Wr*HG*W_d).^2/Np);
+              SNR_a2 = real2db(abs(Wr*HG*W_a2).^2/Np);
+              SNR_b2 = real2db(abs(Wr*HG*W_b2).^2/Np);
+              SNR_c2 = real2db(abs(Wr*HG*W_c2).^2/Np);
+              SNR_d2 = real2db(abs(Wr*HG*W_d2).^2/Np);
 
-          %     u = db2real(abs(SNR - SNR_0));
+              u = db2real(abs(SNR - SNR_0));
 
-          %     SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d, SNR_a2, SNR_b2, SNR_c2, SNR_d2]);
-          %     if SNR_max == SNR_a
-          %         v_est = v_est - alpha*u;
-          %     elseif SNR_max == SNR_b
-          %         v_est = v_est + alpha*u;
-          %     elseif SNR_max == SNR_c
-          %         vy_est = vy_est - alpha*u;
-          %     elseif SNR_max == SNR_d
-          %         vy_est = vy_est + alpha*u;
-          %     elseif SNR_max == SNR_a2
-          %         v_est = v_est - 2*alpha*u;
-          %     elseif SNR_max == SNR_b2
-          %         v_est = v_est + 2*alpha*u;
-          %     elseif SNR_max == SNR_c2
-          %         vy_est = vy_est - 2*alpha*u;
-          %     else
-          %         vy_est = vy_est + 2*alpha*u;
-          %     end
-          %   end
+              SNR_max = max([SNR_a, SNR_b, SNR_c, SNR_d, SNR_a2, SNR_b2, SNR_c2, SNR_d2]);
+              if SNR_max == SNR_a
+                  v_est = v_est - alpha*u;
+              elseif SNR_max == SNR_b
+                  v_est = v_est + alpha*u;
+              elseif SNR_max == SNR_c
+                  vy_est = vy_est - alpha*u;
+              elseif SNR_max == SNR_d
+                  vy_est = vy_est + alpha*u;
+              elseif SNR_max == SNR_a2
+                  v_est = v_est - 2*alpha*u;
+              elseif SNR_max == SNR_b2
+                  v_est = v_est + 2*alpha*u;
+              elseif SNR_max == SNR_c2
+                  vy_est = vy_est - 2*alpha*u;
+              else
+                  vy_est = vy_est + 2*alpha*u;
+              end
+            end
           end
           
           if (search_way == 22) || (search_way == 44)
