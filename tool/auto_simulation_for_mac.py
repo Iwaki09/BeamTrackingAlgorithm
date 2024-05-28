@@ -6,7 +6,7 @@ output_dir = './dataset'
 matlab_dir = './mscript'
 
 # scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
-scenarios = ['charles']
+scenarios = ['korakuen']
 
 # depart_speed = '0.00'
 
@@ -20,8 +20,8 @@ for scenario in scenarios:
                 output_subdir = os.path.join(output_dir, scenario)
                 cmd1 = 'sumo --remote-port 8813 -c ' + input_dir + '/' + scenario + '/' + filename + '.sumocfg &'
                 subprocess.call(cmd1, shell=True)
-                cmd2 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + filename + '_2dim\', 0, 1, 12, \'../' + output_subdir + '\', 0)\"'
+                cmd2 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + scenario + '-2dim\', 0, 1, 12, \'../' + output_subdir + '\', 0)\"'
                 subprocess.call(cmd2, shell=True)
-                cmd3 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + filename + '_4way\', 0, 1, 12, \'../' + output_subdir + '\', 0)\"'
+                cmd3 = '/Applications/MATLAB_R2023a.app/bin/matlab -nodesktop -nosplash -sd \"' + matlab_dir + '\" -batch \"beamtracking_ml(\'' + scenario + '-4way\', 0, 1, 12, \'../' + output_subdir + '\', 0)\"'
                 subprocess.call(cmd1, shell=True)
                 subprocess.call(cmd3, shell=True)
