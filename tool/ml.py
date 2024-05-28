@@ -15,12 +15,12 @@ import pickle
 
 
 @click.command()
-@click.argument('model')
+@click.argument('modelname')
 @click.argument('specific', default='generic')
-@click.argument('type', choices=['1', '2'])
-@click.argument('ver')
+@click.option('--type', '--t', required=True)
+@click.option('--ver', '--v', required=True)
 @click.option('--interval', '--i', type=int, default=1)
-def cli(model, specific, interval, type, ver):
+def cli(modelname, specific, interval, type, ver):
 
     dataset_dir = './dataset/all'
     ml_models_dir = './model'
@@ -43,41 +43,46 @@ def cli(model, specific, interval, type, ver):
     ss = StandardScaler()
     if type == '1':
         X = ss.fit_transform(df[['dist', 'speed', 'angle', 'angle_diff']].to_numpy())
-    else:
+    elif type == '2':
         X = ss.fit_transform(df[['angle', 'angle_diff']].to_numpy())
+    else:
+        print('type is wrong')
+        exit()
     y = df['best'].to_numpy()
 
     # データセットをトレーニングセットとテストセットに分割
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    if model == 'dt':
-        decision_tree_model = DecisionTreeClassifier(criterion='gini', 
+    if modelname == 'dt':
+        model = DecisionTreeClassifier(criterion='gini', 
                                                     max_depth=None, 
                                                     min_samples_split=2, 
                                                     min_samples_leaf=1, 
                                                     max_features=None)
-        decision_tree_model.fit(X_train, y_train)
-        y_pred = decision_tree_model.predict(X_test)
-    elif model == 'svm':
-        svm_model = SVC(kernel='rbf', gamma=1, C=1024, random_state=0)
-        svm_model.fit(X_train, y_train)
-        y_pred = svm_model.predict(X_test)
-    elif model == 'xgb':
-        xgb_model = XGBClassifier()
-        xgb_model.fit(X_train, y_train)
-        y_pred = xgb_model.predict(X_test)
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        with open(os.path.join(ml_models_dir, modelname+'_'+specific+'-type'+type+'-ver'+ver+'_model.pkl'), 'wb') as f:
+            pickle.dump(model, f)
+    elif modelname == 'svm':
+        model = SVC(kernel='rbf', gamma=1, C=1024, random_state=0)
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        with open(os.path.join(ml_models_dir, modelname+'_'+specific+'-type'+type+'-ver'+ver+'_model.pkl'), 'wb') as f:
+            pickle.dump(model, f)
+    elif modelname == 'xgb':
+        model = XGBClassifier()
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        model.save_model(os.path.join(ml_models_dir, modelname+'_'+specific+'-type'+type+'-ver'+ver+'_model.json'))
+
+    with open(os.path.join(ml_models_dir, modelname+'_'+specific+'-type'+type+'-ver'+ver+'_stats.csv'), 'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(ss.scale_)
+        writer.writerow(ss.mean_)
 
     # 精度の評価
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Accuracy: {accuracy}")
-
-    # モデルの保存
-    with open(os.path.join(ml_models_dir, model+'_'+specific+'-type'+type+'-ver'+ver+'_model.pkl'), 'wb') as f:
-        pickle.dump(decision_tree_model, f)
-    with open(os.path.join(ml_models_dir, model+'_'+specific+'-type'+type+'-ver'+ver+'_stats.csv'), 'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(ss.scale_)
-        writer.writerow(ss.mean_)
 
 
 if __name__ == '__main__':
