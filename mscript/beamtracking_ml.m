@@ -32,7 +32,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   switch length(splitStr)
     case 2
       [scenario, search_method] = deal(splitStr{:});
-      scenario = 'korakuen';
+      % scenario = 'korakuen'; % 消せ！！！！
     case 5
       [scenario, search_method, model_name, type, ver] = deal(splitStr{:});
     otherwise
@@ -113,6 +113,11 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
     offset_y = 1462;
     turn_y = -1;
     tilt = -0.5;
+  elseif strcmp(scenario, 'korakue2')
+    offset_x = 931;
+    offset_y = 1465;
+    turn_y = -1;
+    tilt = 4;
   elseif strcmp(scenario, 'yomiuri')
     offset_x = 320;
     offset_y = 508;
