@@ -85,16 +85,21 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   % 右上に傾いているなら-をつける。ただし、turn_xかturn_yが-1なら逆になる。
   tilt = 0;
   % 新しいシナリオを使う時はここを編集
-  if scenario == 'direct'
-  elseif scenario == 'curve_r30'
-  elseif scenario == 'curve_r40'
-  elseif scenario == 'curve_r60'
-  elseif scenario == 'curve_r150'
-  elseif scenario == 'okutama'
+  if strcmp(scenario, 'direct')
+    [];
+  elseif strcmp(scenario, 'curve_r30')
+    [];
+  elseif strcmp(scenario, 'curve_r40')
+    [];
+  elseif strcmp(scenario, 'curve_r60')
+    [];
+  elseif strcmp(scenario, 'curve_r150')
+    [];
+  elseif strcmp(scenario, 'okutama')
     offset_x = 180;
     offset_y = 130;
     turn_y = -1;
-  elseif scenario = 'shinobazu'
+  elseif strcmp(scenario, 'shinobazu')
     % offset_x = 269;
     % offset_y = 348;
     % turn_y = -1;
@@ -102,26 +107,26 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
     turn_x = -1;
     offset_y = 347;
     turn_y = -1;
-  elseif scenario = 'korakuen'
+  elseif strcmp(scenario, 'korakuen')
     offset_x = 1123;
     offset_y = 1462;
     turn_y = -1;
     tilt = -0.5;
-  elseif scenario = 'yomiuri'
+  elseif strcmp(scenario, 'yomiuri')
     offset_x = 320;
     offset_y = 508;
     turn_y = -1;
-  elseif scenario = 'paris'
+  elseif strcmp(scenario, 'paris')
     offset_x = 3459;
     offset_y = 2481;
     turn_y = -1;
     tilt = -26;
-  elseif scenario = 'paris2'
+  elseif strcmp(scenario, 'paris2')
     offset_x = 4420;
     offset_y = 3569;
     turn_y = -1;
     tilt = 4.08;
-  elseif scenario = 'charles'
+  elseif strcmp(scenario, 'charles')
     offset_x = 660.82;
     offset_y = 253;
     turn_x = -1;
@@ -132,15 +137,15 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
 
   % ml_mode = 0;
 
-  if search_method == '2way'
+  if strcmp(search_method, '2way')
     search_way = 2;
-  elseif search_method == '2dim'
+  elseif strcmp(search_method, '2dim')
     search_way = 22;
-  elseif search_method == '4way'
+  elseif strcmp(search_method, '4way')
     search_way = 4;
-  elseif search_method == '2dim_44'
+  elseif strcmp(search_method, '2dim_44')
     search_way = 44;
-  elseif search_method == 'ml'
+  elseif strcmp(search_method, 'ml')
     search_way = 22;
     % ml_mode = 1;
   else
@@ -434,9 +439,9 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
             python_cmd = 'python';
             script_name = 'ml_matlab.py';
             command_str = sprintf('%s %s %s %s %s %s %d %d %d %d', python_cmd, script_name, scenario, model_name, type, ver, x_est, y_est, speed, angle_ml);
-            [status, result] = system(command_str);
+            [status, result] = system(command_str)
             result = strsplit(result, ' ');
-            search_way = str2num(result{1});
+            search_way = str2num(result{1})
             datum = result{2};
             % angle_ml = str2double(result{2});
             % angle_diff = str2double(result{3});
