@@ -1,11 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
 import matplotlib
+import os
+import click
+
 matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
-import os
+
+@click.comannd()
+@click.argument('scenario')
+@click.argument('plotmode')
 
 def plot_main():
     input_dir1 = './datasource'
@@ -100,7 +105,7 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
     df_2way = pd.read_csv(scenario_path1+'_2way.csv', names=['x', 'SNR_2way', 'SNR_o', 'SNR_s'])
     df_2dim = pd.read_csv(scenario_path1+'_2dim.csv', names=['x', 'SNR_2dim', 'SNR_o', 'SNR_s'])
     df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
-    df_ml = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s'])
+    df_ml = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 
     dfs = [df_2way, df_2dim, df_4way, df_ml]
 
@@ -133,7 +138,6 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
         'SNR_ml': df_ml['SNR_ml'],
     })
 
-    # print(df_2dim)
     plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
     plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = '#03AF7A', linewidth=linewidth)
     plt.plot(df_2way['x'], df_2way['SNR_s'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth)
@@ -157,6 +161,9 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
     plt.show()
 
     plt.clf()
+
+if __name__ == '__main__':
+    plot_main()
 
 # for road in ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']:
 #     for speed in ['30to45', '45to60', '60to75', '75to90']:
@@ -234,6 +241,3 @@ def plot_individual_ml(input_dir1, input_dir2, scenario, output_dir, linewidth, 
 #         plt.show()
 
 #         plt.clf()
-
-if __name__ == '__main__':
-    plot_main()

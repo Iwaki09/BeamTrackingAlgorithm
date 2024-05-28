@@ -9,6 +9,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
     % 1なら実際の速度を、2なら予測速度をプロットする。
     speed_plot = 1;
     % ファイルに書き出しを行うかどうか。0なら書かない。11なら結果モードで、12ならデータセットモードで、13ならガイドデータモードで書く。
+    % 結果モードについて、mlの時とそれ以外とで結果のフォーマットが違うので注意
     % 13の時は書き出す先とファイル名に注意。あとでrenameすれば良い
     file_write = 11;
     % 上記のファイルを書き出す先。..にすること
@@ -40,39 +41,39 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % noguideモード(yを自前で用意する。distはガイドを使う(結局ガイド使ってる))
-  no_guide = 1;
+  % no_guide = 1;
 
   % angle_diffモード　2ならangleとangle_diffだけ
-  angle_diff_mode = 2;
+  % angle_diff_mode = 2;
 
-  % svm_modelの名前
-  model_basename = 'dt_noacc_basic_cha';
-  if strcmp(model_basename(5:9), 'nodir')
-    model_type = 1;
-  elseif strcmp(model_basename(5:9), 'noacc')
-    model_type = 2;
-  elseif strcmp(model_basename(4:8), 'noacc')
-    model_type = 2;
-  % elseif strcmp(model_basename(end-5:end), 'noacc2')
-  %   保留
-  %   model_type = 3;
-  end
+  % % svm_modelの名前
+  % model_basename = 'dt_noacc_basic_cha';
+  % if strcmp(model_basename(5:9), 'nodir')
+  %   model_type = 1;
+  % elseif strcmp(model_basename(5:9), 'noacc')
+  %   model_type = 2;
+  % elseif strcmp(model_basename(4:8), 'noacc')
+  %   model_type = 2;
+  % % elseif strcmp(model_basename(end-5:end), 'noacc2')
+  % %   保留
+  % %   model_type = 3;
+  % end
 
-  if no_guide == 1
-    model_type = 4;
-  end
+  % if no_guide == 1
+  %   model_type = 4;
+  % end
 
-  if angle_diff_mode == 1
-    model_type = 5;
-  elseif angle_diff_mode == 2
-    model_type = 6;
-  end
+  % if angle_diff_mode == 1
+  %   model_type = 5;
+  % elseif angle_diff_mode == 2
+  %   model_type = 6;
+  % end
 
-  if strcmp(model_basename, 'xgb_noacc_ad')
-    model_type = 7;
-  elseif strcmp(model_basename, 'xgb_noacc_ad2')
-    model_type = 8;
-  end
+  % if strcmp(model_basename, 'xgb_noacc_ad')
+  %   model_type = 7;
+  % elseif strcmp(model_basename, 'xgb_noacc_ad2')
+  %   model_type = 8;
+  % end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % シナリオの座標を0基準にする
@@ -663,7 +664,11 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
             end
           case 'track'
             if file_write == 11
-              result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
+              if search_method == 'ml'
+                result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s, search_way]];
+              else
+                result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];
+              end
               writematrix(result_list, output_file);
             elseif file_write == 12
               result_list = [result_list; [RU.ary.x, RU.ary.y, d_2dim, speed, accel, direction, SNR]];

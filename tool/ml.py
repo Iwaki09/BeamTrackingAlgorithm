@@ -64,7 +64,10 @@ def cli(modelname, specific, interval, type, ver):
         with open(os.path.join(ml_models_dir, modelname+'_'+specific+'-type'+type+'-ver'+ver+'_model.pkl'), 'wb') as f:
             pickle.dump(model, f)
     elif modelname == 'svm':
-        model = SVC(kernel='rbf', gamma=1, C=1024, random_state=0)
+        if type == '1':
+            model = SVC(kernel='rbf', gamma=7, C=2**15, random_state=0)
+        elif type == '2':
+            model = SVC(kernel='rbf', gamma=1, C=2**10, random_state=0)
         model.fit(X_train, y_train)
         y_pred = model.predict(X_test)
         with open(os.path.join(ml_models_dir, modelname+'_'+specific+'-type'+type+'-ver'+ver+'_model.pkl'), 'wb') as f:
