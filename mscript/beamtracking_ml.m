@@ -32,7 +32,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
   switch length(splitStr)
     case 2
       [scenario, search_method] = deal(splitStr{:});
-      % scenario = 'korakuen'; % 消せ！！！！
+      scenario = 'paris2'; % 消せ！！！！
     case 5
       [scenario, search_method, model_name, type, ver] = deal(splitStr{:});
     otherwise
@@ -716,7 +716,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
             plot(RU.ary.x, SNR, '.', 'Color', 'red', 'LineWidth', 1.0);
           end
           if file_write == 11
-            if search_method == 'ml'
+            if strcmp(search_method, 'ml')
               result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s, search_way]];
             else
               result_list = [result_list; [RU.ary.x, SNR, SNR_o, SNR_s]];

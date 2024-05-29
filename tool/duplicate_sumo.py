@@ -11,7 +11,7 @@ input_dir = './sumo/original'
 output_rootdir = './sumo/duplicated'
 
 # scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
-scenarios = ['korakuen']
+scenarios = ['paris2']
 
 for scenario in scenarios:
 

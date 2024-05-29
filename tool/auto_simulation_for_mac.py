@@ -12,11 +12,14 @@ scenarios = ['korakuen']
 
 for scenario in scenarios:
     for max_speed in reversed(range(3, 20, 1)):
+        if max_speed != 3:
+            continue
         for accel in reversed(range(1, 10, 1)):
             for depart_speed in ['0.00', '2.00', '4.00']:
                 # sumocfgに書かれるファイル名
                 filename_suffix = '_ms{}_ac{}_ds{}'.format(max_speed, accel, depart_speed)
                 filename = scenario + filename_suffix
+                print(filename)
                 output_subdir = os.path.join(output_dir, scenario)
                 cmd1 = 'sumo --remote-port 8813 -c ' + input_dir + '/' + scenario + '/' + filename + '.sumocfg &'
                 subprocess.call(cmd1, shell=True)
