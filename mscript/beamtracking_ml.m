@@ -442,7 +442,7 @@ function beamtracking_ml(output_name, f_plot, speed_plot, file_write, output_dir
           accel_abs = sqrt(accel_x^2 + accel_y^2);
 
           if strcmp(search_method, 'ml')
-            python_cmd = 'python3';
+            python_cmd = 'python';
             script_name = 'ml_matlab.py';
             command_str = sprintf('%s %s %s %s %s %s %d %d %d %d', python_cmd, script_name, scenario, model_name, type, ver, x_est, y_est, speed, angle_ml);
             [status, result] = system(command_str);
