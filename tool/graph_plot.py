@@ -111,6 +111,8 @@ def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist,
         df_2dim['SNR_4way'].fillna(0, inplace=True)
         df_2dim['best'] = df_2dim.apply(lambda row: 22 if row['SNR_2dim'] > row['SNR_4way'] else 4, axis=1)
 
+    plotlist_extend = []
+    plotlist_remove = []
     for elem in plotlist:
         if elem in ['2way', 'opt', 'swe']:
             df= pd.read_csv(scenario_path1+'_2way.csv', names=['x', 'SNR_t', 'SNR_o', 'SNR_s'])
@@ -124,17 +126,22 @@ def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist,
         if '-' in elem:
             modelname_specific, type, ver = elem.split('-')
             modelname, specific = modelname_specific.split('_')
-            plotlist.append(modelname)
+            plotlist_extend.append(modelname)
             df = pd.read_csv(scenario_path2+'-ml-'+modelname_specific+'-type'+type+'-ver'+ver+'.csv', names=['x', 'SNR_t', 'SNR_o', 'SNR_s', 'search_way'])
             dfs.append(df)
-            plotlist.remove(elem)
+            plotlist_remove.append(elem)
 
             if scoreprint:
-                print(df_2dim['best'])
-                print(df['search_way'])
                 correct = (df_2dim['best'] == df['search_way']).sum()
                 score = correct / len(df)
                 print("{}'s score: {}".format(modelname, score))
+
+    plotlist.extend(plotlist_extend)
+    for remove in plotlist_remove:
+        if remove in plotlist:
+            plotlist.remove(remove)
+    # print(plotlist)
+
     # df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
     # df_ml = pd.read_csv(scenario_path2+'_ml_ver'+ver+'.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 
