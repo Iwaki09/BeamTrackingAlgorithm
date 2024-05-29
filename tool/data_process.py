@@ -5,7 +5,7 @@ input_dir = './dataset'
 output_dir = './dataset/all'
 
 # scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30']
-scenarios = ['charles']
+scenarios = ['korakuen']
 
 # depart_speed = '0.00'
 
@@ -15,8 +15,8 @@ for scenario in scenarios:
         for accel in reversed(range(1, 10, 1)):
             for depart_speed in ['0.00', '2.00', '4.00']:
                 filename_suffix = '_ms{}_ac{}_ds{}'.format(max_speed, accel, depart_speed)
-                filename_2dim = scenario + filename_suffix + '_2dim.csv'
-                filename_4way = scenario + filename_suffix + '_4way.csv'
+                filename_2dim = scenario + filename_suffix + '-2dim.csv'
+                filename_4way = scenario + filename_suffix + '-4way.csv'
                 try:
                     df_2dim = pd.read_csv(input_dir+'/'+scenario+'/'+filename_2dim, names=['x', 'y', 'dist', 'speed', 'accel_x', 'accel_y', 'angle', 'SNR_2dim'])
                     df_4way = pd.read_csv(input_dir+'/'+scenario+'/'+filename_4way, names=['x', 'y', 'dist', 'speed', 'accel_x', 'accel_y', 'angle', 'SNR_4way'])
