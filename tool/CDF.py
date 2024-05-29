@@ -5,13 +5,13 @@ import numpy as np
 import os
 
 input_dir1 = './datasource'
-input_dir2 = './ml_result'
-output_dir = './ml_result'
+input_dir2 = './result'
+output_dir = './result'
 #              0            1            2            3           4             5        6             7           8          9
 scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris', 
                 'paris2', 'charles']
 
-scenario = scenarios[7]
+scenario = 'korakuen'
 
 linewidth = 4
 
@@ -22,9 +22,9 @@ scenario_path2 = os.path.join(input_dir2, scenario)
 df_2way = pd.read_csv(scenario_path1+'_2way.csv', names=['x', 'SNR_2way', 'SNR_o', 'SNR_s'])
 df_2dim = pd.read_csv(scenario_path1+'_2dim.csv', names=['x', 'SNR_2dim', 'SNR_o', 'SNR_s'])
 df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o', 'SNR_s'])
-df_ml1 = pd.read_csv(scenario_path2+'_ml_ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s'])
-df_ml2 = pd.read_csv(scenario_path2+'_ml_ver2.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s'])
-df_ml3 = pd.read_csv(scenario_path2+'_ml_ver3.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s'])
+df_ml1 = pd.read_csv(scenario_path2+'-ml-svm_generic-type2-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
+df_ml2 = pd.read_csv(scenario_path2+'-ml-xgb_korakuen-type2-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
+df_ml3 = pd.read_csv(scenario_path2+'-ml-xgb_charles-type1-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 
 dict_opt = {
     'x': df_2way['x'],
@@ -108,13 +108,13 @@ nearest_values_ml3 = [df_ml3['cdf'].iloc[(df_ml3['SNR_ml'] - val).abs().argsort(
 plt.figure(figsize=(7, 8)) 
 
 plt.plot(df_opt['SNR_o'], df_opt['cdf'], label='Optimal', color = '#005AFF', linewidth=linewidth)
-plt.plot(df_con['SNR_2way'], df_con['cdf'], label='Conventional', color = '#03AF7A', linewidth=linewidth, linestyle="dashed")
-plt.plot(df_swe['SNR_s'], df_swe['cdf'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth, linestyle="dashed")
+# plt.plot(df_con['SNR_2way'], df_con['cdf'], label='Conventional', color = '#03AF7A', linewidth=linewidth, linestyle="dashed")
+# plt.plot(df_swe['SNR_s'], df_swe['cdf'], label='Sweeping', color = '#4DC4FF', linewidth=linewidth, linestyle="dashed")
 plt.plot(df_4way['SNR_4way'], df_4way['cdf'], label='4way', color = '#FF4B00', linewidth=linewidth, linestyle="dashed")
 plt.plot(df_2dim['SNR_2dim'], df_4way['cdf'], label='2dim', color = '#F6AA00', linewidth=linewidth, linestyle="dashed")
-plt.plot(df_ml2['SNR_ml'], df_ml2['cdf'], label='Model 1', color = 'purple', linewidth=linewidth, linestyle="dashed")
-plt.plot(df_ml1['SNR_ml'], df_ml1['cdf'], label='Model 4', color='#f781bf', linewidth=linewidth, linestyle="dashed")
-plt.plot(df_ml3['SNR_ml'], df_ml3['cdf'], label='Model 6', color='#a65628', linewidth=linewidth, linestyle="dashed")
+plt.plot(df_ml1['SNR_ml'], df_ml1['cdf'], label='generic', color='#f781bf', linewidth=linewidth, linestyle="dashed")
+plt.plot(df_ml2['SNR_ml'], df_ml2['cdf'], label='specific-TD', color = 'purple', linewidth=linewidth, linestyle="dashed")
+plt.plot(df_ml3['SNR_ml'], df_ml3['cdf'], label='specific-CH', color='#a65628', linewidth=linewidth, linestyle="dashed")
 plt.scatter(scatter_list, nearest_values_ml2, color='purple', marker='^', edgecolor='purple', facecolor='white', linewidths=linewidth, zorder=4, s=100)
 plt.scatter(scatter_list, nearest_values_ml1, color='#f781bf', marker='o', edgecolor='#f781bf', facecolor='white', linewidths=linewidth, zorder=3, s=100)
 plt.scatter(scatter_list, nearest_values_ml3, color='#a65628', marker='s', edgecolor='#a65628', facecolor='white', linewidths=linewidth, zorder=3, s=100)
@@ -123,16 +123,17 @@ plt.ylabel('CDF', fontsize=18)
 plt.xlabel('SNR[dB]', fontsize=18)
 # plt.xlim(25, 50)
 
-# plt.xticks(range(0, 70, 10)) 
+plt.xticks(range(0, 70, 10)) 
 # plt.xlim(xmin=plt.xlim()[0], xmax=47)
-plt.xlim(xmin=33, xmax=41)
-# plt.ylim(0, 1)
-plt.ylim(0.1, 0.55)
+# plt.xlim(xmin=33, xmax=41)
+plt.xlim(xmin=25, xmax=46)
+plt.ylim(0, 1)
+# plt.ylim(0.1, 0.55)
 plt.grid(alpha=0.3)
 
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
-# plt.legend(loc='upper left')
+plt.legend(loc='upper left')
 plt.savefig(output_dir+scenario+'_CDF.pdf')
 plt.show()
 

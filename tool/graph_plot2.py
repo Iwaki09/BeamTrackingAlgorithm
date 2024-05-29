@@ -227,8 +227,14 @@ def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist,
             plt.plot(df['x'], df['SNR_o'], label=plot_dict[plotlist[i]]['label'], color=plot_dict[plotlist[i]]['color'], linewidth=linewidth)
         elif plotlist[i] == 'swe':
             plt.plot(df['x'], df['SNR_s'], label=plot_dict[plotlist[i]]['label'], color=plot_dict[plotlist[i]]['color'], linewidth=linewidth)
+        elif i == 3:
+            plt.plot(df['x'], df['SNR_t'], label='generic', color='#f781bf', linewidth=linewidth)
+        elif i == 4:
+            plt.plot(df['x'], df['SNR_t'], label='specific-TD', color='purple', linewidth=linewidth)
+        elif i == 5:
+            plt.plot(df['x'], df['SNR_t'], label='specific-CH', color='#a65628', linewidth=linewidth)
         else:
-            plt.plot(df['x'], df['SNR_t'], label=plot_dict[plotlist[i]]['label'], color=plot_dict[plotlist[i]]['color'], linewidth=linewidth)
+            plt.plot(df['x'], df['SNR_t'], label=plot_dict[plotlist[i]]['label'], color=plot_dict[plotlist[i]]['color'], linewidth=linewidth, linestyle="dashed")
 
     # plt.plot(df_2way['x'], df_2way['SNR_o'], label='Optimal', color = '#005AFF', linewidth=linewidth)
     # plt.plot(df_2way['x'], df_2way['SNR_2way'], label='Conventional', color = '#03AF7A', linewidth=linewidth)
@@ -242,7 +248,7 @@ def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist,
     plt.xlim(5, 60.1)
 
     plt.xticks([5,10,20,30,40,50,60]) 
-    plt.ylim(0, 60)
+    plt.ylim(20, 50)
     plt.grid(alpha=0.3)
     plt.legend(loc='upper right')
     plt.savefig(output_filename)
