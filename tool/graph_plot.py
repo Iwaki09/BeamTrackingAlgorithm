@@ -136,6 +136,9 @@ def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist,
                 correct = (df_2dim['best'] == df['search_way']).sum()
                 score = correct / len(df)
                 print("{}'s score: {}".format(modelname, score))
+                avg = df['SNR_t'].sum() / len(df)
+                print("avg: {}".format(avg))
+
 
     plotlist.extend(plotlist_extend)
     for remove in plotlist_remove:
@@ -245,12 +248,12 @@ def plot_individual(input_dir1, input_dir2, output_filename, scenario, plotlist,
     plt.ylim(0, 60)
     plt.grid(alpha=0.3)
     plt.legend(loc='upper right')
-    plt.savefig(output_filename)
+    # plt.savefig(output_filename)
 
     # df_all.to_csv(output_dir+scenario_now+'_all.csv')
     # df_non.to_csv(output_dir+scenario_now+'_all2.csv')
 
-    plt.show()
+    # plt.show()
 
     plt.clf()
 

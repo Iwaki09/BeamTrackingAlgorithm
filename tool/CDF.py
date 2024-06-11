@@ -11,6 +11,7 @@ output_dir = './result'
 scenarios = ['direct', 'curve_r150', 'curve_r60', 'curve_r40', 'curve_r30', 'okutama', 'shinobazu', 'korakuen', 'yomiuri', 'paris', 
                 'paris2', 'charles']
 
+scenario = 'charles'
 scenario = 'korakuen'
 
 linewidth = 4
@@ -25,6 +26,9 @@ df_4way = pd.read_csv(scenario_path1+'_4way.csv', names=['x', 'SNR_4way', 'SNR_o
 df_ml1 = pd.read_csv(scenario_path2+'-ml-svm_generic-type2-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 df_ml2 = pd.read_csv(scenario_path2+'-ml-xgb_korakuen-type2-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 df_ml3 = pd.read_csv(scenario_path2+'-ml-xgb_charles-type1-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
+# df_ml1 = pd.read_csv(scenario_path2+'-ml-svm_generic-type1-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
+# df_ml2 = pd.read_csv(scenario_path2+'-ml-xgb_charles-type2-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
+# df_ml3 = pd.read_csv(scenario_path2+'-ml-xgb_korakuen-type1-ver1.csv', names=['x', 'SNR_ml', 'SNR_o', 'SNR_s', 'search_way'])
 
 dict_opt = {
     'x': df_2way['x'],
@@ -133,8 +137,8 @@ plt.grid(alpha=0.3)
 
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
-plt.legend(loc='upper left')
-plt.savefig(output_dir+scenario+'_CDF.pdf')
+plt.legend(loc='upper left', fontsize='xx-large')
+plt.savefig(output_dir+'/'+scenario+'_CDF.pdf')
 plt.show()
 
 # print(df_pro)
