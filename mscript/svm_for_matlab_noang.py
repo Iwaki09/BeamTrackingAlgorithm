@@ -6,7 +6,7 @@ import sklearn
 
 def svm_for_matlab_noang(model_basename, dist, speed, accel):
 
-    ml_models_dir = '../ml_models'
+    ml_models_dir = '../model'
 
     # 保存したモデルをロード
     with open(os.path.join(ml_models_dir, model_basename+'_model.pkl'), 'rb') as model_path:

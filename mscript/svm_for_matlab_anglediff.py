@@ -6,7 +6,7 @@ import sklearn
 
 def svm_for_matlab_anglediff(model_basename, scenario, x, y, speed, angle_prev):
 
-    ml_models_dir = '../ml_models'
+    ml_models_dir = '../model'
 
     # ガイドファイルを読み込んで、xからdistとangleを計算
     df_guide = pd.read_csv(os.path.join(ml_models_dir, scenario+'_guide.csv'), names=['x', 'y', 'angle'])
