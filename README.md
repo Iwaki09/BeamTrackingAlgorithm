@@ -1,15 +1,14 @@
 # BeamTrackingAlgorithm
 ## フォルダの説明
-- /beamtracking : 将来的にPythonに翻訳したものがここに入る予定
+- /beamtracking_python : 将来的にPythonに翻訳したものがここに入る予定
 - /dataset : 機械学習のモデルに突っ込む用のcsvファイルたち。
-- /datasource : 大元のsumoファイルたち。簡単な実験に使ったり、複製のオリジナルとして使ったり。
-- /ml_models : ml関係のモデルファイルや標準化に使った情報を書いてあるファイル
-- /ml_result : mlの結果を置く。
+- /datasource : グラフのプロットなどに使う元データ
+- /model : ml関係のモデルファイルや標準化に使った情報を書いてあるファイル
+- /result : mlの結果やプロットファイル
 - /mscript : matlabファイル
-- /result : 自動化シミュレーションの結果置き場。この後/datasetに行く
-- /sumo_xml : 大量に複製されたsumoスクリプト
-- /tool : いろいろやるpythonファイル
-- /tool2 : angle_diffを加えたもの。toolとの統合が面倒だったので分けた。
+- /sumo : 大量に複製されたsumoスクリプト
+- /tool : データ処理系のpythonファイル
+
 
 ## mscript/beamtracking_4way_2dim
 機械学習用に整形済
